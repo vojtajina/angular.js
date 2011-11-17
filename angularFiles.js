@@ -21,6 +21,7 @@ angularFiles = {
     'src/service/filter/limitTo.js',
     'src/service/filter/orderBy.js',
     'src/service/formFactory.js',
+    'src/service/interpolate.js',
     'src/service/location.js',
     'src/service/log.js',
     'src/service/resource.js',
