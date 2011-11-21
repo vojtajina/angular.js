@@ -16,6 +16,14 @@
  *
  */
 
+function $SanitizeProvider() {
+  this.$get = valueFn(function(html) {
+    var buf = [];
+    htmlParser(html, htmlSanitizeWriter(buf));
+    return buf.join('');
+  });
+};
+
 // Regular Expressions for parsing tags and attributes
 var START_TAG_REGEXP = /^<\s*([\w:-]+)((?:\s+[\w:-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)\s*>/,
   END_TAG_REGEXP = /^<\s*\/\s*([\w:-]+)[^>]*>/,
