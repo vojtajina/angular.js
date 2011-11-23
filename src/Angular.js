@@ -870,13 +870,15 @@ function angularJsConfig(document) {
   hashPos = scriptSrc.indexOf('#');
   if (hashPos != -1) extend(config, parseKeyValue(scriptSrc.substr(hashPos+1)));
 
-  eachAttribute(jqLite(script), function(value, name){
-    if (/^ng:/.exec(name)) {
-      name = name.substring(3).replace(/-/g, '_');
-      value = value || true;
-      config[name] = value;
+  new $CompileProvider().directive('script', {
+    templateFn: function(element, attr) {
+      forEach(attr, function(value, key) {
+        if (name.substr(0, 3) == 'ng_') {
+          config[name.substring(3)] = value || true;
+        }
+      });
     }
-  });
+  }).$get()(script);
 
   return config;
 }

@@ -217,9 +217,8 @@ describe('compiler', function() {
 
 ddescribe('$compile2', function() {
   var element;
-  beforeEach(inject(function($provide){
+  beforeEach(inject(function(){
     element = null;
-    $provide.service('$compile', $Compile2Provider);
   }));
 
   afterEach(function(){

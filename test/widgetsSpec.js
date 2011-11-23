@@ -174,11 +174,12 @@ describe("widget", function() {
       }
 
       expect(document.location.href).toEqual(orgLocation);
+      dealoc(element)
     }));
   }));
 
 
-  describe('@ng:repeat', inject(function($rootScope, $compile) {
+  describe('ng:repeat', inject(function($rootScope, $compile) {
     it('should ng:repeat over array', inject(function($rootScope, $compile) {
       var element = $compile(
         '<ul>' +
@@ -189,6 +190,7 @@ describe("widget", function() {
       // INIT
       $rootScope.items = ['misko', 'shyam'];
       $rootScope.$digest();
+      return;
       expect(element.find('li').length).toEqual(2);
       expect(element.text()).toEqual('misko;shyam;');
       delete Array.prototype.extraProperty;
@@ -486,7 +488,7 @@ describe("widget", function() {
 
       $location.path('/unknown');
       $rootScope.$digest();
-      expect($rootScope.$element.text()).toEqual('');
+      expect(element.text()).toEqual('');
     }));
 
     it('should chain scopes and propagate evals to the child scope',
@@ -502,32 +504,31 @@ describe("widget", function() {
 
       $rootScope.parentVar = 'new parent';
       $rootScope.$digest();
-      expect($rootScope.$element.text()).toEqual('new parent');
+      expect(element.text()).toEqual('new parent');
     }));
 
     it('should be possible to nest ng:view in ng:include', inject(function() {
-      var injector = angular.injector('ng', 'ngMock');
-      var myApp = injector.get('$rootScope');
-      var $browser = injector.get('$browser');
-      $browser.xhr.expectGET('includePartial.html').respond('view: <ng:view></ng:view>');
-      injector.get('$location').path('/foo');
+      var $injector = angular.injector('ng', 'ngMock');
+      $injector.invoke(null, function($rootScope, $browser, $route, $compile, $location) {
+        $browser.xhr.expectGET('includePartial.html').respond('view: <ng:view></ng:view>');
+        $location.path('/foo');
 
-      var $route = injector.get('$route');
-      $route.when('/foo', {controller: angular.noop, template: 'viewPartial.html'});
+        $route.when('/foo', {controller: angular.noop, template: 'viewPartial.html'});
 
-      var element = injector.get('$compile')(
-          '<div>' +
-            'include: <ng:include src="\'includePartial.html\'"> </ng:include>' +
-          '</div>')(myApp);
-      myApp.$apply();
+        var element = $compile(
+            '<div>' +
+              'include: <ng:include src="\'includePartial.html\'"> </ng:include>' +
+            '</div>')($rootScope);
+        $rootScope.$apply();
 
-      $browser.xhr.expectGET('viewPartial.html').respond('content');
-      myApp.$digest();
-      $browser.xhr.flush();
+        $browser.xhr.expectGET('viewPartial.html').respond('content');
+        $rootScope.$digest();
+        $browser.xhr.flush();
 
-      expect(myApp.$element.text()).toEqual('include: view: content');
-      expect($route.current.template).toEqual('viewPartial.html');
-      dealoc(myApp);
+        expect(element.text()).toEqual('include: view: content');
+        expect($route.current.template).toEqual('viewPartial.html');
+        dealoc($rootScope);
+      });
     }));
 
     it('should initialize view template after the view controller was initialized even when ' +
@@ -575,7 +576,7 @@ describe("widget", function() {
       $route.when('/foo', {template: 'myUrl1'});
       $route.when('/bar', {template: 'myUrl2'});
 
-      expect($rootScope.$element.text()).toEqual('');
+      expect(element.text()).toEqual('');
 
       $location.path('/foo');
       $browser.xhr.expectGET('myUrl1').respond('<div>{{1+3}}</div>');
@@ -585,7 +586,7 @@ describe("widget", function() {
       $rootScope.$digest();
       $browser.xhr.flush(); // now that we have to requests pending, flush!
 
-      expect($rootScope.$element.text()).toEqual('2');
+      expect(element.text()).toEqual('2');
     }));
   });
 

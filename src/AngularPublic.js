@@ -67,7 +67,36 @@ function ngModule($provide, $injector) {
   });
 
   $provide.service('$browser', $BrowserProvider);
-  $provide.service('$compile', $CompileProvider);
+  $provide.service('$compile', $CompileProvider).
+    directive({
+      ng_init: ngInitDirective,
+      ng_bind: ngBindDirective,
+      ng_bind_html: ngBindHtmlDirective,
+      ng_bind_html_unsafe: ngBindHtmlUnsafeDirective,
+      ng_bind_template: ngBindTemplateDirective,
+      ng_bind_attr: ngBindAttrDirective,
+      ng_class: ngClassDirective,
+      ng_class_even: ngClassEvenDirective,
+      ng_class_odd: ngClassOddDirective,
+      ng_style: ngStyleDirective,
+      ng_show: ngShowDirective,
+      ng_hide: ngHideDirective,
+      ng_controller: ngControllerDirective,
+      ng_cloak: ngCloakDirective,
+      ng_repeat: ngRepeatDirective,
+      ng_switch: ngSwitchDirective,
+      ng_include: ngIncludeDirective,
+      a: htmlAnchorDirective,
+      ng_non_bindable: ngNonBindableDirective,
+      ng_view: ngViewDirective,
+      ng_pluralize: ngPluralizeDirective,
+      input: inputDirective,
+      textarea: inputDirective,
+      form: ngFormDirective,
+      ng_form: ngFormDirective
+    }).
+    directive(ngEventDirectives).
+    directive(ngAttributeAliasDirectives);
   $provide.service('$cookies', $CookiesProvider);
   $provide.service('$cookieStore', $CookieStoreProvider);
   $provide.service('$defer', $DeferProvider);

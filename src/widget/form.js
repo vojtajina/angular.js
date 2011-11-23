@@ -53,11 +53,11 @@
       </doc:scenario>
     </doc:example>
  */
-angularWidget('form', function(form){
-  this.descend(true);
-  this.directives(true);
-  return ['$formFactory', '$element', function($formFactory, formElement) {
-    var name = formElement.attr('name'),
+var ngFormDirective = ['$formFactory', function($formFactory) {
+  var IS_FORM = /form$/i;
+  return function(scope, formElement, attr) {
+    if (!nodeName_(formElement).match(IS_FORM)) return;
+    var name = attr.name,
         parentForm = $formFactory.forElement(formElement),
         form = $formFactory(parentForm);
     formElement.data('$form', form);
@@ -65,7 +65,7 @@ angularWidget('form', function(form){
       event.preventDefault();
     });
     if (name) {
-      this[name] = form;
+      scope[name] = form;
     }
     watch('valid');
     watch('invalid');
@@ -74,7 +74,5 @@ angularWidget('form', function(form){
         formElement[value ? 'addClass' : 'removeClass']('ng-' + name);
       });
     }
-  }];
-});
-
-angularWidget('ng:form', angularWidget('form'));
+  }
+}];
