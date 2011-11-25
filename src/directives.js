@@ -180,14 +180,19 @@ var ngInitDirective = valueFn(function(scope, element, attrs) {
      </doc:scenario>
    </doc:example>
  */
-var ngControllerDirective = valueFn(function(scope, element, attr) {
-  var expression = attr.ng_controller,
-      Controller =
-        getter(scope, expression, true) ||
-        getter(window, expression, true);
-  assertArgFn(Controller, expression);
-  return scope.$new(Controller);
-});
+var ngControllerDirective = function($injector, $window) {
+  return function(scope, element, attr) {
+    var expression = attr.ng_controller,
+        Controller = getter(scope, expression, true) || getter($window, expression, true);
+
+    assertArgFn(Controller, expression);
+
+    var newScope = scope.$new();
+    $injector.instantiate(Controller, {$scope: newScope});
+
+    return newScope;
+  };
+};
 
 
 /**
