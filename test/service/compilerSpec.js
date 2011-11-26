@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('$compile2', function() {
+describe('$compile2', function() {
   var element;
   beforeEach(inject(function(){
     element = null;
