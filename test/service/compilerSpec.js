@@ -472,4 +472,14 @@ ddescribe('$compile2', function() {
       }
     ));
 
+  it('should not store linkingFns for noop branches', inject(function ($rootScope, $compile) {
+    var element = jqLite('<div name="{{a}}"><span>ignore</span></div>');
+    var template = $compile(element);
+    // Now prune the branches with no directives
+    element.find('span').remove();
+    expect(element.find('span').length).toBe(0);
+    // and we should still be able to compile without errors
+    template($rootScope);
+  }));
+
 });

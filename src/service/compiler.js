@@ -149,16 +149,6 @@ function $CompileProvider($injector){
   this.$get = ['$interpolate', '$exceptionHandler',
        function($interpolate,   $exceptionHandler) {
 
-     var recursiveCompileDirective = {
-           priority: -9999, // ensure it is the last one to run;
-           templateFn: function (element) {
-             var linkFn = compileNodes(element[0].childNodes);
-             return linkFn && function(scope, element) {
-               linkFn(scope, element[0].childNodes);
-             }
-           }
-         };
-
     return function(templateElement) {
       templateElement = jqLite(templateElement);
       var linkingFn = compileNodes(templateElement);
@@ -172,7 +162,7 @@ function $CompileProvider($injector){
         // TODO(misko): I don't thin we need this anymore
         //element.data($$scope, scope);
         cloneConnectFn && cloneConnectFn(element, scope);
-        linkingFn(scope, element);
+        linkingFn && linkingFn(scope, element);
         return element;
       };
     };
@@ -228,11 +218,16 @@ function $CompileProvider($injector){
           $exceptionHandler(e);
         }
         if (directive.terminal) {
+          linkFn.terminal = true;
           break; // prevent further processing of directives
         }
       }
+      
+      return linkFn;
+      
+      ////////////////////
 
-      return function(scope, linkNode) {
+      function linkFn(scope, linkNode) {
         var attrs, element;
         if (templateNode === linkNode) {
           attrs = templateAttrs;
@@ -291,10 +286,15 @@ function $CompileProvider($injector){
      * @returns a composite linking function of all of the matched directives.
      */
     function compileNodes(nodeList) {
-      var linkingFns = [];
+      var linkingFns = [],
+          haveLinkingFn = null;
 
       for(var i = 0; i < nodeList.length; i++) {
         var node = nodeList[i],
+            nodeType = node.nodeType,
+            childNodes,
+            linkingFn = null,
+            childLinkingFn = null,
             directives = [],
             directive,
             expName = undefined,
@@ -307,7 +307,7 @@ function $CompileProvider($injector){
             match,
             text;
 
-        switch(node.nodeType) {
+        switch(nodeType) {
           case 1: /* Element */
             // iterate over the attributes
             for (var attr, name, nName, value, nAttrs = node.attributes,
@@ -349,11 +349,6 @@ function $CompileProvider($injector){
               text = text.substr(match.index + match[0].length);
             }
 
-            // recurse to children
-            if (node.childNodes.length) {
-              directives.push(recursiveCompileDirective);
-            }
-
             break;
           case 3: /* Text Node */
             if (directive = $interpolate(node.nodeValue, true)) {
@@ -370,24 +365,50 @@ function $CompileProvider($injector){
             break;
         }
 
-        // only bother if you found any directives for this node
-        linkingFns.push(directives.length ? applyDirectivesPerElement(directives, node, attrs) : null);
+        // if elements found, then link them
+        linkingFn = directives.length && applyDirectivesPerElement(directives, node, attrs);
+
+        // recurse to children if not terminal directive
+        if (!linkingFn || !linkingFn.terminal) {
+          linkingFn = joinLinkingFns(linkingFn,
+            // if we have child nodes, then recurse
+            nodeType == 1 && (childNodes = node.childNodes).length && compileNodes(childNodes)
+          )
+        }
+        haveLinkingFn = (linkingFn || haveLinkingFn);
+        linkingFns.push(linkingFn);
       }
 
       // return a linking function if we have found anything.
-      return linkingFns.length
-        ? function(scope, nodeList) {
-            for(var linkingFn, i=0, ii=linkingFns.length; i<ii; i++) {
-              if (linkingFn = linkingFns[i]) {
-                linkingFn(scope, nodeList[i]);
-              }
+      return haveLinkingFn &&
+        function(scope, nodeList) {
+          for(var linkingFn, i=0, ii=linkingFns.length; i<ii; i++) {
+            if (linkingFn = linkingFns[i]) {
+              linkingFn(scope, nodeList[i]);
             }
           }
-        : null;
+        }
     }
   }];
 
   // =============================
+
+  function joinLinkingFns(directiveLinkFn1, unBoundChildLinkingFn) {
+    var boundChildLinkingFn = null;
+    if (unBoundChildLinkingFn) {
+      // But only if the directiveLinkingFn is not terminal.
+      // Child linking fn is in different format so we need to match the arguments
+      boundChildLinkingFn = function(scope, node) {
+        unBoundChildLinkingFn(scope, node.childNodes);
+      };
+    }
+    return (directiveLinkFn1 && boundChildLinkingFn)
+      ? function(scope, node) {
+          directiveLinkFn1(scope, node);
+          boundChildLinkingFn(scope, node);
+        }
+      : (directiveLinkFn1 || boundChildLinkingFn);
+  }
 
   /**
    * convert all accepted dirctive format into proper directive name.
