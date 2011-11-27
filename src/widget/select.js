@@ -122,28 +122,22 @@
     </doc:example>
  */
 
+var selectDirective = ['$formFactory', '$compile', '$parse',
+               function($formFactory,   $compile,   $parse){
+                         //00001111100000000000222200000000000000000000003333000000000000044444444444444444000000000555555555555555550000000666666666666666660000000000000007777
+  var NG_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w\d]*)|(?:\(\s*([\$\w][\$\w\d]*)\s*,\s*([\$\w][\$\w\d]*)\s*\)))\s+in\s+(.*)$/;
 
-                       //00001111100000000000222200000000000000000000003333000000000000044444444444444444000000000555555555555555550000000666666666666666660000000000000007777
-var NG_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w\d]*)|(?:\(\s*([\$\w][\$\w\d]*)\s*,\s*([\$\w][\$\w\d]*)\s*\)))\s+in\s+(.*)$/;
-
-
-angularWidget('select', function(element){
-  this.directives(true);
-  this.descend(true);
-  return element.attr('ng:model') &&
-               ['$formFactory', '$compile', '$parse', '$element',
-        function($formFactory,   $compile,   $parse,   selectElement){
-    var modelScope = this,
-        match,
-        form = $formFactory.forElement(selectElement),
-        multiple = selectElement.attr('multiple'),
-        optionsExp = selectElement.attr('ng:options'),
-        modelExp = selectElement.attr('ng:model'),
+  return function(modelScope, selectElement, attr) {
+    if (nodeName_(selectElement) != 'SELECT' || !attr.ng_model) return;
+    var form = $formFactory.forElement(selectElement),
+        multiple = attr.multiple,
+        optionsExp = attr.ng_options,
+        modelExp = attr.ng_model,
         widget = form.$createWidget({
-          scope: this,
+          scope: modelScope,
           model: modelExp,
-          onChange: selectElement.attr('ng:change'),
-          alias: selectElement.attr('name'),
+          onChange: attr.ng_change,
+          alias: attr.name,
           controller: optionsExp ? Options : (multiple ? Multiple : Single)});
 
     selectElement.bind('$destroy', function() { widget.$destroy(); });
@@ -434,5 +428,5 @@ angularWidget('select', function(element){
         }
       };
     }
-  }];
-});
+  }
+}];

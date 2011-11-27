@@ -382,6 +382,9 @@ function $CompileProvider($injector){
       // return a linking function if we have found anything.
       return haveLinkingFn &&
         function(scope, nodeList) {
+          if (linkingFns.length != nodeList.length) {
+            throw Error('Template changed structure!');
+          }
           for(var linkingFn, i=0, ii=linkingFns.length; i<ii; i++) {
             if (linkingFn = linkingFns[i]) {
               linkingFn(scope, nodeList[i]);

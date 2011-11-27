@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe('widget: input', function() {
+describe('widget: input', function() {
   var compile = null, element = null, scope = null, defer = null;
   var $compile = null;
   var doc = null;

@@ -93,7 +93,8 @@ function ngModule($provide, $injector) {
       input: inputDirective,
       textarea: inputDirective,
       form: ngFormDirective,
-      ng_form: ngFormDirective
+      ng_form: ngFormDirective,
+      select: selectDirective
     }).
     directive(ngEventDirectives).
     directive(ngAttributeAliasDirectives);

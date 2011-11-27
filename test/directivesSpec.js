@@ -1,6 +1,6 @@
 'use strict';
 
-ddescribe("directive", function() {
+describe("directive", function() {
   var element;
   
   beforeEach(function() {
