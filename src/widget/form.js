@@ -89,22 +89,24 @@ var ngFormDirective = ['$formFactory', function($formFactory) {
       return {
         pre: function(scope, formElement, attr) {
           var name = attr.name,
-            parentForm = $formFactory.forElement(formElement),
-            form = $formFactory(parentForm);
+              form = $formFactory(scope);
+
           formElement.data('$form', form);
-          formElement.bind('submit', function(event){
+          formElement.bind('submit', function(event) {
             if (!attr.action) event.preventDefault();
           });
+
           if (name) {
             scope[name] = form;
           }
-          watch('valid');
-          watch('invalid');
-          function watch(name) {
-            form.$watch('$' + name, function(value) {
+
+          forEach(['valid', 'invalid', 'dirty', 'pristine'], function(name) {
+            scope.$watch(function() {
+              return form['$' + name];
+            }, function(value) {
               formElement[value ? 'addClass' : 'removeClass']('ng-' + name);
             });
-          }
+          });
         }
       };
     }

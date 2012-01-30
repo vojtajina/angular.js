@@ -4,7 +4,6 @@
 var URL_REGEXP = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
 var EMAIL_REGEXP = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 var NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))\s*$/;
-var INTEGER_REGEXP = /^\s*(\-|\+)?\d+\s*$/;
 
 
 /**
@@ -136,12 +135,6 @@ var INTEGER_REGEXP = /^\s*(\-|\+)?\d+\s*$/;
       </doc:scenario>
     </doc:example>
  */
-angularInputType('email', function(element, widget) {
-  widget.$on('$validate', function(event) {
-    var value = widget.$viewValue;
-    widget.$emit(!value || value.match(EMAIL_REGEXP) ? "$valid" : "$invalid", "EMAIL");
-  });
-});
 
 
 /**
@@ -209,12 +202,6 @@ angularInputType('email', function(element, widget) {
       </doc:scenario>
     </doc:example>
  */
-angularInputType('url', function(element, widget) {
-  widget.$on('$validate', function(event) {
-    var value = widget.$viewValue;
-    widget.$emit(!value || value.match(URL_REGEXP) ? "$valid" : "$invalid", "URL");
-  });
-});
 
 
 /**
@@ -268,26 +255,26 @@ angularInputType('url', function(element, widget) {
       </doc:scenario>
     </doc:example>
  */
-angularInputType('list', function(element, widget) {
-  function parse(viewValue) {
-    var list = [];
-    forEach(viewValue.split(/\s*,\s*/), function(value){
-      if (value) list.push(trim(value));
-    });
-    return list;
-  }
-  widget.$parseView = function() {
-    isString(widget.$viewValue) && (widget.$modelValue = parse(widget.$viewValue));
-  };
-  widget.$parseModel = function() {
-    var modelValue = widget.$modelValue;
-    if (isArray(modelValue)
-        && (!isString(widget.$viewValue) || !equals(parse(widget.$viewValue), modelValue))) {
-      widget.$viewValue =  modelValue.join(', ');
-    }
-  };
-});
+var ngListDirective = function() {
+  return function(scope, element, attr) {
+    var parse = function(viewValue) {
+      var list = [];
+      forEach(viewValue.split(/\s*,\s*/), function(value) {
+        if (value) list.push(value);
+      });
+      return list;
+    };
 
+    scope.$parsers.push(parse);
+    scope.$formatters.push(function(value) {
+      if (isArray(value) && !equals(parse(scope.$viewValue), value)) {
+        return value.join(', ');
+      }
+
+      return undefined;
+    });
+  };
+};
 
 /**
  * @ngdoc inputType
@@ -356,77 +343,6 @@ angularInputType('list', function(element, widget) {
       </doc:scenario>
     </doc:example>
  */
-angularInputType('number', numericRegexpInputType(NUMBER_REGEXP, 'NUMBER'));
-
-
-/**
- * @ngdoc inputType
- * @name angular.inputType.integer
- *
- * @description
- * Text input with integer validation and transformation. Sets the `INTEGER`
- * validation error key if not a valid integer.
- *
- * @param {string} ng:model Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the widgets is published.
- * @param {string=} min Sets the `MIN` validation error key if the value entered is less then `min`.
- * @param {string=} max Sets the `MAX` validation error key if the value entered is greater then `min`.
- * @param {string=} required Sets `REQUIRED` validation error key if the value is not entered.
- * @param {number=} ng:minlength Sets `MINLENGTH` validation error key if the value is shorter than
- *    minlength.
- * @param {number=} ng:maxlength Sets `MAXLENGTH` validation error key if the value is longer than
- *    maxlength.
- * @param {string=} ng:pattern Sets `PATTERN` validation error key if the value does not match the
- *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
- *    patterns defined as scope expressions.
- * @param {string=} ng:change Angular expression to be executed when input changes due to user
- *    interaction with the input element.
- *
- * @example
-    <doc:example>
-      <doc:source>
-       <script>
-         function Ctrl($scope) {
-           $scope.value = 12;
-         }
-       </script>
-       <div ng:controller="Ctrl">
-         <form name="myForm">
-           Integer: <input type="integer" name="input" ng:model="value"
-                           min="0" max="99" required>
-           <span class="error" ng:show="myForm.list.$error.REQUIRED">
-             Required!</span>
-           <span class="error" ng:show="myForm.list.$error.INTEGER">
-             Not valid integer!</span>
-         </form>
-         <tt>value = {{value}}</tt><br/>
-         <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
-         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
-         <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-         <tt>myForm.$error.REQUIRED = {{!!myForm.$error.REQUIRED}}</tt><br/>
-       </div>
-      </doc:source>
-      <doc:scenario>
-        it('should initialize to model', function() {
-          expect(binding('value')).toEqual('12');
-          expect(binding('myForm.input.$valid')).toEqual('true');
-        });
-
-        it('should be invalid if empty', function() {
-          input('value').enter('1.2');
-          expect(binding('value')).toEqual('12');
-          expect(binding('myForm.input.$valid')).toEqual('false');
-        });
-
-        it('should be invalid if over max', function() {
-          input('value').enter('123');
-          expect(binding('value')).toEqual('123');
-          expect(binding('myForm.input.$valid')).toEqual('false');
-        });
-      </doc:scenario>
-    </doc:example>
- */
-angularInputType('integer', numericRegexpInputType(INTEGER_REGEXP, 'INTEGER'));
 
 
 /**
@@ -475,31 +391,7 @@ angularInputType('integer', numericRegexpInputType(INTEGER_REGEXP, 'INTEGER'));
       </doc:scenario>
     </doc:example>
  */
-angularInputType('checkbox', function(inputElement, widget) {
-  var trueValue = inputElement.attr('ng:true-value'),
-      falseValue = inputElement.attr('ng:false-value');
 
-  if (!isString(trueValue)) trueValue = true;
-  if (!isString(falseValue)) falseValue = false;
-
-  inputElement.bind('click', function() {
-    widget.$apply(function() {
-      widget.$emit('$viewChange', inputElement[0].checked);
-    });
-  });
-
-  widget.$render = function() {
-    inputElement[0].checked = widget.$viewValue;
-  };
-
-  widget.$parseModel = function() {
-    widget.$viewValue = widget.$modelValue === trueValue;
-  };
-
-  widget.$parseView = function() {
-    widget.$modelValue = widget.$viewValue ? trueValue : falseValue;
-  };
-});
 
 
 /**
@@ -542,63 +434,6 @@ angularInputType('checkbox', function(inputElement, widget) {
       </doc:scenario>
     </doc:example>
  */
-angularInputType('radio', function(inputElement, widget, attr) {
-  //correct the name
-  attr.$set('name', widget.$id + '@' + attr.name);
-  inputElement.bind('click', function() {
-    widget.$apply(function() {
-      if (inputElement[0].checked) {
-        widget.$emit('$viewChange', attr.value);
-      }
-    });
-  });
-
-  widget.$render = function() {
-    inputElement[0].checked = isDefined(attr.value) && (attr.value == widget.$viewValue);
-  };
-
-  if (inputElement[0].checked) {
-    widget.$viewValue = attr.value;
-  }
-});
-
-
-function numericRegexpInputType(regexp, error) {
-  return function(inputElement, widget) {
-    var min = 1 * (inputElement.attr('min') || Number.MIN_VALUE),
-        max = 1 * (inputElement.attr('max') || Number.MAX_VALUE);
-
-    widget.$on('$validate', function(event){
-      var value = widget.$viewValue,
-          filled = value && trim(value) != '',
-          valid = isString(value) && value.match(regexp);
-
-      widget.$emit(!filled || valid ? "$valid" : "$invalid", error);
-      filled && (value = 1 * value);
-      widget.$emit(valid && value < min ? "$invalid" : "$valid", "MIN");
-      widget.$emit(valid && value > max ? "$invalid" : "$valid", "MAX");
-    });
-
-    widget.$parseView = function() {
-      if (widget.$viewValue.match(regexp)) {
-        widget.$modelValue = 1 * widget.$viewValue;
-      } else if (widget.$viewValue == '') {
-        widget.$modelValue = null;
-      }
-    };
-
-    widget.$parseModel = function() {
-      widget.$viewValue = isNumber(widget.$modelValue)
-        ? '' + widget.$modelValue
-        : '';
-    };
-  };
-}
-
-
-var HTML5_INPUTS_TYPES =  makeMap(
-        "search,tel,url,email,datetime,date,month,week,time,datetime-local,number,range,color," +
-        "radio,checkbox,text,button,submit,reset,hidden,password");
 
 
 /**
@@ -702,127 +537,6 @@ var HTML5_INPUTS_TYPES =  makeMap(
       </doc:scenario>
     </doc:example>
  */
-var inputDirective = ['$defer', '$formFactory', function($defer, $formFactory) {
-  return {
-    restrict: 'E',
-    link: function(modelScope, inputElement, attr) {
-      if (!attr.ngModel) return;
-
-      var form = $formFactory.forElement(inputElement),
-          // We have to use .getAttribute, since jQuery tries to be smart and use the
-          // type property. Trouble is some browser change unknown to text.
-          type = attr.type || 'text',
-          TypeController,
-          patternMatch, widget,
-          pattern = attr.ngPattern,
-          modelExp = attr.ngModel,
-          minlength = parseInt(attr.ngMinlength, 10),
-          maxlength = parseInt(attr.ngMaxlength, 10),
-          loadFromScope = type.match(/^\s*\@\s*(.*)/);
-
-       if (!pattern) {
-         patternMatch = valueFn(true);
-       } else {
-         if (pattern.match(/^\/(.*)\/$/)) {
-           pattern = new RegExp(pattern.substr(1, pattern.length - 2));
-           patternMatch = function(value) {
-             return pattern.test(value);
-           };
-         } else {
-           patternMatch = function(value) {
-             var patternObj = modelScope.$eval(pattern);
-             if (!patternObj || !patternObj.test) {
-               throw new Error('Expected ' + pattern + ' to be a RegExp but was ' + patternObj);
-             }
-             return patternObj.test(value);
-           };
-         }
-       }
-
-      type = lowercase(type);
-      TypeController = (loadFromScope
-              ? assertArgFn(modelScope.$eval(loadFromScope[1]), loadFromScope[1])
-              : angularInputType(type)) || noop;
-
-      if (!HTML5_INPUTS_TYPES[type]) {
-        try {
-          // jquery will not let you so we have to go to bare metal
-          inputElement[0].setAttribute('type', 'text');
-        } catch(e){
-          // also turns out that ie8 will not allow changing of types, but since it is not
-          // html5 anyway we can ignore the error.
-        }
-      }
-
-      //TODO(misko): setting $inject is a hack
-      !TypeController.$inject && (TypeController.$inject = ['$element', '$scope', '$attr']);
-      widget = form.$createWidget({
-          scope: modelScope,
-          model: modelExp,
-          onChange: attr.ngChange,
-          alias: attr.name,
-          controller: TypeController,
-          controllerArgs: {$element: inputElement, $attr: attr}
-      });
-
-      widget.$pristine = !(widget.$dirty = false);
-
-      widget.$on('$validate', function() {
-        var $viewValue = trim(widget.$viewValue),
-            inValid = attr.required && !$viewValue,
-            tooLong = maxlength && $viewValue && $viewValue.length > maxlength,
-            tooShort = minlength && $viewValue && $viewValue.length < minlength,
-            missMatch = $viewValue && !patternMatch($viewValue);
-
-        if (widget.$error.REQUIRED != inValid){
-          widget.$emit(inValid ? '$invalid' : '$valid', 'REQUIRED');
-        }
-        if (widget.$error.PATTERN != missMatch){
-          widget.$emit(missMatch ? '$invalid' : '$valid', 'PATTERN');
-        }
-        if (widget.$error.MINLENGTH != tooShort){
-          widget.$emit(tooShort ? '$invalid' : '$valid', 'MINLENGTH');
-        }
-        if (widget.$error.MAXLENGTH != tooLong){
-          widget.$emit(tooLong ? '$invalid' : '$valid', 'MAXLENGTH');
-        }
-      });
-
-      forEach(['valid', 'invalid', 'pristine', 'dirty'], function(name) {
-        widget.$watch('$' + name, function(value) {
-          inputElement[value ? 'addClass' : 'removeClass']('ng-' + name);
-        });
-      });
-
-      inputElement.bind('$destroy', function() {
-        widget.$destroy();
-      });
-
-      if (type != 'checkbox' && type != 'radio') {
-        // TODO (misko): checkbox / radio does not really belong here, but until we can do
-        // widget registration with CSS, we are hacking it this way.
-        widget.$render = function() {
-          inputElement.val(widget.$viewValue || '');
-        };
-
-        inputElement.bind('keydown change input', function(event){
-          var key = event.keyCode;
-          if (/*command*/   key != 91 &&
-              /*modifiers*/ !(15 < key && key < 19) &&
-              /*arrow*/     !(37 < key && key < 40)) {
-            $defer(function() {
-              widget.$dirty = !(widget.$pristine = false);
-              var value = trim(inputElement.val());
-              if (widget.$viewValue !== value ) {
-                widget.$emit('$viewChange', value);
-              }
-            });
-          }
-        });
-      }
-    }
-  };
-}];
 
 
 /**
@@ -850,3 +564,362 @@ var inputDirective = ['$defer', '$formFactory', function($defer, $formFactory) {
  * @param {string=} ng:change Angular expression to be executed when input changes due to user
  *    interaction with the input element.
  */
+var inputType = {
+  'text': textInputType,
+  'number': numberInputType,
+  'url': urlInputType,
+  'email': emailInputType,
+
+  'radio': radioInputType,
+  'checkbox': checkboxInputType,
+
+  'hidden': noop,
+  'button': noop,
+  'submit': noop,
+  'reset': noop
+};
+
+function textInputType(scope, element, attr) {
+  element.bind('keydown change input', function(event) {
+    var key = event.keyCode;
+    if (/*command*/   key !== 91 &&
+        /*modifiers*/ !(15 < key && key < 19) &&
+        /*arrow*/     !(37 < key && key < 40)) {
+      // TODO(vojta): why do we need it async ?
+//      $defer(function() {
+      scope.$apply(function() {
+        scope.$touch();
+
+        var value = trim(element.val());
+        if (scope.$viewValue !== value ) {
+          scope.$viewValue = element.val();
+          scope.$read();
+        }
+      });
+//      });
+    }
+  });
+
+  // pattern validator
+  var pattern = attr.ngPattern,
+      patternValidator;
+
+  var emit = function(regexp, value) {
+    if (regexp.test(value)) {
+      scope.$emit('$valid', 'PATTERN');
+      return value;
+    } else {
+      scope.$emit('$invalid', 'PATTERN');
+      return undefined;
+    }
+  };
+
+  if (pattern) {
+    if (pattern.match(/^\/(.*)\/$/)) {
+      pattern = new RegExp(pattern.substr(1, pattern.length - 2));
+      patternValidator = function(value) {
+        return emit(pattern, value)
+      };
+    } else {
+      patternValidator = function(value) {
+        var patternObj = scope.$eval(pattern);
+        if (!patternObj || !patternObj.test) {
+         throw new Error('Expected ' + pattern + ' to be a RegExp but was ' + patternObj);
+        }
+        return emit(patternObj, value);
+      };
+    }
+
+    scope.$formatters.push(patternValidator);
+    scope.$parsers.push(patternValidator);
+  }
+
+  // min length validator
+  if (attr.ngMinLength) {
+    var minlength = parseInt(attr.ngMinlength, 10);
+    var minLengthValidator = function(value) {
+      if (value.length < minlength) {
+        scope.$emit('$invalid', 'MINLENGTH');
+        return undefined;
+      } else {
+        scope.$emit('$valid', 'MINLENGTH');
+        return value;
+      }
+    };
+
+    scope.$parsers.push(minLengthValidator);
+    scope.$formatters.push(minLengthValidator);
+  }
+
+  // max length validator
+  if (attr.ngMaxLength) {
+    var maxlength = parseInt(attr.ngMinlength, 10);
+    var maxLengthValidator = function(value) {
+      if (value.length > maxlength) {
+        scope.$emit('$invalid', 'MAXLENGTH');
+        return undefined;
+      } else {
+        scope.$emit('$valid', 'MAXLENGTH');
+        return value;
+      }
+    };
+
+    scope.$parsers.push(maxLengthValidator);
+    scope.$formatters.push(maxLengthValidator);
+  }
+
+  // required validator
+  // TODO(vojta): move it to input
+  if (attr.required) {
+    var $touch = scope.$touch;
+    scope.$touch = function() {
+      if (!scope.$viewValue) scope.$emit('$invalid', 'REQUIRED');
+      $touch.call(this);
+    };
+
+    scope.$parsers.push(function(value) {
+      scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
+      return value;
+    });
+
+    scope.$formatters.push(function(value) {
+      scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
+      return value;
+    });
+  }
+};
+
+function numberInputType(scope, element, attr) {
+  textInputType(scope, element, attr);
+
+  scope.$parsers.push(function(value) {
+    if (NUMBER_REGEXP.test(value)) {
+      scope.$emit('$valid', 'NUMBER');
+      return parseFloat(value);
+    } else {
+      scope.$emit('$invalid', 'NUMBER');
+      return undefined;
+    }
+  });
+
+  scope.$formatters.push(function(value) {
+    if (isNumber(value)) {
+      scope.$emit('$valid', 'NUMBER');
+      return '' + value;
+    } else {
+      scope.$emit('$invalid', 'NUMBER');
+      return undefined;
+    }
+  });
+
+  if (attr.min) {
+    var min = parseFloat(attr.min);
+    var minValidator = function(value) {
+      if (value < min) {
+        scope.$emit('$invalid', 'MIN');
+        return undefined;
+      } else {
+        scope.$emit('$valid', 'MIN');
+        return value;
+      }
+    };
+
+    scope.$parsers.push(minValidator);
+    scope.$formatters.push(minValidator);
+  }
+
+  if (attr.max) {
+    var max = parseFloat(attr.max);
+    var maxValidator = function(value) {
+      if (value > max) {
+        scope.$emit('$invalid', 'MAX');
+        return undefined;
+      } else {
+        scope.$emit('$valid', 'MAX');
+        return value;
+      }
+    };
+
+    scope.$parsers.push(maxValidator);
+    scope.$formatters.push(maxValidator);
+  }
+}
+
+function urlInputType(scope, element, attr) {
+  textInputType(scope, element, attr);
+
+  var urlValidator = function(value) {
+    if (!value || URL_REGEXP.test(value)) {
+      scope.$emit('$valid', 'URL');
+      return value;
+    } else {
+      scope.$emit('$invalid', 'URL');
+      return undefined;
+    }
+  };
+
+  scope.$formatters.push(urlValidator);
+  scope.$parsers.push(urlValidator);
+}
+
+function emailInputType(scope, element, attr) {
+  textInputType(scope, element, attr);
+
+  var emailValidator = function(value) {
+    if (!value || EMAIL_REGEXP.test(value)) {
+      scope.$emit('$valid', 'EMAIL');
+      return value;
+    } else {
+      scope.$emit('$invalid', 'EMAIL');
+      return undefined;
+    }
+  };
+
+  scope.$formatters.push(emailValidator);
+  scope.$parsers.push(emailValidator);
+}
+
+function radioInputType(scope, element, attr) {
+  // correct the name
+  element.attr('name', attr.id + '@' + attr.name);
+
+  element.bind('click', function() {
+    if (element[0].checked) {
+      scope.$apply(function() {
+        scope.$viewValue = attr.value;
+        scope.$touch();
+        scope.$read();
+      });
+    };
+  });
+
+  scope.$render = function() {
+    var value = attr.value;
+    element[0].checked = isDefined(value) && (value == scope.$viewValue);
+  };
+}
+
+function checkboxInputType(scope, element, attr) {
+  var trueValue = attr.ngTrueValue,
+      falseValue = attr.ngFalseValue;
+
+  if (!isString(trueValue)) trueValue = true;
+  if (!isString(falseValue)) falseValue = false;
+
+  element.bind('click', function() {
+    scope.$apply(function() {
+      scope.$viewValue = element[0].checked;
+      scope.$touch();
+      scope.$read();
+    });
+  });
+
+  scope.$render = function() {
+    element[0].checked = scope.$viewValue;
+  };
+
+  scope.$formatters.push(function(value) {
+    return value === trueValue;
+  });
+
+  scope.$parsers.push(function(value) {
+    return value ? trueValue : falseValue;
+  });
+}
+
+var inputDirective = ['$formFactory', function($formFactory) {
+  return {
+    restrict: 'E',
+    scope: true,
+    link: function(scope, element, attr) {
+      if (!attr.ngModel) return;
+
+      scope.$viewValue = '';
+      scope.$modelValue = Number.NaN;
+      scope.$parsers = [];
+      scope.$formatters = [];
+      scope.$validators = [];
+      scope.$error = {};
+      scope.$pristine = true;
+      scope.$dirty = false;
+      scope.$valid = true;
+      scope.$invalid = false;
+      scope.$read = noop;
+
+      scope.$render = function() {
+        element.val(scope.$viewValue);
+      };
+
+      var form = $formFactory.forElement(element);
+      scope.$touch = function() {
+        scope.$dirty = true;
+        scope.$pristine = false;
+        form.$dirty = true;
+        form.$pristine = false;
+      };
+
+      form.registerWidget(scope, attr.name);
+      (inputType[attr.type] || inputType.text)(scope, element, attr);
+
+      forEach(['valid', 'invalid', 'pristine', 'dirty'], function(name) {
+        scope.$watch('$' + name, function(value) {
+          element[value ? 'addClass' : 'removeClass']('ng-' + name);
+        });
+      });
+
+      // TODO(vojta): do we need that now, that widget does not create parallel scopes ?
+      element.bind('$destroy', function() {
+        scope.$destroy();
+      });
+    }
+  };
+}];
+
+var ngModelDirective = ['$parse', function($parse) {
+  return function(scope, element, attr) {
+    var getter = $parse(attr.ngModel),
+        setter = getter.assign;
+
+    // view -> model
+    scope.$read = function() {
+      var value = scope.$viewValue;
+
+      forEach(scope.$parsers, function(fn) {
+        if (isDefined(value)) value = fn(value);
+      });
+
+      if (isDefined(value)) {
+        scope.$modelValue = value;
+        setter(scope.$parent, scope.$modelValue);
+      }
+    };
+
+    // model -> value
+    scope.$watch(getter, function(value, last) {
+      if (scope.$modelValue === value) return;
+
+      scope.$modelValue = value;
+
+      forEach(scope.$formatters, function(fn) {
+        if (isDefined(value)) value = fn(value);
+      });
+
+      if (isDefined(value)) {
+        scope.$viewValue = value;
+        scope.$render();
+      }
+    });
+
+    // read init value ?
+
+
+    // don't $emit $valid if already $valid, the same for $invalid
+    // TODO(vojta): should we rather add new method ? $emitValidation(event, error) ???
+    var $emit = scope.$emit;
+    scope.$emit = function(event, args) {
+      if (event === '$invalid' && this.$error[args]) return;
+      if (event === '$valid' && !this.$error[args]) return;
+      return $emit.call(this, event, args);
+    };
+  };
+}];

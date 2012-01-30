@@ -124,86 +124,131 @@
 
 var ngOptionsDirective = valueFn({ terminal: true });
 var selectDirective = ['$formFactory', '$compile', '$parse',
-               function($formFactory,   $compile,   $parse){
+               function($formFactory,   $compile,   $parse) {
                          //00001111100000000000222200000000000000000000003333000000000000044444444444444444000000000555555555555555550000000666666666666666660000000000000007777
   var NG_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w\d]*)|(?:\(\s*([\$\w][\$\w\d]*)\s*,\s*([\$\w][\$\w\d]*)\s*\)))\s+in\s+(.*)$/;
 
   return {
     restrict: 'E',
-    link: function(modelScope, selectElement, attr) {
+    scope: true,
+    link: function(scope, element, attr) {
       if (!attr.ngModel) return;
-      var form = $formFactory.forElement(selectElement),
+
+      var form = $formFactory.forElement(element),
           multiple = attr.multiple,
-          optionsExp = attr.ngOptions,
-          modelExp = attr.ngModel,
-          widget = form.$createWidget({
-            scope: modelScope,
-            model: modelExp,
-            onChange: attr.ngChange,
-            alias: attr.name,
-            controller: ['$scope', optionsExp ? Options : (multiple ? Multiple : Single)]});
+          optionsExp = attr.ngOptions;
+//          modelExp = attr.ngModel;
+//          widget = form.$createWidget({
+//            scope: modelScope,
+//            model: modelExp,
+//            onChange: attr.ngChange,
+//            alias: attr.name,
+//            controller: ['$scope', optionsExp ? Options : (multiple ? Multiple : Single)]});
 
-      selectElement.bind('$destroy', function() { widget.$destroy(); });
+      // stuff from input
+      scope.$viewValue = '';
+      scope.$modelValue = Number.NaN;
+      scope.$parsers = [];
+      scope.$formatters = [];
+      scope.$validators = [];
+      scope.$error = {};
+      scope.$pristine = true;
+      scope.$dirty = false;
+      scope.$valid = true;
+      scope.$invalid = false;
+      scope.$read = noop;
 
-      widget.$pristine = !(widget.$dirty = false);
+      scope.$touch = function() {
+        scope.$dirty = true;
+        scope.$pristine = false;
+        form.$dirty = true;
+        form.$pristine = false;
+      };
 
-      widget.$on('$validate', function() {
-        var valid = !attr.required || !!widget.$modelValue;
-        if (valid && multiple && attr.required) valid = !!widget.$modelValue.length;
-        if (valid !== !widget.$error.REQUIRED) {
-          widget.$emit(valid ? '$valid' : '$invalid', 'REQUIRED');
-        }
-      });
+      form.registerWidget(scope, attr.name);
 
-      widget.$on('$viewChange', function() {
-        widget.$pristine = !(widget.$dirty = true);
-      });
+      // TODO(vojta): do we need that now, that widget does not create parallel scopes ?
+      element.bind('$destroy', function() { scope.$destroy(); });
+
+      // required validator
+      if (attr.required) {
+        var requiredValidator = multiple ? function(value) {
+          scope.$emit(value && value.length ? '$valid' : '$invalid', 'REQUIRED');
+          return value;
+        } : function(value) {
+          scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
+          return value;
+        };
+
+        scope.$parsers.push(requiredValidator);
+        scope.$formatters.push(requiredValidator);
+      }
+
+      if (optionsExp) Options(scope, element);
+      else if (multiple) Multiple(scope, element);
+      else Single(scope, element);
+
+
+//      widget.$on('$validate', function() {
+//        var valid = !attr.required || !!widget.$modelValue;
+//        if (valid && multiple && attr.required) valid = !!widget.$modelValue.length;
+//        if (valid !== !widget.$error.REQUIRED) {
+//          widget.$emit(valid ? '$valid' : '$invalid', 'REQUIRED');
+//        }
+//      });
+//
+//      widget.$on('$viewChange', function() {
+//        widget.$pristine = !(widget.$dirty = true);
+//      });
 
       forEach(['valid', 'invalid', 'pristine', 'dirty'], function(name) {
-        widget.$watch('$' + name, function(value) {
-          selectElement[value ? 'addClass' : 'removeClass']('ng-' + name);
+        scope.$watch('$' + name, function(value) {
+          element[value ? 'addClass' : 'removeClass']('ng-' + name);
         });
       });
 
       ////////////////////////////
 
-      function Multiple(widget) {
-        widget.$render = function() {
-          var items = new HashMap(this.$viewValue);
+
+
+      function Single(scope, selectElement) {
+        scope.$render = function() {
+          selectElement.val(scope.$viewValue);
+        };
+
+        selectElement.bind('change', function() {
+          scope.$apply(function() {
+            scope.$touch();
+            scope.$viewValue = selectElement.val();
+            scope.$read();
+          });
+        });
+      }
+
+      function Multiple(scope, selectElement) {
+        scope.$render = function() {
+          var items = new HashMap(scope.$viewValue);
           forEach(selectElement.children(), function(option){
             option.selected = isDefined(items.get(option.value));
           });
         };
 
         selectElement.bind('change', function() {
-          widget.$apply(function() {
+          scope.$apply(function() {
             var array = [];
-            forEach(selectElement.children(), function(option){
+            forEach(selectElement.children(), function(option) {
               if (option.selected) {
                 array.push(option.value);
               }
             });
-            widget.$emit('$viewChange', array);
+            scope.$touch();
+            scope.$viewValue = array;
+            scope.$read();
           });
         });
-
       }
 
-      function Single(widget) {
-        widget.$render = function() {
-          selectElement.val(widget.$viewValue);
-        };
-
-        selectElement.bind('change', function() {
-          widget.$apply(function() {
-            widget.$emit('$viewChange', selectElement.val());
-          });
-        });
-
-        widget.$viewValue = selectElement.val();
-      }
-
-      function Options(widget) {
+      function Options(scope, selectElement) {
         var match;
 
         if (! (match = optionsExp.match(NG_OPTIONS_REGEXP))) {
@@ -234,17 +279,17 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
             // developer declared null option, so user should be able to select it
             nullOption = jqLite(option).remove();
             // compile the element since there might be bindings in it
-            $compile(nullOption)(modelScope);
+            $compile(nullOption)(scope);
           }
         });
         selectElement.html(''); // clear contents
 
         selectElement.bind('change', function() {
-          widget.$apply(function() {
+          scope.$apply(function() {
             var optionGroup,
-                collection = valuesFn(modelScope) || [],
+                collection = valuesFn(scope) || [],
                 key = selectElement.val(),
-                tempScope = inherit(modelScope),
+                tempScope = inherit(scope),
                 value, optionElement, index, groupIndex, length, groupLength;
 
             if (multiple) {
@@ -274,14 +319,17 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
                 value = valueFn(tempScope);
               }
             }
-            if (isDefined(value) && modelScope.$viewVal !== value) {
-              widget.$emit('$viewChange', value);
+            scope.$touch();
+
+            if (isDefined(value) && scope.$viewValue !== value) {
+              scope.$viewValue = value;
+              scope.$read();
             }
           });
         });
 
-        widget.$watch(render);
-        widget.$render = render;
+        scope.$render = render;
+        scope.$watch(valuesFn, render);
 
         function render() {
           var optionGroups = {'':[]}, // Temporary location for the option groups before we render them
@@ -290,12 +338,12 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
               optionGroup,
               option,
               existingParent, existingOptions, existingOption,
-              modelValue = widget.$modelValue,
-              values = valuesFn(modelScope) || [],
+              modelValue = scope.$modelValue,
+              values = valuesFn(scope) || [],
               keys = keyName ? sortedKeys(values) : values,
               groupLength, length,
               groupIndex, index,
-              optionScope = inherit(modelScope),
+              optionScope = inherit(scope),
               selected,
               selectedSet = false, // nothing is selected yet
               lastElement,

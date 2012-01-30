@@ -154,3 +154,20 @@ angularFiles = {
     'test/jquery_remove.js'
   ]
 };
+
+
+// SlimJim config
+files = [JASMINE_ADAPTER];
+angularFiles.jstd.forEach(function(pattern) {
+  // replace angular source
+  if (pattern === '@angularSrc') files = files.concat(angularFiles.angularSrc);
+  // ignore jstd files
+  else if (!/jstd-(scenario-)?adapter/.test(pattern)) files.push(pattern);
+});
+
+exclude = angularFiles.jstdExclude;
+
+autoWatch = true;
+autoWatchInterval = 1;
+logLevel = LOG_ERROR;
+logColors = true;

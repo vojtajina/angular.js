@@ -38,7 +38,7 @@ describe("markups", function() {
     expect(element.attr('src')).toEqual("http://server/a/b.png");
   }));
 
-  describe('OPTION value', function() {
+  xdescribe('OPTION value', function() {
     beforeEach(function() {
       this.addMatchers({
         toHaveValue: function(expected){

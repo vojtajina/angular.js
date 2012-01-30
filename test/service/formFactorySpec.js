@@ -1,6 +1,6 @@
 'use strict';
 
-describe('$formFactory', function() {
+xdescribe('$formFactory', function() {
 
   it('should have global form', inject(function($rootScope, $formFactory) {
     expect($formFactory.rootForm).toBeTruthy();

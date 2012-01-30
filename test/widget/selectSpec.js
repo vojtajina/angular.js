@@ -1,6 +1,6 @@
 'use strict';
 
-describe('select', function() {
+xdescribe('select', function() {
   var compile = null, element = null, scope = null;
 
   beforeEach(inject(function($compile, $rootScope) {

@@ -95,6 +95,8 @@ function publishExternalAPI(angular){
             ngSwitch: ngSwitchDirective,
             ngOptions: ngOptionsDirective,
             ngView: ngViewDirective
+            ngModel: ngModelDirective,
+            ngList: ngListDirective
           }).
         directive(ngEventDirectives).
         directive(ngAttributeAliasDirectives);
