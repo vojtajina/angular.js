@@ -4,7 +4,7 @@ xdescribe('$formFactory', function() {
 
   it('should have global form', inject(function($rootScope, $formFactory) {
     expect($formFactory.rootForm).toBeTruthy();
-    expect($formFactory.rootForm.$createWidget).toBeTruthy();
+    expect($formFactory.rootForm.$registerWidget).toBeTruthy();
   }));
 
 

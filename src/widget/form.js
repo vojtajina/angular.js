@@ -1,5 +1,84 @@
 'use strict';
 
+FormController.$inject = ['$scope'];
+function FormController($scope) {
+  var form = this,
+      $error = this.$error = {};
+
+  $scope.$on('$destroy', function(event) {
+    var widget = event.targetScope;
+    if (widget.$widgetId) {
+      delete form[widget.$widgetId];
+    }
+    forEach($error, removeWidget, widget);
+  });
+
+  // TODO(vojta): shouldn't we stop propagation of these events ?
+  $scope.$on('$valid', function(event, error) {
+    var widget = event.targetScope;
+    removeWidget($error[error], error, widget);
+
+    if (equals(form.$error, {})) {
+      form.$valid = true;
+      form.$invalid = false;
+    }
+  });
+
+  $scope.$on('$invalid', function(event, error) {
+    var widget = event.targetScope;
+    addWidget(error, widget);
+
+    form.$valid = false;
+    form.$invalid = true;
+  });
+
+  $scope.$on('$viewTouch', function() {
+    form.$dirty = true;
+    form.$pristine = false;
+  });
+
+  // init state
+  form.$dirty = false;
+  form.$pristine = true;
+  form.$valid = true;
+  form.$invalid = false;
+
+  function removeWidget(queue, errorKey, widget) {
+    if (queue) {
+      widget = widget || this; // so that we can be used in forEach;
+      for (var i = 0, length = queue.length; i < length; i++) {
+        if (queue[i] === widget) {
+          queue.splice(i, 1);
+          if (!queue.length) {
+            delete $error[errorKey];
+          }
+        }
+      }
+    }
+  }
+
+  function addWidget(errorKey, widget) {
+    var queue = $error[errorKey];
+    if (queue) {
+      for (var i = 0, length = queue.length; i < length; i++) {
+        if (queue[i] === widget) {
+          return;
+        }
+      }
+    } else {
+      $error[errorKey] = queue = [];
+    }
+    queue.push(widget);
+  }
+}
+
+FormController.prototype.registerWidget = function(widget, alias) {
+  if (alias && !this.hasOwnProperty(alias)) {
+    this[alias] = widget;
+    widget.$widgetId = alias;
+  }
+};
+
 /**
  * @ngdoc widget
  * @name angular.module.ng.$compileProvider.directive.form
@@ -82,14 +161,14 @@
       </doc:scenario>
     </doc:example>
  */
-var ngFormDirective = ['$formFactory', function($formFactory) {
+var ngFormDirective = ['$controller', function($controller) {
   return {
     restrict: 'E',
     compile: function() {
       return {
         pre: function(scope, formElement, attr) {
           var name = attr.name,
-              form = $formFactory(scope);
+              form = $controller(FormController, scope);
 
           formElement.data('$form', form);
           formElement.bind('submit', function(event) {

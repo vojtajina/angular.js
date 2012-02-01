@@ -579,26 +579,31 @@ var inputType = {
   'reset': noop
 };
 
-function textInputType(scope, element, attr) {
-  element.bind('keydown change input', function(event) {
-    var key = event.keyCode;
-    if (/*command*/   key !== 91 &&
-        /*modifiers*/ !(15 < key && key < 19) &&
-        /*arrow*/     !(37 < key && key < 40)) {
-      // TODO(vojta): why do we need it async ?
-//      $defer(function() {
-      scope.$apply(function() {
-        scope.$touch();
 
-        var value = trim(element.val());
-        if (scope.$viewValue !== value ) {
-          scope.$viewValue = element.val();
-          scope.$read();
-        }
-      });
-//      });
-    }
+// TODO(vojta):
+//var key = event.keyCode;
+//if (/*command*/   key !== 91 &&
+//    /*modifiers*/ !(15 < key && key < 19) &&
+//    /*arrow*/     !(37 < key && key < 40)) {
+// keydown change input
+
+function textInputType(scope, element, attr) {
+  element.bind('blur', function() {
+    scope.$apply(function() {
+
+      // TODO(vojta): return whether it changed model, so that we can
+      scope.$touch();
+
+      var value = trim(element.val());
+      if (scope.$viewValue !== value) {
+        scope.$read(value);
+      }
+    });
   });
+
+  scope.$render = function() {
+    element.val(scope.$viewValue);
+  };
 
   // pattern validator
   var pattern = attr.ngPattern,
@@ -669,13 +674,10 @@ function textInputType(scope, element, attr) {
   }
 
   // required validator
-  // TODO(vojta): move it to input
   if (attr.required) {
-    var $touch = scope.$touch;
-    scope.$touch = function() {
+    scope.$on('$viewTouch', function() {
       if (!scope.$viewValue) scope.$emit('$invalid', 'REQUIRED');
-      $touch.call(this);
-    };
+    });
 
     scope.$parsers.push(function(value) {
       scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
@@ -683,7 +685,9 @@ function textInputType(scope, element, attr) {
     });
 
     scope.$formatters.push(function(value) {
-      scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
+      if (scope.$dirty) {
+        scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
+      }
       return value;
     });
   }
@@ -786,9 +790,8 @@ function radioInputType(scope, element, attr) {
   element.bind('click', function() {
     if (element[0].checked) {
       scope.$apply(function() {
-        scope.$viewValue = attr.value;
         scope.$touch();
-        scope.$read();
+        scope.$read(attr.value);
       });
     };
   });
@@ -808,9 +811,8 @@ function checkboxInputType(scope, element, attr) {
 
   element.bind('click', function() {
     scope.$apply(function() {
-      scope.$viewValue = element[0].checked;
       scope.$touch();
-      scope.$read();
+      scope.$read(element[0].checked);
     });
   });
 
@@ -827,39 +829,83 @@ function checkboxInputType(scope, element, attr) {
   });
 }
 
-var inputDirective = ['$formFactory', function($formFactory) {
+var inputDirective = [function() {
   return {
     restrict: 'E',
     scope: true,
     link: function(scope, element, attr) {
       if (!attr.ngModel) return;
+      (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr);
+    }
+  };
+}];
+
+var ngModelDirective = ['$parse', function($parse) {
+  return {
+    priority: 200,
+    link: function(scope, element, attr) {
+      var getter = $parse(attr.ngModel),
+          setter = getter.assign,
+          form = element.inheritedData('$form');
+
+      if (form) {
+        form.registerWidget(scope, attr.name);
+      }
 
       scope.$viewValue = '';
       scope.$modelValue = Number.NaN;
       scope.$parsers = [];
       scope.$formatters = [];
-      scope.$validators = [];
       scope.$error = {};
       scope.$pristine = true;
       scope.$dirty = false;
       scope.$valid = true;
       scope.$invalid = false;
-      scope.$read = noop;
+      scope.$render = noop;
 
-      scope.$render = function() {
-        element.val(scope.$viewValue);
-      };
-
-      var form = $formFactory.forElement(element);
       scope.$touch = function() {
-        scope.$dirty = true;
-        scope.$pristine = false;
-        form.$dirty = true;
-        form.$pristine = false;
+        if (scope.$pristine) {
+          scope.$dirty = true;
+          scope.$pristine = false;
+          scope.$emit('$viewTouch');
+        }
       };
 
-      form.registerWidget(scope, attr.name);
-      (inputType[attr.type] || inputType.text)(scope, element, attr);
+
+      // view -> model
+      scope.$read = function(value) {
+        scope.$viewValue = value;
+        console.log('view change', value);
+
+        forEach(scope.$parsers, function(fn) {
+          if (isDefined(value)) value = fn(value);
+        });
+
+        if (isDefined(value)) {
+          // TODO(vojta): fire only if model really changes ?
+          scope.$modelValue = value;
+          setter(scope.$parent, scope.$modelValue);
+          scope.$emit('$viewChange', value);
+        }
+      };
+
+      // model -> value
+      scope.$watch(getter, function(value) {
+        if (scope.$modelValue === value) return;
+        console.log('model change', value);
+
+        scope.$modelValue = value;
+
+        forEach(scope.$formatters, function(fn) {
+          if (isDefined(value)) value = fn(value);
+        });
+
+        if (isDefined(value)) {
+          // TODO(vojta): fire only if value really changes ?
+          scope.$viewValue = value;
+          scope.$render();
+        }
+      });
 
       forEach(['valid', 'invalid', 'pristine', 'dirty'], function(name) {
         scope.$watch('$' + name, function(value) {
@@ -867,59 +913,38 @@ var inputDirective = ['$formFactory', function($formFactory) {
         });
       });
 
-      // TODO(vojta): do we need that now, that widget does not create parallel scopes ?
       element.bind('$destroy', function() {
         scope.$destroy();
       });
+
+      // read init value ?
+
+
+      // don't $emit $valid if already $valid, the same for $invalid
+      // TODO(vojta): should we rather add new method ? $emitValidation(event, error) ???
+      var $emit = scope.$emit;
+      scope.$emit = function(event, args) {
+        if (event === '$invalid' && this.$error[args]) return;
+        if (event === '$valid' && !this.$error[args]) return;
+
+        if (event === '$invalid') {
+          this.$error[args] = true;
+
+          this.$invalid = true;
+          this.$valid = false;
+        }
+
+        if (event === '$valid') {
+
+          delete this.$error[args];
+          if (equals(this.$error, {})) {
+            this.$valid = true;
+            this.$invalid = false;
+          }
+        }
+
+        return $emit.call(this, event, args);
+      };
     }
-  };
-}];
-
-var ngModelDirective = ['$parse', function($parse) {
-  return function(scope, element, attr) {
-    var getter = $parse(attr.ngModel),
-        setter = getter.assign;
-
-    // view -> model
-    scope.$read = function() {
-      var value = scope.$viewValue;
-
-      forEach(scope.$parsers, function(fn) {
-        if (isDefined(value)) value = fn(value);
-      });
-
-      if (isDefined(value)) {
-        scope.$modelValue = value;
-        setter(scope.$parent, scope.$modelValue);
-      }
-    };
-
-    // model -> value
-    scope.$watch(getter, function(value, last) {
-      if (scope.$modelValue === value) return;
-
-      scope.$modelValue = value;
-
-      forEach(scope.$formatters, function(fn) {
-        if (isDefined(value)) value = fn(value);
-      });
-
-      if (isDefined(value)) {
-        scope.$viewValue = value;
-        scope.$render();
-      }
-    });
-
-    // read init value ?
-
-
-    // don't $emit $valid if already $valid, the same for $invalid
-    // TODO(vojta): should we rather add new method ? $emitValidation(event, error) ???
-    var $emit = scope.$emit;
-    scope.$emit = function(event, args) {
-      if (event === '$invalid' && this.$error[args]) return;
-      if (event === '$valid' && !this.$error[args]) return;
-      return $emit.call(this, event, args);
-    };
   };
 }];

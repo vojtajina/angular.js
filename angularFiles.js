@@ -155,6 +155,10 @@ angularFiles = {
   ]
 };
 
+// just to suppress warning when using angular-bootstrap
+if (typeof JASMINE_ADAPTER === 'undefined') {
+  JASMINE_ADAPTER = LOG_DISABLE = LOG_ERROR = LOG_WARN = LOG_INFO = LOG_DEBUG = null;
+}
 
 // SlimJim config
 files = [JASMINE_ADAPTER];

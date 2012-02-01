@@ -139,12 +139,7 @@ function $FormFactoryProvider() {
     }
   }];
 
-  // TODO(vojta); fix disabled, readonly ?
-  // TODO(vojta): let's move this into a widget ?
-  function propertiesUpdate(widget) {
-    widget.$valid = !(widget.$invalid =
-      !(widget.$readonly || widget.$disabled || equals(widget.$error, {})));
-  }
+
 
   /**
    * @ngdoc property
@@ -219,74 +214,5 @@ function $FormFactoryProvider() {
    * @param {*} viewValue The new value for the view which will be assigned to `widget.$viewValue`.
    */
 
-  FormController.$inject = ['$scope', '$injector'];
-  function FormController($scope, $injector) {
-    var form = this,
-        $error = this.$error = {};
 
-    $scope.$on('$destroy', function(event) {
-      var widget = event.targetScope;
-      if (widget.$widgetId) {
-        delete form[widget.$widgetId];
-      }
-      forEach($error, removeWidget, widget);
-    });
-
-    // TODO(vojta): shouldn't we stop propagation of these events ?
-    $scope.$on('$valid', function(event, error) {
-      var widget = event.targetScope;
-      delete widget.$error[error];
-      propertiesUpdate(widget);
-      removeWidget($error[error], error, widget);
-    });
-
-    $scope.$on('$invalid', function(event, error) {
-      var widget = event.targetScope;
-      addWidget(error, widget);
-      widget.$error[error] = true;
-      propertiesUpdate(widget);
-    });
-
-    // init state
-    form.$dirty = false;
-    form.$pristine = true;
-    propertiesUpdate(form);
-
-    function removeWidget(queue, errorKey, widget) {
-      if (queue) {
-        widget = widget || this; // so that we can be used in forEach;
-        for (var i = 0, length = queue.length; i < length; i++) {
-          if (queue[i] === widget) {
-            queue.splice(i, 1);
-            if (!queue.length) {
-              delete $error[errorKey];
-            }
-          }
-        }
-        propertiesUpdate(form);
-      }
-    }
-
-    function addWidget(errorKey, widget) {
-      var queue = $error[errorKey];
-      if (queue) {
-        for (var i = 0, length = queue.length; i < length; i++) {
-          if (queue[i] === widget) {
-            return;
-          }
-        }
-      } else {
-        $error[errorKey] = queue = [];
-      }
-      queue.push(widget);
-      propertiesUpdate(form);
-    }
-  }
-
-  FormController.prototype.registerWidget = function(widget, alias) {
-    if (alias && !this.hasOwnProperty(alias)) {
-      this[alias] = widget;
-      widget.$widgetId = alias;
-    }
-  };
 }

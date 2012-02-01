@@ -123,8 +123,7 @@
  */
 
 var ngOptionsDirective = valueFn({ terminal: true });
-var selectDirective = ['$formFactory', '$compile', '$parse',
-               function($formFactory,   $compile,   $parse) {
+var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
                          //00001111100000000000222200000000000000000000003333000000000000044444444444444444000000000555555555555555550000000666666666666666660000000000000007777
   var NG_OPTIONS_REGEXP = /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w\d]*)|(?:\(\s*([\$\w][\$\w\d]*)\s*,\s*([\$\w][\$\w\d]*)\s*\)))\s+in\s+(.*)$/;
 
@@ -134,41 +133,9 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
     link: function(scope, element, attr) {
       if (!attr.ngModel) return;
 
-      var form = $formFactory.forElement(element),
-          multiple = attr.multiple,
+      var multiple = attr.multiple,
           optionsExp = attr.ngOptions;
-//          modelExp = attr.ngModel;
-//          widget = form.$createWidget({
-//            scope: modelScope,
-//            model: modelExp,
-//            onChange: attr.ngChange,
-//            alias: attr.name,
-//            controller: ['$scope', optionsExp ? Options : (multiple ? Multiple : Single)]});
 
-      // stuff from input
-      scope.$viewValue = '';
-      scope.$modelValue = Number.NaN;
-      scope.$parsers = [];
-      scope.$formatters = [];
-      scope.$validators = [];
-      scope.$error = {};
-      scope.$pristine = true;
-      scope.$dirty = false;
-      scope.$valid = true;
-      scope.$invalid = false;
-      scope.$read = noop;
-
-      scope.$touch = function() {
-        scope.$dirty = true;
-        scope.$pristine = false;
-        form.$dirty = true;
-        form.$pristine = false;
-      };
-
-      form.registerWidget(scope, attr.name);
-
-      // TODO(vojta): do we need that now, that widget does not create parallel scopes ?
-      element.bind('$destroy', function() { scope.$destroy(); });
 
       // required validator
       if (attr.required) {
@@ -189,24 +156,6 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
       else Single(scope, element);
 
 
-//      widget.$on('$validate', function() {
-//        var valid = !attr.required || !!widget.$modelValue;
-//        if (valid && multiple && attr.required) valid = !!widget.$modelValue.length;
-//        if (valid !== !widget.$error.REQUIRED) {
-//          widget.$emit(valid ? '$valid' : '$invalid', 'REQUIRED');
-//        }
-//      });
-//
-//      widget.$on('$viewChange', function() {
-//        widget.$pristine = !(widget.$dirty = true);
-//      });
-
-      forEach(['valid', 'invalid', 'pristine', 'dirty'], function(name) {
-        scope.$watch('$' + name, function(value) {
-          element[value ? 'addClass' : 'removeClass']('ng-' + name);
-        });
-      });
-
       ////////////////////////////
 
 
@@ -219,8 +168,7 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
         selectElement.bind('change', function() {
           scope.$apply(function() {
             scope.$touch();
-            scope.$viewValue = selectElement.val();
-            scope.$read();
+            scope.$read(selectElement.val());
           });
         });
       }
@@ -242,8 +190,7 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
               }
             });
             scope.$touch();
-            scope.$viewValue = array;
-            scope.$read();
+            scope.$read(array);
           });
         });
       }
@@ -322,8 +269,7 @@ var selectDirective = ['$formFactory', '$compile', '$parse',
             scope.$touch();
 
             if (isDefined(value) && scope.$viewValue !== value) {
-              scope.$viewValue = value;
-              scope.$read();
+              scope.$read(value);
             }
           });
         });
