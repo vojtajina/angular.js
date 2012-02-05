@@ -560,19 +560,4 @@ describe("directive", function() {
       expect(element.hasClass('bar')).toBe(true);
     }));
   });
-
-
-  describe('ng:change', function() {
-    iit('should $eval expression after new value set in the model', inject(function($compile, $rootScope) {
-      var element = $compile('<input type="text" ng:model="value" ng:change="change()" />')($rootScope);
-      $rootScope.change = jasmine.createSpy('change').andCallFake(function() {
-        expect($rootScope.value).toBe('new value');
-      });
-
-      element.val('new value');
-      browserTrigger(element, 'blur');
-
-      expect($rootScope.change).toHaveBeenCalledOnce();
-    }));
-  });
 });

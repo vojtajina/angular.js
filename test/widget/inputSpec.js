@@ -1,7 +1,6 @@
 'use strict';
 
-
-ddescribe('ng:model', function() {
+describe('ng:model', function() {
   var scope, element;
 
   beforeEach(inject(function($injector, $rootScope) {
@@ -27,10 +26,8 @@ ddescribe('ng:model', function() {
 
   it('should set css classes (ng-valid, ng-invalid, ng-pristine, ng-dirty)', function() {
     scope.$digest();
-    expect(element.hasClass('ng-valid')).toBe(true);
-    expect(element.hasClass('ng-invalid')).toBe(false);
-    expect(element.hasClass('ng-dirty')).toBe(false);
-    expect(element.hasClass('ng-pristine')).toBe(true);
+    expect(element).toBeValid();
+    expect(element).toBePristine();
 
     scope.$apply(function() {
       scope.$valid = false;
@@ -39,14 +36,13 @@ ddescribe('ng:model', function() {
       scope.$pristine = false;
     });
 
-    expect(element.hasClass('ng-valid')).toBe(false);
-    expect(element.hasClass('ng-invalid')).toBe(true);
-    expect(element.hasClass('ng-dirty')).toBe(true);
-    expect(element.hasClass('ng-pristine')).toBe(false);
+    expect(element).toBeInvalid();
+    expect(element).toBeDirty();
   });
 
 
   describe('$touch', function() {
+
     it('should fire $viewTouch only when changing to $dirty', function() {
       var spy = jasmine.createSpy('$viewTouch');
       scope.$on('$viewTouch', spy);
@@ -67,6 +63,7 @@ ddescribe('ng:model', function() {
 
 
   describe('view -> model', function() {
+
     it('should set the value to $viewValue', function() {
       scope.$read('some-val');
       expect(scope.$viewValue).toBe('some-val');
@@ -118,14 +115,12 @@ ddescribe('ng:model', function() {
       scope.$parsers.push(function() {return undefined;});
       scope.$read('val');
       expect(spy).not.toHaveBeenCalled();
-      spy.reset();
-
-      // TODO(vojta): parsed into the same model value ?
     });
   });
 
 
   describe('model -> view', function() {
+
     it('should set the value to $modelValue', function() {
       scope.$apply(function() {
         scope.modelExp = 10;
@@ -186,19 +181,24 @@ ddescribe('ng:model', function() {
         scope.modelExp = 5;
       });
       expect(scope.$render).not.toHaveBeenCalled();
-
-      // TODO(vojta): parsed into the same view value ?
     });
   });
 });
 
-ddescribe('input', function() {
+
+describe('input', function() {
   var formElm, inputElm, scope, $compile;
 
   function compileInput(inputHtml) {
     formElm = jqLite('<form name="form">' + inputHtml + '</form>');
     inputElm = formElm.find('input');
     $compile(formElm)(scope);
+  }
+
+  function changeInputValueTo(value) {
+    inputElm.val(value);
+    console.log('trigger');
+    browserTrigger(inputElm, 'blur');
   }
 
   beforeEach(inject(function($injector) {
@@ -236,9 +236,7 @@ ddescribe('input', function() {
   it('should update the model on "blur" event', function() {
     compileInput('<input type="text" ng:model="name" name="alias" ng:change="change()" />');
 
-    inputElm.val('adam');
-    browserTrigger(inputElm, 'blur');
-
+    changeInputValueTo('adam');
     expect(scope.name).toEqual('adam');
   });
 
@@ -246,9 +244,7 @@ ddescribe('input', function() {
   it('should update the model and trim the value', function() {
     compileInput('<input type="text" ng:model="name" name="alias" ng:change="change()" />');
 
-    inputElm.val('  a  ');
-    browserTrigger(inputElm, 'blur');
-
+    changeInputValueTo('  a  ');
     expect(scope.name).toEqual('a');
   });
 
@@ -278,7 +274,6 @@ ddescribe('input', function() {
     expect(function() {
       compileInput('<input type="text" ng:model="throw \'\'">');
     }).toThrow("Syntax Error: Token '''' is an unexpected token at column 7 of the expression [throw ''] starting at [''].");
-    $log.error.logs.shift();
   }));
 
 
@@ -294,29 +289,87 @@ ddescribe('input', function() {
   });
 
 
-  describe('required', function() {
-    beforeEach(function() {
-      compileInput('<input type="text" ng:model="name" name="alias" required />');
+  describe('pattern', function() {
+
+    it('should validate in-lined pattern', function() {
+      compileInput('<input type="text" ng:model="value" ng:pattern="/^\\d\\d\\d-\\d\\d-\\d\\d\\d\\d$/" />');
+
+      changeInputValueTo('x000-00-0000x');
+      expect(inputElm).toBeInvalid();
+
+      changeInputValueTo('000-00-0000');
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('000-00-0000x');
+      expect(inputElm).toBeInvalid();
+
+      changeInputValueTo('123-45-6789');
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('x');
+      expect(inputElm).toBeInvalid();
     });
 
 
-    it('should be $valid if not touched (pristine)', function() {
-      scope.$apply(function() {
-        scope.name = '';
-      });
-      expect(scope.form.alias.$valid).toBe(true);
+    it('should validate pattern from scope', function() {
+      compileInput('<input type="text" ng:model="value" ng:pattern="regexp" />');
+      scope.regexp = /^\d\d\d-\d\d-\d\d\d\d$/;
 
-      browserTrigger(inputElm, 'blur');
-      expect(scope.form.alias.$valid).toBe(false);
+      changeInputValueTo('x000-00-0000x');
+      expect(inputElm).toBeInvalid();
+
+      changeInputValueTo('000-00-0000');
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('000-00-0000x');
+      expect(inputElm).toBeInvalid();
+
+      changeInputValueTo('123-45-6789');
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('x');
+      expect(inputElm).toBeInvalid();
+
+      scope.regexp = /abc?/;
+
+      changeInputValueTo('ab');
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('xx');
+      expect(inputElm).toBeInvalid();
+    });
+
+
+    xit('should throw an error when scope pattern can\'t be found', function() {
+      compileInput('<input type="text" ng:model="foo" ng:pattern="fooRegexp" />');
+
+      expect(function() { changeInputValueTo('xx'); }).
+          toThrow('Expected fooRegexp to be a RegExp but was undefined');
     });
   });
 
 
-  // TODO(vojta): test ng:change
+  describe('required', function() {
+
+    it('should be $valid if not touched (pristine)', function() {
+      compileInput('<input type="text" ng:model="name" name="alias" required />');
+
+      scope.$apply(function() {
+        scope.name = '';
+      });
+
+      expect(inputElm).toBeValid();
+
+      browserTrigger(inputElm, 'blur');
+      expect(inputElm).toBeInvalid();
+    });
+  });
+
 
   // INPUT TYPES
 
   describe('number', function() {
+
     it('should not update model if view invalid', function() {
       compileInput('<input type="number" ng:model="value" />');
 
@@ -325,8 +378,7 @@ ddescribe('input', function() {
       });
       expect(inputElm.val()).toEqual('123');
 
-      inputElm.val('invalid number');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('invalid number');
       expect(scope.value).toBe(123);
     });
 
@@ -357,13 +409,14 @@ ddescribe('input', function() {
       expect(inputElm.val()).toBe('');
     });
 
+
     it('should show incorrect text while number does not parse', function() {
       compileInput('<input type="number" ng:model="age"/>');
 
       scope.$apply(function() {
         scope.age = 123;
       });
-      expect(inputElm.val()).toEqual('123');
+      expect(inputElm.val()).toBe('123');
 
       try {
         // to allow non-number values, we have to change type so that
@@ -371,15 +424,118 @@ ddescribe('input', function() {
         // this test. IE8 won't allow it hence the catch.
         inputElm[0].setAttribute('type', 'text');
       } catch (e) {}
-      inputElm.val('123X');
-      browserTrigger(inputElm, 'blur');
 
-      expect(inputElm.val()).toEqual('123X');
-      expect(scope.age).toEqual(123);
+      changeInputValueTo('123X');
+      expect(inputElm.val()).toBe('123X');
+      expect(scope.age).toBe(123);
       expect(inputElm).toBeInvalid();
+    });
+
+
+    describe('min', function() {
+
+      it('should validate', function() {
+        compileInput('<input type="number" ng:model="value" name="alias" min="10" />');
+
+        changeInputValueTo('1');
+        expect(inputElm).toBeInvalid();
+        expect(scope.value).toBeFalsy();
+        expect(scope.form.alias.$error.MIN).toBeTruthy();
+
+        changeInputValueTo('100');
+        expect(inputElm).toBeValid();
+        expect(scope.value).toBe(100);
+        expect(scope.form.alias.$error.MIN).toBeFalsy();
+      });
+    });
+
+
+    describe('max', function() {
+
+      it('should validate', function() {
+        compileInput('<input type="number" ng:model="value" name="alias" max="10" />');
+
+        changeInputValueTo('20');
+        expect(inputElm).toBeInvalid();
+        expect(scope.value).toBeFalsy();
+        expect(scope.form.alias.$error.MAX).toBeTruthy();
+
+        changeInputValueTo('0');
+        expect(inputElm).toBeValid();
+        expect(scope.value).toBe(0);
+        expect(scope.form.alias.$error.MAX).toBeFalsy();
+      });
+    });
+
+
+    describe('required', function() {
+
+      it('should be valid even if value is 0', function() {
+        compileInput('<input type="number" ng:model="value" name="alias" required />');
+
+        changeInputValueTo('0');
+        expect(inputElm).toBeValid();
+        expect(scope.value).toBe(0);
+        expect(scope.form.alias.$error.REQUIRED).toBeFalsy();
+      });
     });
   });
 
+  describe('email', function() {
+
+    it('should validate e-mail', function() {
+      compileInput('<input type="email" ng:model="email" name="alias" />');
+
+      var widget = scope.form.alias;
+      changeInputValueTo('vojta@google.com');
+
+      expect(scope.email).toBe('vojta@google.com');
+      expect(inputElm).toBeValid();
+      expect(widget.$error.EMAIL).toBeUndefined();
+
+      changeInputValueTo('invalid@');
+      expect(scope.email).toBe('vojta@google.com');
+      expect(inputElm).toBeInvalid();
+      expect(widget.$error.EMAIL).toBeTruthy();
+    });
+
+
+    describe('EMAIL_REGEXP', function() {
+
+      it('should validate email', function() {
+        expect(EMAIL_REGEXP.test('a@b.com')).toBe(true);
+        expect(EMAIL_REGEXP.test('a@B.c')).toBe(false);
+      });
+    });
+  });
+
+
+  describe('url', function() {
+
+    it('should validate url', function() {
+      compileInput('<input type="url" ng:model="url" name="alias" />');
+      var widget = scope.form.alias;
+
+      changeInputValueTo('http://www.something.com');
+      expect(scope.url).toBe('http://www.something.com');
+      expect(inputElm).toBeValid();
+      expect(widget.$error.URL).toBeUndefined();
+
+      changeInputValueTo('invalid.com');
+      expect(scope.url).toBe('http://www.something.com');
+      expect(inputElm).toBeInvalid();
+      expect(widget.$error.URL).toBeTruthy();
+    });
+
+
+    describe('URL_REGEXP', function() {
+
+      it('should validate url', function() {
+        expect(URL_REGEXP.test('http://server:123/path')).toBe(true);
+        expect(URL_REGEXP.test('a@B.c')).toBe(false);
+      });
+    });
+  });
 
   describe('radio', function() {
 
@@ -387,6 +543,7 @@ ddescribe('input', function() {
 
 
   describe('checkbox', function() {
+
     it('should ignore checkbox without ng:model attr', function() {
       compileInput('<input type="checkbox" name="whatever" required />');
 
@@ -452,6 +609,7 @@ ddescribe('input', function() {
 
 
   describe('textarea', function() {
+
     it("should process textarea", function() {
       compileInput('<textarea ng:model="name"></textarea>');
       inputElm = formElm.find('textarea');
@@ -461,12 +619,10 @@ ddescribe('input', function() {
       });
       expect(inputElm.val()).toEqual('Adam');
 
-      inputElm.val('Shyam');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('Shyam');
       expect(scope.name).toEqual('Shyam');
 
-      inputElm.val('Kai');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('Kai');
       expect(scope.name).toEqual('Kai');
     });
 
@@ -485,6 +641,7 @@ ddescribe('input', function() {
 
 
   describe('ng:list', function() {
+
     it('should parse text into an array', function() {
       compileInput('<input type="text" ng:model="list" ng:list />');
 
@@ -495,8 +652,7 @@ ddescribe('input', function() {
       expect(inputElm.val()).toBe('x, y, z');
 
       // view -> model
-      inputElm.val('1, 2, 3');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('1, 2, 3');
       expect(scope.list).toEqual(['1', '2', '3']);
     });
 
@@ -507,29 +663,26 @@ ddescribe('input', function() {
       // the user from ever typying ','.
       compileInput('<input type="text" ng:model="list" ng:list />');
 
-      inputElm.val('a ');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('a ');
       expect(inputElm.val()).toEqual('a ');
       expect(scope.list).toEqual(['a']);
 
-      inputElm.val('a ,');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('a ,');
       expect(inputElm.val()).toEqual('a ,');
       expect(scope.list).toEqual(['a']);
 
-      inputElm.val('a , ');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('a , ');
       expect(inputElm.val()).toEqual('a , ');
       expect(scope.list).toEqual(['a']);
 
-      inputElm.val('a , b');
-      browserTrigger(inputElm, 'blur');
+      changeInputValueTo('a , b');
       expect(inputElm.val()).toEqual('a , b');
       expect(scope.list).toEqual(['a', 'b']);
     });
   });
 
   describe('ng:required', function() {
+
     // TODO(vojta)
     xit('should allow bindings on ng:required', function() {
       compileInput('<input type="text" ng:model="price" ng:required="{{required}}" />');
@@ -556,123 +709,28 @@ ddescribe('input', function() {
 
 
   describe('ng:change', function() {
-    // TODO(vojta)
-    xit('should fire ng:change when the value changes', function() {
-      compile('<input type="checkbox" ng:model="foo" ng:change="changeFn()">');
+
+    it('should $eval expression after new value is set in the model', function() {
+      compileInput('<input type="text" ng:model="value" ng:change="change()" />');
+
+      scope.change = jasmine.createSpy('change').andCallFake(function() {
+        expect(scope.value).toBe('new value');
+      });
+
+      changeInputValueTo('new value');
+      expect(scope.change).toHaveBeenCalledOnce();
+    });
+
+
+    it('should $eval ng:change expression on checkbox', function() {
+      compileInput('<input type="checkbox" ng:model="foo" ng:change="changeFn()">');
+
       scope.changeFn = jasmine.createSpy('changeFn');
       scope.$digest();
-      expect(scope.changeFn).not.toHaveBeenCalledOnce();
-      browserTrigger(element);
+      expect(scope.changeFn).not.toHaveBeenCalled();
+
+      browserTrigger(inputElm, 'click');
       expect(scope.changeFn).toHaveBeenCalledOnce();
     });
   });
-});
-
-
-
-
-  describe('text subtypes', function() {
-
-    function itShouldVerify(type, validList, invalidList, params, fn) {
-      describe(type, function() {
-        forEach(validList, function(value){
-          it('should validate "' + value + '"', function() {
-            setup(value);
-            expect(element).toBeValid();
-          });
-        });
-        forEach(invalidList, function(value){
-          it('should NOT validate "' + value + '"', function() {
-            setup(value);
-            expect(element).toBeInvalid();
-          });
-        });
-
-        function setup(value){
-          var html = ['<input type="', type.split(' ')[0], '" '];
-          forEach(params||{}, function(value, key){
-            html.push(key + '="' + value + '" ');
-          });
-          html.push('ng:model="value">');
-          compile(html.join(''));
-          (fn||noop)(scope);
-          scope.value = null;
-          try {
-            // to allow non-number values, we have to change type so that
-            // the browser which have number validation will not interfere with
-            // this test. IE8 won't allow it hence the catch.
-            element[0].setAttribute('type', 'text');
-          } catch (e){}
-          if (value != undefined) {
-            element.val(value);
-            browserTrigger(element, 'keydown');
-            defer.flush();
-          }
-          scope.$digest();
-        }
-      });
-    }
-
-
-    itShouldVerify('email', ['a@b.com'], ['a@B.c']);
-
-
-    itShouldVerify('url', ['http://server:123/path'], ['a@b.c']);
-
-
-    itShouldVerify('number',
-        ['', '1', '12.34', '-4', '+13', '.1'],
-        ['x', '12b', '-6', '101'],
-        {min:-5, max:100});
-
-
-    itShouldVerify('integer',
-        [null, '', '1', '12', '-4', '+13'],
-        ['x', '12b', '-6', '101', '1.', '1.2'],
-        {min:-5, max:100});
-
-
-    itShouldVerify('integer',
-        [null, '', '0', '1'],
-        ['-1', '2'],
-        {min:0, max:1});
-
-
-    itShouldVerify('text with inlined pattern constraint',
-        ['', '000-00-0000', '123-45-6789'],
-        ['x000-00-0000x', 'x000-00-0000', '000-00-0000x', 'x'],
-        {'ng:pattern':'/^\\d\\d\\d-\\d\\d-\\d\\d\\d\\d$/'});
-
-
-    itShouldVerify('text with pattern constraint on scope',
-        ['', '000-00-0000', '123-45-6789'],
-        ['x000-00-0000x', 'x'],
-        {'ng:pattern':'regexp'}, function(scope){
-          scope.regexp = /^\d\d\d-\d\d-\d\d\d\d$/;
-        });
-
-
-    itShouldVerify('text with ng:minlength limit',
-        ['', 'aaa', 'aaaaa', 'aaaaaaaaa'],
-        ['a', 'aa'],
-        {'ng:minlength': 3});
-
-
-    itShouldVerify('text with ng:maxlength limit',
-        ['', 'a', 'aa', 'aaa'],
-        ['aaaa', 'aaaaa', 'aaaaaaaaa'],
-        {'ng:maxlength': 3});
-
-
-    it('should throw an error when scope pattern can\'t be found', inject(function($rootScope, $compile) {
-      var el = jqLite('<input ng:model="foo" ng:pattern="fooRegexp">');
-      $compile(el)($rootScope);
-
-      el.val('xx');
-      browserTrigger(el, 'keydown');
-      expect(function() { defer.flush(); }).
-        toThrow('Expected fooRegexp to be a RegExp but was undefined');
-
-      dealoc(el);
-    }));
 });

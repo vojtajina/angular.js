@@ -919,14 +919,3 @@ function ngAttributeAliasDirective(propName, attrName) {
 var ngAttributeAliasDirectives = {};
 forEach(BOOLEAN_ATTR, ngAttributeAliasDirective);
 ngAttributeAliasDirective(null, 'src');
-
-
-var ngChange = function() {
-  return function(scope, element, attr) {
-    scope.$on('$viewChange', function() {
-      dump('change');
-      // TODO(vojta): handle exception
-      scope.$eval(attr.ngChange);
-    });
-  };
-};

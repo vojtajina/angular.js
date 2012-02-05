@@ -8,10 +8,11 @@ describe('form', function() {
   });
 
 
-  it('should attach form to DOM', inject(function($rootScope, $compile) {
-    doc = angular.element('<form>');
+  it('should instantiate form and attach it to DOM', inject(function($rootScope, $compile) {
+    doc = jqLite('<form>');
     $compile(doc)($rootScope);
     expect(doc.data('$form')).toBeTruthy();
+    expect(doc.data('$form') instanceof FormController).toBe(true);
   }));
 
 
@@ -51,22 +52,6 @@ describe('form', function() {
     expect($rootScope.myForm).toBeTruthy();
     expect(doc.data('$form')).toBeTruthy();
     expect(doc.data('$form')).toEqual($rootScope.myForm);
-  }));
-
-
-  it('should have ng-valide/ng-invalid style', inject(function($rootScope, $compile) {
-    doc = angular.element('<form name="myForm"><input type=text ng:model=text required>');
-    $compile(doc)($rootScope);
-    $rootScope.text = 'misko';
-    $rootScope.$digest();
-
-    expect(doc.hasClass('ng-valid')).toBe(true);
-    expect(doc.hasClass('ng-invalid')).toBe(false);
-
-    $rootScope.text = '';
-    $rootScope.$digest();
-    expect(doc.hasClass('ng-valid')).toBe(false);
-    expect(doc.hasClass('ng-invalid')).toBe(true);
   }));
 
 
@@ -119,4 +104,59 @@ describe('form', function() {
     expect(parent.$error.myRule).toBeUndefined();
     expect(child.$error.myRule).toBeUndefined();
   }));
+
+
+  it('should publish widgets', inject(function($compile, $rootScope) {
+    doc = jqLite('<form name="form"><input type="text" name="w1" ng:model="some" /></form>');
+    $compile(doc)($rootScope);
+
+    var widget = $rootScope.form.w1;
+    expect(widget).toBeDefined();
+    expect(widget.$pristine).toBe(true);
+    expect(widget.$dirty).toBe(false);
+    expect(widget.$valid).toBe(true);
+    expect(widget.$invalid).toBe(false);
+  }));
+
+
+  describe('validation', function() {
+    var formElement, form, widgetScope;
+
+    beforeEach(inject(function($compile, $rootScope) {
+      formElement = doc = jqLite('<form name="form"><input type="text" ng:model="name" name="name" /></form>');
+      $compile(doc)($rootScope);
+      $rootScope.$digest();
+      widgetScope = formElement.find('input').scope();
+      form = formElement.data('$form');
+    }));
+
+
+    it('should have ng-valid/ng-invalid css class', function() {
+      expect(formElement).toBeValid();
+
+      widgetScope.$emit('$invalid', 'ERROR');
+      widgetScope.$apply();
+      expect(formElement).toBeInvalid();
+
+      widgetScope.$emit('$invalid', 'ANOTHER');
+      widgetScope.$apply();
+
+      widgetScope.$emit('$valid', 'ERROR');
+      widgetScope.$apply();
+      expect(formElement).toBeInvalid();
+
+      widgetScope.$emit('$valid', 'ANOTHER');
+      widgetScope.$apply();
+      expect(formElement).toBeValid();
+    });
+
+
+    it('should have ng-pristine/ng-dirty css class', function() {
+      expect(formElement).toBePristine();
+
+      widgetScope.$emit('$viewTouch');
+      widgetScope.$apply();
+      expect(formElement).toBeDirty();
+    });
+  });
 });

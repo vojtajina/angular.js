@@ -256,6 +256,7 @@ var NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))\s*$/;
     </doc:example>
  */
 var ngListDirective = function() {
+  // TODO(vojta): require validator
   return function(scope, element, attr) {
     var parse = function(viewValue) {
       var list = [];
@@ -628,8 +629,9 @@ function textInputType(scope, element, attr) {
     } else {
       patternValidator = function(value) {
         var patternObj = scope.$eval(pattern);
+
         if (!patternObj || !patternObj.test) {
-         throw new Error('Expected ' + pattern + ' to be a RegExp but was ' + patternObj);
+          throw new Error('Expected ' + pattern + ' to be a RegExp but was ' + patternObj);
         }
         return emit(patternObj, value);
       };
@@ -881,16 +883,19 @@ var ngModelDirective = ['$parse', function($parse) {
           if (isDefined(value)) value = fn(value);
         });
 
+        console.log(scope.$parsers, value);
         if (isDefined(value)) {
           // TODO(vojta): fire only if model really changes ?
+
           scope.$modelValue = value;
-          setter(scope.$parent, scope.$modelValue);
+          setter(scope.$parent, value);
           scope.$emit('$viewChange', value);
         }
       };
 
       // model -> value
       scope.$watch(getter, function(value) {
+        // TODO(vojta): use equals ?
         if (scope.$modelValue === value) return;
         console.log('model change', value);
 
@@ -946,5 +951,13 @@ var ngModelDirective = ['$parse', function($parse) {
         return $emit.call(this, event, args);
       };
     }
+  };
+}];
+
+var ngChange = [function() {
+  return function(scope, element, attr) {
+    scope.$on('$viewChange', function() {
+      scope.$eval(attr.ngChange);
+    });
   };
 }];

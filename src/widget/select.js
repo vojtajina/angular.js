@@ -274,8 +274,9 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
           });
         });
 
+        // TODO(vojta): can't we optimize this ?
         scope.$render = render;
-        scope.$watch(valuesFn, render);
+        scope.$watch(render);
 
         function render() {
           var optionGroups = {'':[]}, // Temporary location for the option groups before we render them

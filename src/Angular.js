@@ -91,6 +91,7 @@ var $boolean          = 'boolean',
     angular           = window.angular || (window.angular = {}),
     angularModule,
     /** @name angular.module.ng */
+    // TODO(vojta); should be removed / angular public !!!
     angularInputType  = extensionMap(angular, 'inputType', lowercase),
     nodeName_,
     uid               = ['0', '0', '0'],
