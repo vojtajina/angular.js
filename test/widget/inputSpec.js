@@ -683,27 +683,34 @@ describe('input', function() {
 
   describe('ng:required', function() {
 
-    // TODO(vojta)
-    xit('should allow bindings on ng:required', function() {
-      compileInput('<input type="text" ng:model="price" ng:required="{{required}}" />');
-      scope.price = '';
-      scope.required = false;
-      scope.$digest();
-      expect(element).toBeValid();
+    it('should allow bindings on ng:required', function() {
+      compileInput('<input type="text" ng:model="value" ng:required="{{required}}" />');
 
-      scope.price = 'xxx';
-      scope.$digest();
-      expect(element).toBeValid();
+      scope.$apply(function() {
+        scope.required = false;
+      });
 
-      scope.price = '';
-      scope.required =  true;
-      scope.$digest();
-      expect(element).toBeInvalid();
+      changeInputValueTo('');
+      expect(inputElm).toBeValid();
 
-      element.val('abc');
-      browserTrigger(element);
-      defer.flush();
-      expect(element).toBeValid();
+
+      scope.$apply(function() {
+        scope.required = true;
+      });
+      expect(inputElm).toBeInvalid();
+
+      scope.$apply(function() {
+        scope.value = 'some';
+      });
+      expect(inputElm).toBeValid();
+
+      changeInputValueTo('');
+      expect(inputElm).toBeInvalid();
+
+      scope.$apply(function() {
+        scope.required = false;
+      });
+      expect(inputElm).toBeValid();
     });
   });
 

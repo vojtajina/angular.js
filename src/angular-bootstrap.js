@@ -102,6 +102,7 @@
 
     bindJQuery();
 
+    // TODO(vojta): should use bootstrap without angular prefix
     angularInit(document, angular.bootstrap);
   }
 
@@ -113,3 +114,4 @@
 
 })(window, document);
 
+// TODO(vojta): should publish angular api !

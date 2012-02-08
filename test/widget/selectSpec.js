@@ -743,5 +743,45 @@ describe('select', function() {
         expect(scope.selected).toEqual([scope.values[0]]);
       });
     });
+
+    describe('ng:required', function() {
+
+      iit('should allow bindings on ng:required', function() {
+        createSelect({
+          'ng:model': 'selected',
+          'ng:options': 'item.id as item.name for item in values',
+          'ng:required': 'required'
+        });
+
+        scope.$apply(function() {
+          scope.values = [{name: 'A'}, {name: 'B'}];
+          scope.required = false;
+        });
+
+        element.val('');
+        browserTrigger(element, 'change');
+        expect(element).toBeValid();
+
+
+        scope.$apply(function() {
+          scope.required = true;
+        });
+        expect(element).toBeInvalid();
+
+        scope.$apply(function() {
+          scope.value = '1';
+        });
+        expect(element).toBeValid();
+
+        element.val('');
+        browserTrigger(element, 'change');
+        expect(element).toBeInvalid();
+
+        scope.$apply(function() {
+          scope.required = false;
+        });
+        expect(element).toBeValid();
+      });
+    });
   });
 });

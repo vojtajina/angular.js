@@ -140,7 +140,7 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
       // required validator
       if (attr.required) {
         var requiredValidator = multiple ? function(value) {
-          scope.$emit(value && value.length ? '$valid' : '$invalid', 'REQUIRED');
+          scope.$emit(!attr.required || (value && value.length) ? '$valid' : '$invalid', 'REQUIRED');
           return value;
         } : function(value) {
           scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');

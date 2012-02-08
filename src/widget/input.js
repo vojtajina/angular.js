@@ -676,23 +676,31 @@ function textInputType(scope, element, attr) {
   }
 
   // required validator
-  if (attr.required) {
-    scope.$on('$viewTouch', function() {
-      if (!scope.$viewValue) scope.$emit('$invalid', 'REQUIRED');
-    });
+  // TODO(vojta): don't care if nor ng:required neither required defined
+  scope.$on('$viewTouch', function() {
+    if (attr.required && !scope.$viewValue) scope.$emit('$invalid', 'REQUIRED');
+  });
 
-    scope.$parsers.push(function(value) {
-      scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
-      return value;
-    });
+  scope.$parsers.push(function(value) {
+    scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
+    return value || undefined;
+  });
 
-    scope.$formatters.push(function(value) {
-      if (scope.$dirty) {
-        scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
-      }
-      return value;
-    });
-  }
+  scope.$formatters.push(function(value) {
+    if (scope.$dirty) {
+      scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
+    }
+    return value;
+  });
+
+  // TODO(vojta): don't watch if ng:required not defined
+  scope.$watch(function() {
+    return attr.required;
+  }, function() {
+    if (scope.$dirty) {
+      scope.$emit(!attr.required || scope.$viewValue ? '$valid' : '$invalid', 'REQUIRED');
+    }
+  });
 };
 
 function numberInputType(scope, element, attr) {

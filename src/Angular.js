@@ -963,6 +963,7 @@ function bindJQuery() {
   } else {
     jqLite = jqLiteWrap;
   }
+  // TODO*vojta): should be in angularpublic
   angular.element = jqLite;
 }
 
