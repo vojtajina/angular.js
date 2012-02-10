@@ -41,7 +41,7 @@ describe('select', function() {
 
     it('should require', function() {
       compile(
-        '<select name="select" ng:model="selection" required ng:change="change()">' +
+        '<select name="select" ng:model="$parent.selection" required ng:change="change()">' +
           '<option value=""></option>' +
           '<option value="c">C</option>' +
         '</select>');
@@ -78,7 +78,7 @@ describe('select', function() {
 
     it('should not be invalid if no require', function() {
       compile(
-        '<select name="select" ng:model="selection">' +
+        '<select name="select" ng:model="$parent.selection">' +
           '<option value=""></option>' +
           '<option value="c">C</option>' +
         '</select>');
@@ -93,7 +93,7 @@ describe('select', function() {
 
     it('should support type="select-multiple"', function() {
       compile(
-        '<select ng:model="selection" multiple>' +
+        '<select ng:model="$parent.selection" multiple>' +
           '<option>A</option>' +
           '<option>B</option>' +
         '</select>');
@@ -108,7 +108,7 @@ describe('select', function() {
 
     it('should require', function() {
       compile(
-        '<select name="select" ng:model="selection" multiple required>' +
+        '<select name="select" ng:model="$parent.selection" multiple required>' +
           '<option>A</option>' +
           '<option>B</option>' +
         '</select>');
@@ -156,14 +156,14 @@ describe('select', function() {
 
     function createSingleSelect(blank, unknown) {
       createSelect({
-        'ng:model':'selected',
+        'ng:model':'$parent.selected',
         'ng:options':'value.name for value in values'
       }, blank, unknown);
     }
 
     function createMultiSelect(blank, unknown) {
       createSelect({
-        'ng:model':'selected',
+        'ng:model':'$parent.selected',
         'multiple':true,
         'ng:options':'value.name for value in values'
       }, blank, unknown);
@@ -172,7 +172,7 @@ describe('select', function() {
 
     it('should throw when not formated "? for ? in ?"', function() {
       expect(function() {
-        compile('<select ng:model="selected" ng:options="i dont parse"></select>');
+        compile('<select ng:model="$parent.selected" ng:options="i dont parse"></select>');
       }).toThrow("Expected ng:options in form of '_select_ (as _label_)? for (_key_,)?_value_ in" +
                  " _collection_' but got 'i dont parse'.");
     });
@@ -196,12 +196,12 @@ describe('select', function() {
 
     it('should render an object', function() {
       createSelect({
-        'ng:model':'selected',
+        'ng:model': '$parent.selected',
         'ng:options': 'value as key for (key, value) in object'
       });
 
       scope.$apply(function() {
-        scope.object = {'red':'FF0000', 'green':'00FF00', 'blue':'0000FF'};
+        scope.object = {'red': 'FF0000', 'green': '00FF00', 'blue': '0000FF'};
         scope.selected = scope.object.red;
       });
 
@@ -380,8 +380,8 @@ describe('select', function() {
 
       it('should bind to scope value and group', function() {
         createSelect({
-          'ng:model':'selected',
-          'ng:options':'item.name group by item.group for item in values'
+          'ng:model': '$parent.selected',
+          'ng:options': 'item.name group by item.group for item in values'
         });
 
         scope.$apply(function() {
@@ -419,7 +419,7 @@ describe('select', function() {
 
       it('should bind to scope value through experession', function() {
         createSelect({
-          'ng:model': 'selected',
+          'ng:model': '$parent.selected',
           'ng:options': 'item.id as item.name for item in values'
         });
 
@@ -440,8 +440,8 @@ describe('select', function() {
 
       it('should bind to object key', function() {
         createSelect({
-          'ng:model':'selected',
-          'ng:options':'key as value for (key, value) in object'
+          'ng:model': '$parent.selected',
+          'ng:options': 'key as value for (key, value) in object'
         });
 
         scope.$apply(function() {
@@ -461,8 +461,8 @@ describe('select', function() {
 
       it('should bind to object value', function() {
         createSelect({
-          'ng:model':'selected',
-          'ng:options':'value as key for (key, value) in object'
+          'ng:model': '$parent.selected',
+          'ng:options': 'value as key for (key, value) in object'
         });
 
         scope.$apply(function() {
@@ -664,7 +664,7 @@ describe('select', function() {
 
       it('should update model on change through expression', function() {
         createSelect({
-          'ng:model': 'selected',
+          'ng:model': '$parent.selected',
           'ng:options': 'item.id as item.name for item in values'
         });
 
@@ -749,7 +749,7 @@ describe('select', function() {
 
       it('should allow bindings on ng:required', function() {
         createSelect({
-          'ng:model': 'value',
+          'ng:model': '$parent.value',
           'ng:options': 'item.name for item in values',
           'ng:required': '{{required}}'
         }, true);

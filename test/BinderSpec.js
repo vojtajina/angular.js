@@ -464,8 +464,8 @@ describe('Binder', function() {
   it('ItShouldSelectTheCorrectRadioBox', inject(function($rootScope, $compile) {
     element = $compile(
       '<div>' +
-        '<input type="radio" ng:model="sex" value="female">' +
-        '<input type="radio" ng:model="sex" value="male">' +
+        '<input type="radio" ng:model="$parent.sex" value="female">' +
+        '<input type="radio" ng:model="$parent.sex" value="male">' +
       '</div>')($rootScope);
     var female = jqLite(element[0].childNodes[0]);
     var male = jqLite(element[0].childNodes[1]);

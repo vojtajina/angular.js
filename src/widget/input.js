@@ -881,7 +881,7 @@ var ngModelDirective = ['$parse', function($parse) {
         if (isDefined(value)) {
           // TODO(vojta): fire only if model really changed ?
           scope.$modelValue = value;
-          setter(scope.$parent, value);
+          setter(scope, value);
           scope.$emit('$viewChange', value);
         }
       };
