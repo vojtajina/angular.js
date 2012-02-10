@@ -97,7 +97,8 @@ function publishExternalAPI(angular){
             ngView: ngViewDirective,
             ngModel: ngModelDirective,
             ngList: ngListDirective,
-            ngChange: ngChange
+            ngChange: ngChange,
+            ngBindEvents: ngBindEvents
           }).
         directive(ngEventDirectives).
         directive(ngAttributeAliasDirectives);

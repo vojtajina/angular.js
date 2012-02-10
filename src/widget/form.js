@@ -161,7 +161,7 @@ FormController.prototype.registerWidget = function(widget, alias) {
       </doc:scenario>
     </doc:example>
  */
-var ngFormDirective = ['$controller', function($controller) {
+var ngFormDirective = ['$controller', '$parse', function($controller, $parse) {
   return {
     restrict: 'E',
     compile: function() {
@@ -176,7 +176,7 @@ var ngFormDirective = ['$controller', function($controller) {
           });
 
           if (name) {
-            scope[name] = form;
+            $parse(name).assign(scope, form);
           }
 
           forEach(['valid', 'invalid', 'dirty', 'pristine'], function(name) {

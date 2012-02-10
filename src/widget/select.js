@@ -138,18 +138,23 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
 
 
       // required validator
-      if (attr.required) {
-        var requiredValidator = multiple ? function(value) {
-          scope.$emit(!attr.required || (value && value.length) ? '$valid' : '$invalid', 'REQUIRED');
-          return value;
-        } : function(value) {
-          scope.$emit(value ? '$valid' : '$invalid', 'REQUIRED');
-          return value;
-        };
+      var requiredValidator = multiple ? function(value) {
+        scope.$emit(!attr.required || (value && value.length) ? '$valid' : '$invalid', 'REQUIRED');
+        return value;
+      } : function(value) {
+        scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
+        return value;
+      };
 
-        scope.$parsers.push(requiredValidator);
-        scope.$formatters.push(requiredValidator);
-      }
+      scope.$parsers.push(requiredValidator);
+      scope.$formatters.push(requiredValidator);
+
+      // TODO(vojta): watch only if ng:required specified
+      scope.$watch(function() {
+        return attr.required;
+      }, function() {
+        requiredValidator(scope.$viewValue);
+      });
 
       if (optionsExp) Options(scope, element);
       else if (multiple) Multiple(scope, element);
@@ -268,14 +273,15 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
             }
             scope.$touch();
 
-            if (isDefined(value) && scope.$viewValue !== value) {
+            if (scope.$viewValue !== value) {
               scope.$read(value);
             }
           });
         });
 
-        // TODO(vojta): can't we optimize this ?
         scope.$render = render;
+
+        // TODO(vojta): can't we optimize this ?
         scope.$watch(render);
 
         function render() {

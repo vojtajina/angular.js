@@ -129,15 +129,16 @@ describe('ng:model', function() {
     });
 
 
-    it('should pipeline all registered formatters and set result to $viewValue', function() {
+    it('should pipeline all registered formatters in reversed order and set result to $viewValue',
+        function() {
       var log = [];
 
-      scope.$formatters.push(function(value) {
+      scope.$formatters.unshift(function(value) {
         log.push(value);
         return value + 2;
       });
 
-      scope.$formatters.push(function(value) {
+      scope.$formatters.unshift(function(value) {
         log.push(value);
         return value + '';
       });
@@ -151,12 +152,12 @@ describe('ng:model', function() {
 
 
     it('should stop if formatter returns undefined (invalid)', function() {
-      var before = jasmine.createSpy('before invalid'),
+      var before = jasmine.createSpy('before invalid').andReturn(true),
           after = jasmine.createSpy('after invalid');
 
-      scope.$formatters.push(before);
-      scope.$formatters.push(function() {return undefiend;});
-      scope.$formatters.push(after);
+      scope.$formatters.unshift(before);
+      scope.$formatters.unshift(function() {return undefined;});
+      scope.$formatters.unshift(after);
 
       scope.$apply(function() {
         scope.modelExp = 3;
@@ -351,18 +352,28 @@ describe('input', function() {
 
   describe('required', function() {
 
-    it('should be $valid if not touched (pristine)', function() {
+    it('should be $invalid but $pristine if not touched', function() {
       compileInput('<input type="text" ng:model="name" name="alias" required />');
 
       scope.$apply(function() {
         scope.name = '';
       });
 
-      expect(inputElm).toBeValid();
-
-      browserTrigger(inputElm, 'blur');
       expect(inputElm).toBeInvalid();
+      expect(inputElm).toBePristine();
+
+      changeInputValueTo('');
+      expect(inputElm).toBeInvalid();
+      expect(inputElm).toBeDirty();
     });
+
+
+    it('should allow empty string if not required', function() {
+      compileInput('<input type="text" ng:model="foo" />');
+      changeInputValueTo('a');
+      changeInputValueTo('');
+      expect(scope.foo).toBe('');
+    })
   });
 
 
@@ -476,6 +487,18 @@ describe('input', function() {
         changeInputValueTo('0');
         expect(inputElm).toBeValid();
         expect(scope.value).toBe(0);
+        expect(scope.form.alias.$error.REQUIRED).toBeFalsy();
+      });
+
+      it('should be valid even if value 0 is set from model', function() {
+        compileInput('<input type="number" ng:model="value" name="alias" required />');
+
+        scope.$apply(function() {
+          scope.value = 0;
+        });
+
+        expect(inputElm).toBeValid();
+        expect(inputElm.val()).toBe('0')
         expect(scope.form.alias.$error.REQUIRED).toBeFalsy();
       });
     });
@@ -740,4 +763,31 @@ describe('input', function() {
       expect(scope.changeFn).toHaveBeenCalledOnce();
     });
   });
+
+
+  describe('ng:bind-events', function() {
+
+    it('should bind events', function() {
+      compileInput('<input type="text" ng:model="value" ng:bind-events="change input" />');
+
+      inputElm.val('new-value');
+      browserTrigger(inputElm, 'input');
+
+      expect(scope.value).toBe('new-value');
+    });
+
+
+    it('should use defer if binding keydown', inject(function($browser) {
+      compileInput('<input type="text" ng:model="value" ng:bind-events="keydown" />');
+
+      inputElm.val('new-value');
+      browserTrigger(inputElm, 'keydown');
+
+      expect(scope.value).toBeUndefined();
+      $browser.defer.flush();
+      expect(scope.value).toBe('new-value');
+    }));
+  });
 });
+
+

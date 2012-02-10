@@ -156,7 +156,7 @@ describe('Binder', function() {
     expect(html.indexOf('action="foo();"')).toBeGreaterThan(0);
   });
 
-  it('RepeaterAdd', inject(function($rootScope, $compile, $browser) {
+  it('RepeaterAdd', inject(function($rootScope, $compile) {
     element = $compile('<div><input type="text" ng:model="item.x" ng:repeat="item in items"></div>')($rootScope);
     $rootScope.items = [{x:'a'}, {x:'b'}];
     $rootScope.$apply();
@@ -166,8 +166,7 @@ describe('Binder', function() {
     expect(second.val()).toEqual('b');
 
     first.val('ABC');
-    browserTrigger(first, 'keydown');
-    $browser.defer.flush();
+    browserTrigger(first, 'blur');
     expect($rootScope.items[0].x).toEqual('ABC');
   }));
 
@@ -445,7 +444,7 @@ describe('Binder', function() {
     inject(function($rootScope, $exceptionHandler, $log, $compile) {
       element = $compile(
         '<div>' +
-          '<input type="button" ng:click="greeting=\'ABC\'"/>' +
+          '<input type="button" ng:click="$parent.greeting=\'ABC\'"/>' +
           '<input type="button" ng:click=":garbage:"/>' +
         '</div>')($rootScope);
       var first = jqLite(element.find('input')[0]);

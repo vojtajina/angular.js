@@ -55,6 +55,15 @@ describe('form', function() {
   }));
 
 
+  it('should allow name to be an expression', inject(function($rootScope, $compile) {
+    doc = jqLite('<form name="obj.myForm"></form>');
+    $compile(doc)($rootScope);
+
+    expect($rootScope.obj).toBeDefined();
+    expect($rootScope.obj.myForm).toBeTruthy();
+  }));
+
+
   it('should chain nested forms', inject(function($rootScope, $compile) {
     doc = angular.element(
         '<ng:form name=parent>' +

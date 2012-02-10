@@ -581,17 +581,9 @@ var inputType = {
 };
 
 
-// TODO(vojta):
-//var key = event.keyCode;
-//if (/*command*/   key !== 91 &&
-//    /*modifiers*/ !(15 < key && key < 19) &&
-//    /*arrow*/     !(37 < key && key < 40)) {
-// keydown change input
-
 function textInputType(scope, element, attr) {
   element.bind('blur', function() {
     scope.$apply(function() {
-
       // TODO(vojta): return whether it changed model, so that we can
       scope.$touch();
 
@@ -677,29 +669,21 @@ function textInputType(scope, element, attr) {
 
   // required validator
   // TODO(vojta): don't care if nor ng:required neither required defined
-  scope.$on('$viewTouch', function() {
-    if (attr.required && !scope.$viewValue) scope.$emit('$invalid', 'REQUIRED');
-  });
-
   scope.$parsers.push(function(value) {
     scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
-    return value || undefined;
+    return !attr.required ? value : value || undefined;
   });
 
   scope.$formatters.push(function(value) {
-    if (scope.$dirty) {
-      scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
-    }
-    return value;
+    scope.$emit(!attr.required || value ? '$valid' : '$invalid', 'REQUIRED');
+    return !attr.required ? value : value || undefined;
   });
 
   // TODO(vojta): don't watch if ng:required not defined
   scope.$watch(function() {
     return attr.required;
   }, function() {
-    if (scope.$dirty) {
-      scope.$emit(!attr.required || scope.$viewValue ? '$valid' : '$invalid', 'REQUIRED');
-    }
+    scope.$emit(!attr.required || scope.$viewValue ? '$valid' : '$invalid', 'REQUIRED');
   });
 };
 
@@ -717,13 +701,7 @@ function numberInputType(scope, element, attr) {
   });
 
   scope.$formatters.push(function(value) {
-    if (isNumber(value)) {
-      scope.$emit('$valid', 'NUMBER');
-      return '' + value;
-    } else {
-      scope.$emit('$invalid', 'NUMBER');
-      return undefined;
-    }
+    return '' + value;
   });
 
   if (attr.min) {
@@ -757,6 +735,16 @@ function numberInputType(scope, element, attr) {
     scope.$parsers.push(maxValidator);
     scope.$formatters.push(maxValidator);
   }
+
+  scope.$formatters.push(function(value) {
+    if (isNumber(value)) {
+      scope.$emit('$valid', 'NUMBER');
+      return value;
+    } else {
+      scope.$emit('$invalid', 'NUMBER');
+      return undefined;
+    }
+  });
 }
 
 function urlInputType(scope, element, attr) {
@@ -885,16 +873,13 @@ var ngModelDirective = ['$parse', function($parse) {
       // view -> model
       scope.$read = function(value) {
         scope.$viewValue = value;
-        console.log('view change', value);
 
         forEach(scope.$parsers, function(fn) {
           if (isDefined(value)) value = fn(value);
         });
 
-        console.log(scope.$parsers, value);
         if (isDefined(value)) {
-          // TODO(vojta): fire only if model really changes ?
-
+          // TODO(vojta): fire only if model really changed ?
           scope.$modelValue = value;
           setter(scope.$parent, value);
           scope.$emit('$viewChange', value);
@@ -905,16 +890,19 @@ var ngModelDirective = ['$parse', function($parse) {
       scope.$watch(getter, function(value) {
         // TODO(vojta): use equals ?
         if (scope.$modelValue === value) return;
-        console.log('model change', value);
+
 
         scope.$modelValue = value;
 
-        forEach(scope.$formatters, function(fn) {
-          if (isDefined(value)) value = fn(value);
-        });
+        var formatters = scope.$formatters,
+            idx = formatters.length;
+
+        while(idx && isDefined(value)) {
+          value = formatters[--idx](value);
+        }
 
         if (isDefined(value)) {
-          // TODO(vojta): fire only if value really changes ?
+          // TODO(vojta): fire only if value really changed ?
           scope.$viewValue = value;
           scope.$render();
         }
@@ -962,6 +950,7 @@ var ngModelDirective = ['$parse', function($parse) {
   };
 }];
 
+
 var ngChange = [function() {
   return function(scope, element, attr) {
     scope.$on('$viewChange', function() {
@@ -969,3 +958,33 @@ var ngChange = [function() {
     });
   };
 }];
+
+
+var ngBindEvents = ['$defer', function($defer) {
+  return function(scope, element, attr) {
+    var events = attr.ngBindEvents,
+        containsKeyDown = events.indexOf('keydown') !== -1,
+        readValue = function() {
+      // TODO(vojta): return whether it changed model, so that we can
+      scope.$touch();
+
+      var value = trim(element.val());
+      if (scope.$viewValue !== value) {
+        scope.$read(value);
+      }
+    };
+
+    element.bind(events, containsKeyDown ? function() {
+      $defer(readValue, 0);
+    } : function() {
+      scope.$apply(readValue);
+    });
+  };
+}];
+
+//var key = event.keyCode;
+//if (/*command*/   key !== 91 &&
+//    /*modifiers*/ !(15 < key && key < 19) &&
+//    /*arrow*/     !(37 < key && key < 40)) {
+// keydown change input
+

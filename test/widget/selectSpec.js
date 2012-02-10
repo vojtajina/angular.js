@@ -586,7 +586,7 @@ describe('select', function() {
 
         // check blank option is first and is compiled
         expect(element.find('option').length).toBe(2);
-        option =element.find('option').eq(0);
+        option = element.find('option').eq(0);
         expect(option.val()).toBe('');
         expect(option.text()).toBe('blank is not so blank');
       });
@@ -744,17 +744,19 @@ describe('select', function() {
       });
     });
 
+
     describe('ng:required', function() {
 
-      iit('should allow bindings on ng:required', function() {
+      it('should allow bindings on ng:required', function() {
         createSelect({
-          'ng:model': 'selected',
-          'ng:options': 'item.id as item.name for item in values',
-          'ng:required': 'required'
-        });
+          'ng:model': 'value',
+          'ng:options': 'item.name for item in values',
+          'ng:required': '{{required}}'
+        }, true);
+
 
         scope.$apply(function() {
-          scope.values = [{name: 'A'}, {name: 'B'}];
+          scope.values = [{name: 'A', id: 1}, {name: 'B', id: 2}];
           scope.required = false;
         });
 
@@ -762,14 +764,13 @@ describe('select', function() {
         browserTrigger(element, 'change');
         expect(element).toBeValid();
 
-
         scope.$apply(function() {
           scope.required = true;
         });
         expect(element).toBeInvalid();
 
         scope.$apply(function() {
-          scope.value = '1';
+          scope.value = scope.values[0];
         });
         expect(element).toBeValid();
 
