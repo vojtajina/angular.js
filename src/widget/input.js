@@ -732,20 +732,20 @@ var inputDirective = [function() {
  * @ngdoc object
  * @name angular.module.ng.$compileProvider.directive.ng:model.NgModelController
  *
- * @property {string} viewValue
- * @property {*} modelValue
+ * @property {string} viewValue Actual string value in the view.
+ * @property {*} modelValue The value in the model, that the widget is bound to.
  * @property {Array.<Function>} parsers Whenever the widget reads value from the DOM, it executes
  *     all of these functions to sanitize / convert the value as well as validate.
  *
  * @property {Array.<Function>} formatters Wheneveer the model value changes, it executes all of
  *     these functions to convert the value as well as validate.
  *
- * @property {Object} error Hash object with all errors.
+ * @property {Object} error An bject hash with all errors as keys.
  *
- * @property {boolean} pristine Oposite of dirty.
- * @property {boolean} dirty Whether the user already touched the widget or not.
- * @property {boolean} valid Whether the widget is valid.
- * @property {boolean} invalid Oposite of valid.
+ * @property {boolean} pristine True if user has not interacted with the widget yet.
+ * @property {boolean} dirty True if user has already interacted with the widget.
+ * @property {boolean} valid True if there is no error.
+ * @property {boolean} invalid True if at least one error on the widget.
  *
  * @description
  *
@@ -770,6 +770,13 @@ var NgModelController = ['$scope', '$exceptionHandler', 'ngModel',
    * @methodOf angular.module.ng.$compileProvider.directive.ng:model.NgModelController
    *
    * @return {boolean} Whether it did change state.
+   *
+   * @description
+   * This method should be called from within a DOM event handler.
+   * For example {@link angular.module.ng.$compileProvider.directive.input input} or
+   * {@link angular.module.ng.$compileProvider.directive.select select} directives call it.
+   *
+   * It changes state to `dirty` and emits `$viewTouch` event if the state was `pristine` before.
    */
   this.touch = function() {
     if (this.dirty) return false;
@@ -791,13 +798,10 @@ var NgModelController = ['$scope', '$exceptionHandler', 'ngModel',
    * @methodOf angular.module.ng.$compileProvider.directive.ng:model.NgModelController
    *
    * @description
-   * Calling this method `$emit` either `$valid` or `$invalid` event on related scope.
-   * But it emits the event only if necesarry (i.e. does not emit `$invalid` if given validator is
-   * already marked as invalid).
+   * Change the validity state, and notifies the form when the widget changes validity. (i.e. does
+   * not emit `$invalid` if given validator is already marked as invalid).
    *
-   * It also updates widget state.
-   *
-   * This method should be called by validators - parser or formatter.
+   * This method should be called by validators - ie the parser or formatter method.
    *
    * @param {string} name Name of the validator.
    * @param {boolean} isValid Whether it should $emit `$valid` (true) or `$invalid` (false) event.
@@ -807,18 +811,16 @@ var NgModelController = ['$scope', '$exceptionHandler', 'ngModel',
     if (!isValid && this.error[name]) return;
     if (isValid && !this.error[name]) return;
 
-    if (!isValid) {
-      this.error[name] = true;
-      this.invalid = true;
-      this.valid = false;
-    }
-
     if (isValid) {
       delete this.error[name];
       if (equals(this.error, {})) {
         this.valid = true;
         this.invalid = false;
       }
+    } else {
+      this.error[name] = true;
+      this.invalid = true;
+      this.valid = false;
     }
 
     return $scope.$emit(isValid ? '$valid' : '$invalid', name, this);

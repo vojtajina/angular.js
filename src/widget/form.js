@@ -5,12 +5,15 @@
  * @ngdoc object
  * @name angular.module.ng.$compileProvider.directive.form.FormController
  *
- * @property {boolean} pristine Oposite of dirty.
- * @property {boolean} dirty Whether the user already touched the form or not.
- * @property {boolean} valid Whether the form is valid.
- * @property {boolean} invalid Oposite of valid.
+ * @property {boolean} pristine True if user has not interacted with the form yet.
+ * @property {boolean} dirty True if user has already interacted with the form.
+ * @property {boolean} valid True if all of the containg widgets are valid.
+ * @property {boolean} invalid True if at least one containing widget is invalid.
  *
- * @property {Object} error
+ * @property {Object} error Is an object hash, containing references to all invalid widgets, where
+ *
+ *  - keys are error ids (such as `REQUIRED`, `URL` or `EMAIL`),
+ *  - values are arrays of widgets that are invalid with given error.
  *
  * @description
  * Form is a controller that keeps track of all registered widgets.
@@ -122,10 +125,7 @@ FormController.prototype.registerWidget = function(widget, alias) {
  * Directive that instantiates
  * {@link angular.module.ng.$compileProvider.directive.form.FormController Form} controller.
  *
- * The controller is attached to jQuery `.data()` under the `$form` key.
- *
  * If `name` attribute is specified, the controller is published to the scope as well.
- *
  *
  * # Alias: `ng:form`
  *
@@ -138,13 +138,13 @@ FormController.prototype.registerWidget = function(widget, alias) {
  * # CSS classes
  *  - `ng-valid` Is set if the form is valid.
  *  - `ng-invalid` Is set if the form is invalid.
- *  - `ng-pristine` Is set if the form is pristine (user has not touched any widget yet).
- *  - `ng-dirty` Is set if the form is dirty (user has touched at least one widget).
+ *  - `ng-pristine` Is set if the form is pristine.
+ *  - `ng-dirty` Is set if the form is dirty.
  *
  *
  * # Submitting a form and preventing default action
  *
- * Since the role of forms in client-side Angular applications is different than in old-school
+ * Since the role of forms in client-side Angular applications is different than in classical
  * roundtrip apps, it is desirable for the browser not to translate the form submission into a full
  * page reload that sends the data to the server. Instead some javascript logic should be triggered
  * to handle the form submission in application specific way.

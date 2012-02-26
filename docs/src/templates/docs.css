@@ -512,7 +512,7 @@ td.empty-corner-lt {
   width: 360px;
 }
 
-.error {
+.doc-example-live .error {
    color: red;
 }
 
