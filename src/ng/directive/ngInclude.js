@@ -74,7 +74,8 @@
 var ngIncludeDirective = ['$http', '$templateCache', '$anchorScroll', '$compile',
                   function($http,   $templateCache,   $anchorScroll,   $compile) {
   return {
-    restrict: 'EA',
+    restrict: 'ECA',
+    terminal: true,
     compile: function(element, attr) {
       var srcExp = attr.ngInclude || attr.src,
           onloadExp = attr.onload || '',
