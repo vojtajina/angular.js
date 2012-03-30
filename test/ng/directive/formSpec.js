@@ -127,9 +127,9 @@ describe('form', function() {
         inputB = doc.find('input').eq(1);
 
     inputA.val('val1');
-    browserTrigger(inputA, 'blur');
+    browserTrigger(inputA, 'change');
     inputB.val('val2');
-    browserTrigger(inputB, 'blur');
+    browserTrigger(inputB, 'change');
 
     expect(scope.firstName).toBe('val1');
     expect(scope.lastName).toBe('val2');

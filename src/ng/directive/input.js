@@ -367,8 +367,23 @@ function isEmpty(value) {
 }
 
 
-function textInputType(scope, element, attr, ctrl) {
-  element.bind('blur', function() {
+function textInputType(scope, element, attr, ctrl, $defer) {
+  var timeout;
+  element.bind('keydown', function(event) {
+    var key = event.keyCode;
+
+    //    command            modifiers                   arrows
+    if (key === 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) return;
+
+    if (!timeout) {
+      timeout = $defer(function() {
+        ctrl.$setViewValue(trim(element.val()));
+        timeout = null;
+      });
+    }
+  });
+
+  element.bind('change input', function() {
     scope.$apply(function() {
       ctrl.$setViewValue(trim(element.val()));
     });
@@ -448,8 +463,8 @@ function textInputType(scope, element, attr, ctrl) {
   }
 };
 
-function numberInputType(scope, element, attr, ctrl) {
-  textInputType(scope, element, attr, ctrl);
+function numberInputType(scope, element, attr, ctrl, $defer) {
+  textInputType(scope, element, attr, ctrl, $defer);
 
   ctrl.$parsers.push(function(value) {
     var empty = isEmpty(value);
@@ -510,8 +525,8 @@ function numberInputType(scope, element, attr, ctrl) {
   });
 }
 
-function urlInputType(scope, element, attr, ctrl) {
-  textInputType(scope, element, attr, ctrl);
+function urlInputType(scope, element, attr, ctrl, $defer) {
+  textInputType(scope, element, attr, ctrl, $defer);
 
   var urlValidator = function(value) {
     if (isEmpty(value) || URL_REGEXP.test(value)) {
@@ -527,8 +542,8 @@ function urlInputType(scope, element, attr, ctrl) {
   ctrl.$parsers.push(urlValidator);
 }
 
-function emailInputType(scope, element, attr, ctrl) {
-  textInputType(scope, element, attr, ctrl);
+function emailInputType(scope, element, attr, ctrl, $defer) {
+  textInputType(scope, element, attr, ctrl, $defer);
 
   var emailValidator = function(value) {
     if (isEmpty(value) || EMAIL_REGEXP.test(value)) {
@@ -709,13 +724,13 @@ function checkboxInputType(scope, element, attr, ctrl) {
       </doc:scenario>
     </doc:example>
  */
-var inputDirective = [function() {
+var inputDirective = ['$defer', function($defer) {
   return {
     restrict: 'E',
     require: '?ngModel',
     link: function(scope, element, attr, ctrl) {
       if (ctrl) {
-        (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrl);
+        (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrl, $defer);
       }
     }
   };
@@ -1002,69 +1017,6 @@ var ngChangeDirective = valueFn({
     });
   }
 });
-
-
-/**
- * @ngdoc directive
- * @name angular.module.ng.$compileProvider.directive.ng-model-instant
- *
- * @element input
- *
- * @description
- * By default, Angular udpates the model only on `blur` event - when the input looses focus.
- * If you want to update after every key stroke, use `ng-model-instant`.
- *
- * @example
- * <doc:example>
- *   <doc:source>
- *     First name: <input type="text" ng-model="firstName" /><br />
- *     Last name: <input type="text" ng-model="lastName" ng-model-instant /><br />
- *
- *     First name ({{firstName}}) is only updated on `blur` event, but the last name ({{lastName}})
- *     is updated immediately, because of using `ng-model-instant`.
- *   </doc:source>
- *   <doc:scenario>
- *     it('should update first name on blur', function() {
- *       input('firstName').enter('santa', 'blur');
- *       expect(binding('firstName')).toEqual('santa');
- *     });
- *
- *     it('should update last name immediately', function() {
- *       input('lastName').enter('santa', 'keydown');
- *       expect(binding('lastName')).toEqual('santa');
- *     });
- *   </doc:scenario>
- * </doc:example>
- */
-var ngModelInstantDirective = ['$browser', function($browser) {
-  return {
-    require: 'ngModel',
-    link: function(scope, element, attr, ctrl) {
-      var handler = function() {
-        scope.$apply(function() {
-          ctrl.$setViewValue(trim(element.val()));
-        });
-      };
-
-      var timeout;
-      element.bind('keydown', function(event) {
-        var key = event.keyCode;
-
-        //    command            modifiers                   arrows
-        if (key === 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) return;
-
-        if (!timeout) {
-          timeout = $browser.defer(function() {
-            handler();
-            timeout = null;
-          });
-        }
-      });
-
-      element.bind('change input', handler);
-    }
-  };
-}];
 
 
 var requiredDirective = [function() {

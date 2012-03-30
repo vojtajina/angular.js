@@ -254,14 +254,14 @@ describe('ng-model', function() {
     expect(element.hasClass('ng-invalid-email')).toBe(true);
 
     element.val('invalid-again');
-    browserTrigger(element, 'blur');
+    browserTrigger(element, 'change');
     expect(element).toBeInvalid();
     expect(element).toBeDirty();
     expect(element.hasClass('ng-valid-email')).toBe(false);
     expect(element.hasClass('ng-invalid-email')).toBe(true);
 
     element.val('vojta@google.com');
-    browserTrigger(element, 'blur');
+    browserTrigger(element, 'change');
     expect(element).toBeValid();
     expect(element).toBeDirty();
     expect(element.hasClass('ng-valid-email')).toBe(true);
@@ -292,7 +292,7 @@ describe('input', function() {
 
   function changeInputValueTo(value) {
     inputElm.val(value);
-    browserTrigger(inputElm, 'blur');
+    browserTrigger(inputElm, 'change');
   }
 
   beforeEach(inject(function($injector) {
@@ -1050,33 +1050,6 @@ describe('input', function() {
       browserTrigger(inputElm, 'click');
       expect(scope.changeFn).toHaveBeenCalledOnce();
     });
-  });
-
-
-  describe('ng-model-instant', function() {
-
-    it('should bind keydown, change, input events', inject(function($browser) {
-      compileInput('<input type="text" ng-model="value" ng-model-instant />');
-
-      inputElm.val('value1');
-      browserTrigger(inputElm, 'keydown');
-
-      // should be async (because of keydown)
-      expect(scope.value).toBeUndefined();
-
-      $browser.defer.flush();
-      expect(scope.value).toBe('value1');
-
-      inputElm.val('value2');
-      browserTrigger(inputElm, 'change');
-      expect(scope.value).toBe('value2');
-
-      if (msie < 9) return;
-
-      inputElm.val('value3');
-      browserTrigger(inputElm, 'input');
-      expect(scope.value).toBe('value3');
-    }));
   });
 
 
