@@ -152,7 +152,7 @@ describe('Binder', function() {
     expect(second.val()).toEqual('b');
 
     first.val('ABC');
-    browserTrigger(first, 'change');
+    browserTrigger(first, 'input');
     expect($rootScope.items[0].x).toEqual('ABC');
   }));
 

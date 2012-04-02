@@ -254,14 +254,14 @@ describe('ng-model', function() {
     expect(element.hasClass('ng-invalid-email')).toBe(true);
 
     element.val('invalid-again');
-    browserTrigger(element, 'change');
+    browserTrigger(element, 'input');
     expect(element).toBeInvalid();
     expect(element).toBeDirty();
     expect(element.hasClass('ng-valid-email')).toBe(false);
     expect(element.hasClass('ng-invalid-email')).toBe(true);
 
     element.val('vojta@google.com');
-    browserTrigger(element, 'change');
+    browserTrigger(element, 'input');
     expect(element).toBeValid();
     expect(element).toBeDirty();
     expect(element.hasClass('ng-valid-email')).toBe(true);
@@ -292,7 +292,7 @@ describe('input', function() {
 
   function changeInputValueTo(value) {
     inputElm.val(value);
-    browserTrigger(inputElm, 'change');
+    browserTrigger(inputElm, 'input');
   }
 
   beforeEach(inject(function($injector) {
@@ -379,7 +379,7 @@ describe('input', function() {
   it('should ignore input without ng-model attr', function() {
     compileInput('<input type="text" name="whatever" required />');
 
-    browserTrigger(inputElm, 'blur');
+    browserTrigger(inputElm, 'input');
     expect(inputElm.hasClass('ng-valid')).toBe(false);
     expect(inputElm.hasClass('ng-invalid')).toBe(false);
     expect(inputElm.hasClass('ng-pristine')).toBe(false);
@@ -753,7 +753,7 @@ describe('input', function() {
     it('should ignore checkbox without ng-model attr', function() {
       compileInput('<input type="checkbox" name="whatever" required />');
 
-      browserTrigger(inputElm, 'blur');
+      browserTrigger(inputElm, 'input');
       expect(inputElm.hasClass('ng-valid')).toBe(false);
       expect(inputElm.hasClass('ng-invalid')).toBe(false);
       expect(inputElm.hasClass('ng-pristine')).toBe(false);
@@ -851,7 +851,7 @@ describe('input', function() {
       compileInput('<textarea name="whatever" required></textarea>');
       inputElm = formElm.find('textarea');
 
-      browserTrigger(inputElm, 'blur');
+      browserTrigger(inputElm, 'input');
       expect(inputElm.hasClass('ng-valid')).toBe(false);
       expect(inputElm.hasClass('ng-invalid')).toBe(false);
       expect(inputElm.hasClass('ng-pristine')).toBe(false);

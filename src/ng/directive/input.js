@@ -367,27 +367,43 @@ function isEmpty(value) {
 }
 
 
-function textInputType(scope, element, attr, ctrl, $defer) {
-  var timeout;
-  element.bind('keydown', function(event) {
-    var key = event.keyCode;
+function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
-    //    command            modifiers                   arrows
-    if (key === 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) return;
+  var listener = function() {
+    var value = trim(element.val());
 
-    if (!timeout) {
-      timeout = $defer(function() {
-        ctrl.$setViewValue(trim(element.val()));
-        timeout = null;
+    if (ctrl.$viewValue !== value) {
+      scope.$apply(function() {
+        ctrl.$setViewValue(value);
       });
     }
-  });
+  };
 
-  element.bind('change input', function() {
-    scope.$apply(function() {
-      ctrl.$setViewValue(trim(element.val()));
+  // if the browser does support "input" event, we are fine
+  if ($sniffer.hasEvent('input')) {
+    element.bind('input', listener);
+  } else {
+    var timeout;
+
+    element.bind('keydown', function(event) {
+      var key = event.keyCode;
+
+      // ignore
+      //    command            modifiers                   arrows
+      if (key === 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) return;
+
+      if (!timeout) {
+        timeout = $browser.defer(function() {
+          listener();
+          timeout = null;
+        });
+      }
     });
-  });
+
+    // if user paste into input using mouse, we need "change" event to catch it
+    element.bind('change', listener);
+  }
+
 
   ctrl.$render = function() {
     element.val(isEmpty(ctrl.$viewValue) ? '' : ctrl.$viewValue);
@@ -463,8 +479,8 @@ function textInputType(scope, element, attr, ctrl, $defer) {
   }
 };
 
-function numberInputType(scope, element, attr, ctrl, $defer) {
-  textInputType(scope, element, attr, ctrl, $defer);
+function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
+  textInputType(scope, element, attr, ctrl, $sniffer, $browser);
 
   ctrl.$parsers.push(function(value) {
     var empty = isEmpty(value);
@@ -525,8 +541,8 @@ function numberInputType(scope, element, attr, ctrl, $defer) {
   });
 }
 
-function urlInputType(scope, element, attr, ctrl, $defer) {
-  textInputType(scope, element, attr, ctrl, $defer);
+function urlInputType(scope, element, attr, ctrl, $sniffer, $browser) {
+  textInputType(scope, element, attr, ctrl, $sniffer, $browser);
 
   var urlValidator = function(value) {
     if (isEmpty(value) || URL_REGEXP.test(value)) {
@@ -542,8 +558,8 @@ function urlInputType(scope, element, attr, ctrl, $defer) {
   ctrl.$parsers.push(urlValidator);
 }
 
-function emailInputType(scope, element, attr, ctrl, $defer) {
-  textInputType(scope, element, attr, ctrl, $defer);
+function emailInputType(scope, element, attr, ctrl, $sniffer, $browser) {
+  textInputType(scope, element, attr, ctrl, $sniffer, $browser);
 
   var emailValidator = function(value) {
     if (isEmpty(value) || EMAIL_REGEXP.test(value)) {
@@ -724,13 +740,14 @@ function checkboxInputType(scope, element, attr, ctrl) {
       </doc:scenario>
     </doc:example>
  */
-var inputDirective = ['$defer', function($defer) {
+var inputDirective = ['$browser', '$sniffer', function($browser, $sniffer) {
   return {
     restrict: 'E',
     require: '?ngModel',
     link: function(scope, element, attr, ctrl) {
       if (ctrl) {
-        (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrl, $defer);
+        (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrl, $sniffer,
+                                                            $browser);
       }
     }
   };
