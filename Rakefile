@@ -165,12 +165,7 @@ task :package => [:clean, :compile, :docs] do
     "#{pkg_dir}/docs-#{NG_VERSION.full}/index-jq-debug.html"
   ].each do |src|
     rewrite_file(src) do |content|
-      content.sub!('angular.js', "angular-#{NG_VERSION.full}.js").
-              sub!('angular-resource.js', "angular-resource-#{NG_VERSION.full}.js").
-              sub!('angular-cookies.js', "angular-cookies-#{NG_VERSION.full}.js").
-              sub!('angular-sanitize.js', "angular-sanitize-#{NG_VERSION.full}.js").
-              sub!('angular-bootstrap.js', "angular-bootstrap-#{NG_VERSION.full}.js").
-              sub!('angular-bootstrap-prettify.js', "angular-bootstrap-prettify-#{NG_VERSION.full}.js")
+      content.gsub!(/'angular(.*)\.js/, '\'angular\1-' + NG_VERSION.full + '.js')
     end
   end
 

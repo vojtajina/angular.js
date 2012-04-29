@@ -85,11 +85,7 @@ docsApp.serviceFactory.formPostData = function($document) {
 
 docsApp.serviceFactory.openJsFiddle = function(templateMerge, getEmbededTemplate, formPostData, angularUrls) {
   var HTML = '<div ng-app="{{module}}">\n{{html:2}}</div>',
-<<<<<<< HEAD
       CSS = '</style> <!-- Ugly Hack due to jsFiddle issue: http://goo.gl/BUfGZ --> \n{{head:0}}<style>\n​.ng-invalid { border: 1px solid red; }​\n{{css}}',
-=======
-      CSS = '</style> <!-- Ugly Hack due to jsFiddle issue: http://goo.gl/BUfGZ --> \n{{head:0}}<style>\n{{css}}',
->>>>>>> 645884c... chore(docs): re-skin main documentation
       SCRIPT = '{{script}}',
       SCRIPT_CACHE = '\n\n<!-- {{file}} -->\n<script type="text/ng-template" id="{{name}}">\n{{content:2}}</script>';
 
