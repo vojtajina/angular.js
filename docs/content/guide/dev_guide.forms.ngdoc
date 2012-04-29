@@ -281,7 +281,7 @@ In order for custom control to work with `ngModel` and to achieve two-way data-b
   - implement `render` method, which is responsible for rendering the data after it passed the {@link   api/angular.module.ng.$compileProvider.directive.ngModel.NgModelController#$formatters NgModelController#$formatters},
   - call `$setViewValue` method, whenever the user interacts with the control and model needs to be updated. This is usually done inside a DOM Event listener.
 
-See {@link api/angular.module.ng.$compileProvider.directive $compileProvider.directive} for more info.
+See {@link guide/directive $compileProvider.directive} for more info.
 
 The following example shows how to add two-way data-binding to contentEditable elements.
 

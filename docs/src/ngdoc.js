@@ -5,7 +5,9 @@
 var Showdown = require('../../lib/showdown').Showdown;
 var DOM = require('./dom.js').DOM;
 var htmlEscape = require('./dom.js').htmlEscape;
+var Example = require('./example.js').Example;
 var NEW_LINE = /\n\r?/;
+var globalID = 0;
 
 exports.trim = trim;
 exports.metadata = metadata;
@@ -117,29 +119,32 @@ Doc.prototype = {
         return;
       }
 
+      text = text.replace(/^<doc:example(\s+[^>]*)?>([\s\S]*)<\/doc:example>/mi, function(_, attrs, content) {
+        var html, script, scenario,
+            example = new Example();
+
+        example.module = (attrs||'module=""').match(/^\s*module=["'](.*)["']\s*$/)[1];
+        content.
+          replace(/<doc:source(\s+[^>]*)?>([\s\S]*)<\/doc:source>/mi, function(_, attrs, content) {
+            example.addSource('index.html', content.replace(/<script>([\s\S]*)<\/script>/mi, function(_, script) {
+              example.addSource('script.js', script);
+              return '';
+            }));
+          }).
+          replace(/(<doc:scenario>)([\s\S]*)(<\/doc:scenario>)/mi, function(_, before, content){
+            self.scenarios.push(content);
+            example.addSource('scenario.js', content);
+          });
+
+        return example.toHtml();
+      });
+
       if (text.match(/^<pre>/)) {
         text = text.replace(/^<pre>([\s\S]*)<\/pre>/mi, function(_, content){
-          var clazz = 'brush: js;';
-          if (content.match(/\<\w/)) {
-            // we are HTML
-            clazz += ' html-script: true;';
-          }
-          return '<div ng:non-bindable><pre class="' + clazz +'">' +
+          return '<pre class="prettyprint linenums">' +
                   content.replace(/</g, '&lt;').replace(/>/g, '&gt;') +
-                 '</pre></div>';
+                 '</pre>';
         });
-      } else if (isDocWidget('example')) {
-        text = text.replace(/<doc:source(\s+[^>]*)?>([\s\S]*)<\/doc:source>/mi,
-          function(_, attrs, content){
-            return '<pre class="doc-source"' + (attrs || '') +'>' +
-                      htmlEscape(content) +
-                   '</pre>';
-          });
-        text = text.replace(/(<doc:scenario>)([\s\S]*)(<\/doc:scenario>)/mi,
-          function(_, before, content){
-            self.scenarios.push(content);
-            return '<pre class="doc-scenario">' + htmlEscape(content) + '</pre>';
-          });
       } else if (!isDocWidget()) {
         text = text.replace(/<angular\/>/gm, '<tt>&lt;angular/&gt;</tt>');
         text = text.replace(/{@link\s+([^\s}]+)\s*([^}]*?)\s*}/g,
@@ -254,7 +259,7 @@ Doc.prototype = {
     var dom = new DOM(),
         self = this;
 
-    dom.h(this.name, function() {
+    dom.h(title(this.name), function() {
       notice('deprecated', 'Deprecated API', self.deprecated);
 
       if (self.ngdoc != 'overview') {
@@ -605,6 +610,68 @@ Doc.prototype = {
 
 
 //////////////////////////////////////////////////////////
+var GLOBALS = /^angular\.([^\.]*)$/,
+    MODULE = /^angular\.module\.([^\.]*)$/,
+    MODULE_MOCK = /^angular\.mock\.([^\.]*)$/,
+    MODULE_DIRECTIVE = /^angular\.module\.([^\.]*)(?:\.\$compileProvider)?\.directive\.([^\.]*)$/,
+    MODULE_DIRECTIVE_INPUT = /^angular\.module\.([^\.]*)\.\$compileProvider\.directive\.input\.([^\.]*)$/,
+    MODULE_FILTER = /^angular\.module\.([^\.]*)\.\$?filter\.([^\.]*)$/,
+    MODULE_SERVICE = /^angular\.module\.([^\.]*)\.([^\.]*?)(Provider)?$/,
+    MODULE_TYPE = /^angular\.module\.([^\.]*)\..*\.([A-Z][^\.]*)$/;
+
+function title(text) {
+  if (!text) return text;
+  var match,
+      module,
+      type,
+      name;
+
+  if (match = text.match(GLOBALS)) {
+    module = 'ng';
+    name = match[1];
+    type = 'API';
+  } else if (match = text.match(MODULE)) {
+    module = match[1];
+  } else if (match = text.match(MODULE_MOCK)) {
+    module = 'ng';
+    name = 'angular.mock.' + match[1];
+    type = 'API';
+  } else if (match = text.match(MODULE_DIRECTIVE)) {
+    module = match[1];
+    name = match[2];
+    type = 'Directive';
+  } else if (match = text.match(MODULE_DIRECTIVE_INPUT)) {
+    module = match[1];
+    name = 'input [' + match[2] + ' ]';
+    type = 'Directive';
+  } else if (match = text.match(MODULE_FILTER)) {
+    module = match[1];
+    name = match[2];
+    type = 'Filter';
+  } else if (match = text.match(MODULE_SERVICE)) {
+    module = match[1];
+    name = match[2];
+    type = 'Service';
+  } else if (match = text.match(MODULE_TYPE)) {
+    module = match[1];
+    name = match[2];
+    type = 'Type';
+  } else {
+    return text;
+  }
+  return function() {
+    this.text('Module ');
+    this.tag('code', module);
+    if (type) {
+      this.text(' - ');
+      this.text(type);
+      this.text(' ');
+      this.tag('code', name);
+    }
+  };
+}
+
+
 function scenarios(docs){
   var specs = [];
 
@@ -629,7 +696,7 @@ function scenarios(docs){
       specs.push('    });');
       specs.push('  ');
       doc.scenarios.forEach(function(scenario){
-        specs.push(indent(trim(scenario), 4));
+        specs.push(indentCode(trim(scenario), 4));
         specs.push('');
       });
       specs.push('});');
@@ -647,13 +714,16 @@ function metadata(docs){
     for ( var i = 1; i < path.length; i++) {
       path.splice(i, 1);
     }
-    var depth = path.length - 1;
     var shortName = path.pop();
+
+    if (path.pop() == 'input') {
+      shortName = 'input [' + shortName + ']';
+    }
+
     words.push({
       section: doc.section,
       id: doc.id,
-      name: doc.name,
-      depth: depth,
+      name: title(doc.name),
       shortName: shortName,
       type: doc.ngdoc,
       keywords:doc.keywords()
@@ -669,12 +739,8 @@ var KEYWORD_PRIORITY = {
   '.angular': 7,
   '.angular.Module': 7,
   '.angular.module': 8,
-  '.angular.module.ng.$filter': 7,
-  '.angular.module.ng.$rootScope.Scope': 7,
-  '.angular.module.ng': 7,
-  '.angular.mock': 8,
-  '.angular.directive': 6,
-  '.angular.module.ngMock': 8,
+  '.angular.module.ng': 2,
+  '.angular.module.AUTO': 1,
   '.dev_guide.overview': 1,
   '.dev_guide.bootstrap': 2,
   '.dev_guide.bootstrap.auto_bootstrap': 1,
@@ -750,7 +816,7 @@ function trim(text) {
   return lines.join('\n');
 }
 
-function indent(text, spaceCount) {
+function indentCode(text, spaceCount) {
   var lines = text.split('\n'),
       indent = '',
       fixedLines = [];

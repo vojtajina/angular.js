@@ -121,6 +121,14 @@
  */
 
 
+/**
+ * @ngdoc service
+ * @name angular.module.ng.$compileProvider
+ * @function
+ *
+ * @description
+ *
+ */
 $CompileProvider.$inject = ['$provide'];
 function $CompileProvider($provide) {
   var hasDirectives = {},
@@ -131,7 +139,21 @@ function $CompileProvider($provide) {
       HAS_ROOT_ELEMENT = /^\<[\s\S]*\>$/;
 
 
-  this.directive = function registerDirective(name, directiveFactory) {
+  /**
+   * @ngdoc function
+   * @name angular.module.ng.$compileProvider.directive
+   * @methodOf angular.module.ng.$compileProvider
+   * @function
+   *
+   * @description
+   * Register directives with the compiler.
+   *
+   * @param {string} name Name of the directive in camel-case. (ie <code>ngBind</code> which will match as
+   *                <code>ng-bind</code>).
+   * @param {function} directiveFactory An injectable directive factroy function. See {@link guide/directive} for more
+   *                info.
+   */
+   this.directive = function registerDirective(name, directiveFactory) {
     if (isString(name)) {
       assertArg(directiveFactory, 'directive');
       if (!hasDirectives.hasOwnProperty(name)) {
