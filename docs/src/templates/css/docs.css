@@ -161,3 +161,6 @@ ul.events > li > h3 {
   color: white;
 }
 
+.btn a:hover {
+  text-decoration: none;
+}
