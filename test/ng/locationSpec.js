@@ -492,6 +492,18 @@ describe('$location', function() {
         }
       );
     });
+
+    
+    it('should prefix path with a slash if missing', function() {
+      initService(false, '');
+      inject(
+          initBrowser('http://domain.com/base/index.html#a/b', '/base/index.html'),
+        function($rootScope, $location, $browser) {
+          expect($browser.url()).toBe('http://domain.com/base/index.html#/a/b');
+          expect($location.path()).toBe('/a/b');
+        }
+      );
+    });
   });
 
 
@@ -571,6 +583,18 @@ describe('$location', function() {
       initService(true, '', true);
       inject(
         initBrowser('http://domain.com/base/index.html#/a/b', '/base/index.html'),
+        function($rootScope, $location, $browser) {
+          expect($browser.url()).toBe('http://domain.com/base/a/b');
+          expect($location.path()).toBe('/a/b');
+        }
+      );
+    });
+
+
+    it('should prefix path with a slash if missing', function() {
+      initService(true, '', true);
+      inject(
+        initBrowser('http://domain.com/base/index.html#a/b', '/base/index.html'),
         function($rootScope, $location, $browser) {
           expect($browser.url()).toBe('http://domain.com/base/a/b');
           expect($location.path()).toBe('/a/b');

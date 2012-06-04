@@ -65,8 +65,10 @@ function convertToHtml5Url(url, basePath, hashPrefix) {
     return url;
   // convert hashbang url -> html5 url
   } else {
+    var path = match.hash.substr(hashPrefix.length);
+    if (path.charAt('/') !== '/') path = '/' + path;
     return composeProtocolHostPort(match.protocol, match.host, match.port) +
-           pathPrefixFromBase(basePath) + match.hash.substr(hashPrefix.length);
+           pathPrefixFromBase(basePath) + path;
   }
 }
 
