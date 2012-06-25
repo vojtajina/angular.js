@@ -224,8 +224,35 @@ if (typeof JASMINE_ADAPTER !== 'undefined') {
 
   exclude = angularFiles.jstdExclude;
 
-  autoWatch = true;
-  autoWatchInterval = 1;
+  autoWatch = false;
+  reporter = 'dots';
   logLevel = LOG_INFO;
   logColors = true;
+  port = 9999;
+
+
+  var BaseBrowser = require('testacular').launcher.BaseBrowser;
+
+  var IE8 = function() {
+    BaseBrowser.apply(this, arguments);
+
+    this.name = 'IE8';
+    this.DEFAULT_CMD = {
+      darwin: '/Users/jenkins/bin/ie8.sh'
+    };
+  };
+
+  var IE9 = function() {
+    BaseBrowser.apply(this, arguments);
+
+    this.name = 'IE9';
+    this.DEFAULT_CMD = {
+      darwin: '/Users/jenkins/bin/ie9.sh'
+    };
+  };
+
+  // this is for Jenkins, during development, override this by
+  // testacular angularFiles.js --browsers "" --no-single-run
+  singleRun = true;
+  browsers = ['Chrome', 'ChromeCanary', 'Safari', 'Firefox', 'Opera', IE8, IE9];
 }
