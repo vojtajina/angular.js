@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Chrome 23.$http.promise" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="Chrome 23">
+  <properties>
+    <property name="x" value="y" />
+  </properties>
+  <testcase classname="xxxx" name="should suck balls" time="0.022"></testcase>
+</testsuite>
+
+<testsuite name="Chrome 23.$http.promise" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="Chrome 23">
+  <properties>
+    <property name="x" value="y" />
+  </properties>
+  <testcase classname="yyy" name="should work fine" time="0.022"></testcase>
+</testsuite>
+</testsuites>
