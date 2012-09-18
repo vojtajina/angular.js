@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Chrome 23.$http.promise" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="Chrome 23">
-  <properties>
-    <property name="x" value="y" />
-  </properties>
-  <testcase classname="xxxx" name="should suck balls" time="0.022"></testcase>
+<testsuite name="suite.name.a" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="package.a" id="1">
+  <properties></properties>
+  <testcase name="case.name.a" classname="class.name.a" time="0.222"></testcase>
+  <system-out></system-out>
+  <system-err></system-err>
 </testsuite>
 
-<testsuite name="Chrome 23.$http.promise" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="Chrome 23">
-  <properties>
-    <property name="x" value="y" />
-  </properties>
-  <testcase classname="yyy" name="should work fine" time="0.022"></testcase>
+
+<testsuite name="suite.name.b" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="package.b" id="1">
+  <properties></properties>
+  <testcase name="case.name.b" classname="class.name.b" time="0.222"></testcase>
+  <system-out></system-out>
+  <system-err></system-err>
 </testsuite>
 </testsuites>
