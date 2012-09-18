@@ -4,6 +4,7 @@
   <properties></properties>
 
   <testcase name="should work fine" classname="Chrome 23.$http.promise" time="0.222"></testcase>
+  <testcase name="should work fine" classname="Chrome 23.$http.other" time="0.222"></testcase>
   <testcase name="should suck the balls" classname="Chrome 23.$compile.something" time="0.222"></testcase>
 
   <system-out></system-out>
@@ -14,6 +15,7 @@
 <testsuite name="Firefox" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="Firefox" id="1">
   <properties></properties>
   <testcase name="should work fine" classname="Firefox.$http.promise" time="0.222"></testcase>
+  <testcase name="should work fine" classname="Firefox.$http.other" time="0.222"></testcase>
   <testcase name="should suck the balls" classname="Firefox.$compile.something" time="0.222"></testcase>
   <system-out></system-out>
   <system-err></system-err>
