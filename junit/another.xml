@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="c" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="p" id="1">
+<testsuite name="Chrome 23" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="jqlite" id="1">
   <properties></properties>
 
   <testcase name="should work fine" classname="Chrome 23.$http.promise" time="0.222"></testcase>
@@ -13,7 +13,7 @@
 </testsuite>
 
 
-<testsuite name="d" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="p" id="1">
+<testsuite name="Firefox" tests="1" errors="0" failures="0" hostname="hazelnut.osuosl.org" time="0.048" timestamp="2007-11-02T23:13:50" package="jqlite" id="1">
   <properties></properties>
   <testcase name="should work fine" classname="Firefox.$http.promise" time="0.222"></testcase>
   <testcase name="should work fine" classname="Firefox.$http.other" time="0.222"></testcase>
