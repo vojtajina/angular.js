@@ -1,902 +1,227 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 23.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="210.179">
-    <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.0 Safari/537.11"/>
-    </properties>
-    <testcase name="angular+jqlite cookbook/deeplinking" time="1.071" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="0.74" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="1.151" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.688" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.835" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.56" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.488" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.504" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/helloworld" time="0.716" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite cookbook/mvc" time="1.157" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.services.injecting_controllers" time="0.417" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.templates.filters.creating_filters" time="0.76" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.721" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.48" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.469" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/directive" time="0.621" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/directive" time="1.416" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite guide/overview" time="1.932" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.$compile" time="1.193" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.77" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.799" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.531" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.583" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.77" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.919" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngDisabled" time="1.102" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChecked" time="0.735" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngMultiple" time="0.773" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngReadonly" time="0.768" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSelected" time="0.674" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.338" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.275" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBind" time="0.612" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBindTemplate" time="0.762" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.324" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.393" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="0.918" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.329" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.203" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.222" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.215" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.057" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.248" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="0.905" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.211" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.201" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="0.947" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.radio" time="1.14" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.checkbox" time="1.668" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.394" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.556" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.568" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.89" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.889" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngModel.NgModelController" time="0.617" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="1.55" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="1.02" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.119" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="0.889" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClass" time="0.688" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassOdd" time="0.62" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassEven" time="0.787" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngCloak" time="0.463" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngController" time="0.71" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClick" time="1.156" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.051" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.121" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.646" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.498" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.484" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInit" time="1.1" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngNonBindable" time="0.48" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="0.957" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="0.788" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngRepeat" time="0.526" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngShow" time="0.56" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHide" time="0.743" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngStyle" time="0.827" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.669" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.437" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.436" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngTransclude" time="1.243" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngView" time="1.068" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:script" time="0.576" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.directive:select" time="1.602" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="0.618" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="0.5" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="1.049" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="1.006" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.407" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.353" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:date" time="1.516" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:json" time="0.812" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.915" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.926" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.831" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.932" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.931" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.399" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.639" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.608" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ng.$route" time="2.861" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.543" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.618" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.778" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.617" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.642" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.478" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.618" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/deeplinking" time="0.712" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.826" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.806" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.83" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/form" time="1.153" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.627" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.373" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.452" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/helloworld" time="0.746" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery cookbook/mvc" time="0.978" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/dev_guide.services.injecting_controllers" time="0.363" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/dev_guide.templates.filters.creating_filters" time="0.761" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.655" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.709" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.482" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/directive" time="0.753" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/directive" time="1.56" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery guide/overview" time="0.883" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.$compile" time="0.814" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.707" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.568" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.571" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.582" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.711" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.782" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngDisabled" time="0.678" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChecked" time="0.775" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngMultiple" time="0.681" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngReadonly" time="0.638" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSelected" time="0.734" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.088" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.227" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBind" time="0.586" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBindTemplate" time="0.724" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.279" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.171" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.061" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.16" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.153" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.163" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.116" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.126" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.081" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="0.768" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="0.795" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.025" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="0.99" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.radio" time="1.373" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.checkbox" time="1.775" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.811" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.829" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.406" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.231" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.317" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngModel.NgModelController" time="0.744" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.441" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.311" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.076" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.258" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClass" time="0.846" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassOdd" time="0.758" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassEven" time="0.662" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngCloak" time="0.816" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngController" time="1.161" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClick" time="1.107" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.344" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.14" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.67" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.573" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.618" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInit" time="1.114" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngNonBindable" time="0.601" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="1.165" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="0.758" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngRepeat" time="0.91" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngShow" time="0.679" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHide" time="0.652" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngStyle" time="0.637" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.546" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.743" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.541" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngTransclude" time="1.1" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngView" time="0.971" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:script" time="0.533" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.directive:select" time="1.821" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.698" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.716" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.173" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.514" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.634" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.654" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:date" time="1.644" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:json" time="0.763" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.803" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.681" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.602" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="1.048" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="0.972" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.587" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.737" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.802" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ng.$route" time="2.899" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.407" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.544" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.484" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.457" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.36" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.351" classname="E2E Chrome 23.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.552" classname="E2E Chrome 23.0."/>
-    <system-out/>
-    <system-err/>
-  </testsuite>
-  <testsuite name="Firefox 15.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="292.232">
-    <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:15.0) Gecko/20100101 Firefox/15.0.1"/>
-    </properties>
-    <testcase name="angular+jqlite cookbook/deeplinking" time="1.34" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="1.425" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="0.922" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.986" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="1.773" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="1.556" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="1.088" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="1.279" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/helloworld" time="1.066" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite cookbook/mvc" time="1.764" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.services.injecting_controllers" time="0.596" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.templates.filters.creating_filters" time="1.025" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/expression" time="1.31" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.905" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.77" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/directive" time="1.233" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/directive" time="2.107" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite guide/overview" time="1.671" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.$compile" time="1.039" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="1.085" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="1.275" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="1.094" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="1.193" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.979" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.967" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngDisabled" time="0.912" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChecked" time="0.916" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngMultiple" time="0.847" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngReadonly" time="0.785" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSelected" time="0.917" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.824" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.457" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBind" time="0.848" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBindTemplate" time="0.95" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.534" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.833" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.157" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.911" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.413" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.551" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.66" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.35" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.453" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.402" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.512" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.746" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.158" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.radio" time="1.482" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.checkbox" time="2.661" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="2.399" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="2.334" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="2.253" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="3.026" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="2.868" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngModel.NgModelController" time="1.09" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="2.447" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="1.402" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.964" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.371" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClass" time="0.756" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassOdd" time="1.14" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassEven" time="0.916" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngCloak" time="0.942" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngController" time="1.162" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClick" time="1.374" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.533" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.376" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.912" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.745" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="1.035" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInit" time="1.293" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngNonBindable" time="0.679" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="1.196" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="0.844" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngRepeat" time="0.905" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngShow" time="1.067" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHide" time="1.281" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngStyle" time="0.935" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.963" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="1.023" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="1.055" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngTransclude" time="1.674" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngView" time="1.532" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:script" time="1.392" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.directive:select" time="2.259" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="1.053" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="1.011" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="1.911" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="1.943" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.941" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.95" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:date" time="2.079" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:json" time="1.026" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="1.543" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="1.117" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="1.21" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="1.325" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="1.108" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="2.625" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="2.51" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="2.109" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ng.$route" time="2.965" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.774" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.778" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.847" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="1.219" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.756" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.906" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="1.234" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/deeplinking" time="0.902" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.944" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.91" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/form" time="1.731" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/form" time="1.914" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.996" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.863" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.927" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/helloworld" time="1.163" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery cookbook/mvc" time="1.698" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/dev_guide.services.injecting_controllers" time="1.027" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/dev_guide.templates.filters.creating_filters" time="1.187" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/expression" time="1.126" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.831" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.903" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/directive" time="1.535" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/directive" time="2.198" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery guide/overview" time="1.398" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.$compile" time="1.026" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.229" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.086" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.466" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.189" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.336" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="1.284" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngDisabled" time="1.037" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChecked" time="0.983" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngMultiple" time="1.097" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngReadonly" time="1.415" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSelected" time="1.601" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.95" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="2.426" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBind" time="1.359" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBindTemplate" time="1.929" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.84" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.796" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.329" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="2.081" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.64" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.736" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="2.173" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="2.329" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.374" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.132" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.346" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.856" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.101" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.radio" time="1.27" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.checkbox" time="1.761" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.559" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.845" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.31" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.805" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.267" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngModel.NgModelController" time="0.761" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.467" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.142" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.566" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.446" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClass" time="0.907" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassOdd" time="1.243" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassEven" time="0.934" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngCloak" time="0.918" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngController" time="0.878" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClick" time="1.298" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.492" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.745" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="1.484" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.715" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.791" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInit" time="1.185" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngNonBindable" time="0.83" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="1.18" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="0.827" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngRepeat" time="0.766" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngShow" time="0.964" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHide" time="0.986" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngStyle" time="0.977" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.686" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.684" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.67" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngTransclude" time="1.134" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngView" time="0.741" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:script" time="1.04" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.directive:select" time="1.818" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.947" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.665" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.039" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.13" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.67" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.271" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:date" time="1.314" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:json" time="1.171" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.838" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.908" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.938" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="1.523" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="0.758" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.715" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="2.292" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.781" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ng.$route" time="3.104" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.608" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.724" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.796" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.753" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="1.051" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="1.146" classname="E2E Firefox 15.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.789" classname="E2E Firefox 15.0."/>
-    <system-out/>
-    <system-err/>
-  </testsuite>
-  <testsuite name="Chrome 21.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="201.493">
+  <testsuite name="Chrome 21.0" package="E2E" timestamp="2012-09-20T03:49:07" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="124.635">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"/>
     </properties>
-    <testcase name="angular+jqlite cookbook/deeplinking" time="1.058" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="0.731" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="1.23" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.687" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.744" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.699" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.445" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.459" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/helloworld" time="0.7" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite cookbook/mvc" time="1.172" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.services.injecting_controllers" time="0.476" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.templates.filters.creating_filters" time="0.689" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.678" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.527" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.522" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/directive" time="0.541" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/directive" time="1.258" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite guide/overview" time="3.417" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.$compile" time="0.619" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.679" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.659" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.752" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.537" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.623" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.667" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngDisabled" time="0.975" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChecked" time="0.617" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngMultiple" time="0.646" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngReadonly" time="0.585" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSelected" time="0.629" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.436" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.185" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBind" time="0.538" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBindTemplate" time="0.638" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.123" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.262" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="0.853" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.268" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="0.986" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.131" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.153" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.006" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.245" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="0.784" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.046" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.079" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="0.767" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.radio" time="1.025" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.checkbox" time="1.691" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.295" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.31" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.955" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.595" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.77" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngModel.NgModelController" time="0.666" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="1.158" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="0.946" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="0.92" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.019" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClass" time="0.592" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassOdd" time="0.479" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassEven" time="0.482" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngCloak" time="0.421" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngController" time="0.739" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClick" time="0.908" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.313" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.073" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.474" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.558" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.474" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInit" time="0.838" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngNonBindable" time="0.546" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="1.044" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="0.7" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngRepeat" time="0.682" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngShow" time="0.568" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHide" time="0.686" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngStyle" time="1.1" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.43" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.471" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.467" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngTransclude" time="0.981" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngView" time="0.667" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:script" time="0.537" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.directive:select" time="1.649" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="0.591" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="1.06" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="0.85" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="0.977" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.184" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.226" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:date" time="1.072" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:json" time="0.605" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.995" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.672" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.687" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.831" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.827" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.723" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.612" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.549" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ng.$route" time="2.697" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.472" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.559" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.452" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.361" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.324" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.399" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.665" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/deeplinking" time="0.588" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.655" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.627" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.632" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/form" time="1.07" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.763" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.482" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.448" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/helloworld" time="0.708" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery cookbook/mvc" time="1.115" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/dev_guide.services.injecting_controllers" time="0.564" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/dev_guide.templates.filters.creating_filters" time="0.828" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.699" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.537" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.481" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/directive" time="0.61" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/directive" time="1.529" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery guide/overview" time="0.871" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.$compile" time="0.464" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.596" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.558" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.553" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.61" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.644" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.781" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngDisabled" time="0.663" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChecked" time="0.676" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngMultiple" time="0.67" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngReadonly" time="0.622" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSelected" time="0.627" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.163" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.138" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBind" time="0.583" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBindTemplate" time="0.815" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.183" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.141" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="0.911" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.448" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.179" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.174" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.204" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.166" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.265" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="0.994" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.007" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.03" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="0.613" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.radio" time="1.078" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.checkbox" time="1.668" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.448" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.376" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.981" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.906" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.93" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngModel.NgModelController" time="0.658" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.322" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.01" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.474" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.108" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClass" time="0.778" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassOdd" time="0.571" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassEven" time="0.527" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngCloak" time="0.613" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngController" time="0.884" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClick" time="1.139" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.13" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.032" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.434" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.565" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.522" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInit" time="1.005" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngNonBindable" time="0.576" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="1.123" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="0.8" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngRepeat" time="0.59" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngShow" time="0.678" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHide" time="0.666" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngStyle" time="0.717" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.566" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.62" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.573" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngTransclude" time="1.511" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngView" time="0.771" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:script" time="0.593" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.directive:select" time="1.875" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.656" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.613" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.139" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.119" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.395" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.455" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:date" time="1.534" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:json" time="0.796" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.708" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.972" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="1.108" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="1.013" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="0.885" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="2.084" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="2.096" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="2.063" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ng.$route" time="2.913" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.544" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.586" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.643" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.502" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.474" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.485" classname="E2E Chrome 21.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="1.067" classname="E2E Chrome 21.0."/>
-    <system-out/>
-    <system-err/>
-  </testsuite>
-  <testsuite name="Safari 6.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="205.436">
-    <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"/>
-    </properties>
-    <testcase name="angular+jqlite cookbook/deeplinking" time="3.948" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="1.754" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/advancedform" time="1.116" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.867" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="1.438" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.804" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.49" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/form" time="0.593" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/helloworld" time="0.62" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite cookbook/mvc" time="1.058" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.services.injecting_controllers" time="0.357" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/dev_guide.templates.filters.creating_filters" time="0.588" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/expression" time="1.213" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.453" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/expression" time="0.377" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/directive" time="0.697" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/directive" time="1.365" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite guide/overview" time="1.297" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.$compile" time="0.446" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.752" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.634" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="1.084" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.611" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.644" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHref" time="0.671" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngDisabled" time="0.595" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChecked" time="0.554" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngMultiple" time="0.86" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngReadonly" time="0.454" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSelected" time="0.475" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.086" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:form" time="1.116" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBind" time="0.556" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngBindTemplate" time="0.811" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.227" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.197" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="0.84" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.text" time="1.3" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.181" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.002" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.number" time="1.026" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="1.021" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="0.993" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.url" time="0.657" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.129" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="1.232" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.email" time="0.904" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.radio" time="1.154" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input.checkbox" time="1.525" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.52" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.526" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.395" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.915" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:input" time="1.798" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngModel.NgModelController" time="0.578" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="1.165" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngChange" time="0.814" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.038" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngList" time="1.142" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClass" time="0.653" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassOdd" time="0.546" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClassEven" time="0.546" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngCloak" time="0.452" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngController" time="0.835" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngClick" time="0.986" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.097" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSubmit" time="1.036" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.472" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.583" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInclude" time="0.616" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngInit" time="0.874" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngNonBindable" time="0.596" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="1.051" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngPluralize" time="0.669" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngRepeat" time="0.574" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngShow" time="0.52" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngHide" time="0.544" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngStyle" time="0.67" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.519" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.545" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngSwitch" time="0.558" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngTransclude" time="1.083" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:ngView" time="0.65" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:script" time="0.565" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.directive:select" time="2.378" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="0.516" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:filter" time="0.467" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="0.921" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:currency" time="1.048" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.199" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:number" time="1.319" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:date" time="1.338" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:json" time="0.734" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.748" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.836" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:limitTo" time="0.705" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.769" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.filter:orderBy" time="0.631" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.48" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.912" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.$http" time="1.425" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ng.$route" time="2.729" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.454" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.998" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.filter:linky" time="0.469" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.444" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.401" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.532" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jqlite api/ngSanitize.$sanitize" time="0.582" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/deeplinking" time="0.626" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="0.567" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/advancedform" time="1.229" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.752" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/form" time="1.206" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.71" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.665" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/form" time="0.486" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/helloworld" time="0.608" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery cookbook/mvc" time="1.218" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/dev_guide.services.injecting_controllers" time="0.676" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/dev_guide.templates.filters.creating_filters" time="0.648" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.579" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.936" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/expression" time="0.567" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/directive" time="0.511" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/directive" time="1.596" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery guide/overview" time="1.085" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.$compile" time="0.766" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.662" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.637" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.536" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.67" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.512" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHref" time="0.651" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngDisabled" time="0.456" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChecked" time="0.647" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngMultiple" time="0.797" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngReadonly" time="0.545" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSelected" time="0.644" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.077" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:form" time="1.084" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBind" time="0.638" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngBindTemplate" time="0.554" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.044" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.104" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="0.796" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.text" time="1.221" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.376" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.36" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.number" time="1.351" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.106" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="1.132" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.url" time="0.749" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.005" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="1.207" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.email" time="0.681" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.radio" time="0.868" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input.checkbox" time="1.627" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.649" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.768" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="1.642" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.223" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:input" time="2.089" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngModel.NgModelController" time="0.712" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.44" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngChange" time="1.133" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.109" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngList" time="1.095" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClass" time="0.7" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassOdd" time="0.474" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClassEven" time="0.563" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngCloak" time="0.527" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngController" time="0.923" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngClick" time="1.048" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.232" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSubmit" time="1.322" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.52" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.501" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInclude" time="0.488" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngInit" time="1.019" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngNonBindable" time="0.501" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="1.225" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngPluralize" time="0.732" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngRepeat" time="0.631" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngShow" time="0.69" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngHide" time="0.701" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngStyle" time="0.756" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.525" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.566" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngSwitch" time="0.489" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngTransclude" time="1.438" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:ngView" time="0.796" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:script" time="0.558" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.directive:select" time="2.111" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.713" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:filter" time="0.576" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.254" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:currency" time="1.142" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.37" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:number" time="1.52" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:date" time="1.556" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:json" time="0.883" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="1.087" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.978" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:limitTo" time="0.985" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="1.046" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.filter:orderBy" time="1.048" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.501" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.609" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.$http" time="1.722" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ng.$route" time="2.653" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.501" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.577" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.filter:linky" time="0.634" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.58" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.401" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.419" classname="E2E Safari 6.0."/>
-    <testcase name="angular+jquery api/ngSanitize.$sanitize" time="0.679" classname="E2E Safari 6.0."/>
+    <testcase name="should navigate to URL" time="1.063" classname="E2E Chrome 21.0.angular+jqlite cookbook/deeplinking"/>
+    <testcase name="should enable save button" time="0.464" classname="E2E Chrome 21.0.angular+jqlite cookbook/advancedform"/>
+    <testcase name="should enable cancel button" time="0.37" classname="E2E Chrome 21.0.angular+jqlite cookbook/advancedform"/>
+    <testcase name="should show debug" time="0.437" classname="E2E Chrome 21.0.angular+jqlite cookbook/form"/>
+    <testcase name="should add contact" time="0.568" classname="E2E Chrome 21.0.angular+jqlite cookbook/form"/>
+    <testcase name="should remove contact" time="0.471" classname="E2E Chrome 21.0.angular+jqlite cookbook/form"/>
+    <testcase name="should validate zip" time="0.256" classname="E2E Chrome 21.0.angular+jqlite cookbook/form"/>
+    <testcase name="should validate state" time="0.274" classname="E2E Chrome 21.0.angular+jqlite cookbook/form"/>
+    <testcase name="should change the binding when user enters text" time="0.38" classname="E2E Chrome 21.0.angular+jqlite cookbook/helloworld"/>
+    <testcase name="should play a game" time="0.684" classname="E2E Chrome 21.0.angular+jqlite cookbook/mvc"/>
+    <testcase name="should test service" time="0.257" classname="E2E Chrome 21.0.angular+jqlite guide/dev_guide_services_injecting_controllers"/>
+    <testcase name="should reverse greeting" time="0.446" classname="E2E Chrome 21.0.angular+jqlite guide/dev_guide_templates_filters_creating_filters"/>
+    <testcase name="should calculate expression in binding" time="0.45" classname="E2E Chrome 21.0.angular+jqlite guide/expression"/>
+    <testcase name="should allow user expression testing" time="0.318" classname="E2E Chrome 21.0.angular+jqlite guide/expression"/>
+    <testcase name="should calculate expression in binding" time="0.278" classname="E2E Chrome 21.0.angular+jqlite guide/expression"/>
+    <testcase name="should show off bindings" time="0.369" classname="E2E Chrome 21.0.angular+jqlite guide/directive"/>
+    <testcase name="should bind and open / close" time="0.847" classname="E2E Chrome 21.0.angular+jqlite guide/directive"/>
+    <testcase name="should show of angular binding" time="1.25" classname="E2E Chrome 21.0.angular+jqlite guide/overview"/>
+    <testcase name="should auto compile" time="0.421" classname="E2E Chrome 21.0.angular+jqlite api/ng_$compile"/>
+    <testcase name="should execute ng-click but not reload when href without value" time="0.449" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when href empty string" time="0.36" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click and change url when ng-href specified" time="0.362" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when href empty string and name specified" time="0.365" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when no href but name specified" time="0.418" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should only change url when only ng-href" time="0.459" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHref"/>
+    <testcase name="should toggle button" time="0.388" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngDisabled"/>
+    <testcase name="should check both checkBoxes" time="0.368" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngChecked"/>
+    <testcase name="should toggle multiple" time="0.357" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngMultiple"/>
+    <testcase name="should toggle readonly attr" time="0.366" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngReadonly"/>
+    <testcase name="should select Greetings!" time="0.402" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSelected"/>
+    <testcase name="should initialize to model" time="0.769" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:form"/>
+    <testcase name="should be invalid if empty" time="0.711" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:form"/>
+    <testcase name="should check ng-bind" time="0.357" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngBind"/>
+    <testcase name="should check ng-bind" time="0.404" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngBindTemplate"/>
+    <testcase name="should initialize to model" time="0.762" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_text"/>
+    <testcase name="should be invalid if empty" time="0.688" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_text"/>
+    <testcase name="should be invalid if multi word" time="0.482" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_text"/>
+    <testcase name="should not be trimmed" time="0.693" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_text"/>
+    <testcase name="should initialize to model" time="0.637" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_number"/>
+    <testcase name="should be invalid if empty" time="0.694" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_number"/>
+    <testcase name="should be invalid if over max" time="0.722" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_number"/>
+    <testcase name="should initialize to model" time="0.68" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_url"/>
+    <testcase name="should be invalid if empty" time="0.744" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_url"/>
+    <testcase name="should be invalid if not url" time="0.548" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_url"/>
+    <testcase name="should initialize to model" time="0.771" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_email"/>
+    <testcase name="should be invalid if empty" time="0.686" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_email"/>
+    <testcase name="should be invalid if not email" time="0.475" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_email"/>
+    <testcase name="should change state" time="0.636" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_radio"/>
+    <testcase name="should change state" time="1.023" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input_checkbox"/>
+    <testcase name="should initialize to model" time="0.91" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input"/>
+    <testcase name="should be invalid if empty when required" time="0.984" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input"/>
+    <testcase name="should be valid if empty when min length is set" time="1.018" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input"/>
+    <testcase name="should be invalid if less than required min length" time="1.238" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input"/>
+    <testcase name="should be invalid if longer than max length" time="1.229" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:input"/>
+    <testcase name="should data-bind and become invalid" time="0.471" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngModel_NgModelController"/>
+    <testcase name="should evaluate the expression if changing from view" time="1.296" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngChange"/>
+    <testcase name="should not evaluate the expression if changing from model" time="0.639" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngChange"/>
+    <testcase name="should initialize to model" time="0.63" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngList"/>
+    <testcase name="should be invalid if empty" time="0.677" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngList"/>
+    <testcase name="should check ng-class" time="0.427" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngClass"/>
+    <testcase name="should check ng-class-odd and ng-class-even" time="0.337" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngClassOdd"/>
+    <testcase name="should check ng-class-odd and ng-class-even" time="0.299" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngClassEven"/>
+    <testcase name="should remove the template directive and css class" time="0.299" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngCloak"/>
+    <testcase name="should check controller" time="0.415" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngController"/>
+    <testcase name="should check ng-click" time="0.665" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngClick"/>
+    <testcase name="should check ng-submit" time="0.743" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSubmit"/>
+    <testcase name="should ignore empty strings" time="0.65" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSubmit"/>
+    <testcase name="should load template1.html" time="0.305" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngInclude"/>
+    <testcase name="should load template2.html" time="0.316" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngInclude"/>
+    <testcase name="should change to blank" time="0.325" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngInclude"/>
+    <testcase name="should check greeting" time="0.691" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngInit"/>
+    <testcase name="should check ng-non-bindable" time="0.293" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngNonBindable"/>
+    <testcase name="should show correct pluralized string" time="0.584" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngPluralize"/>
+    <testcase name="should show data-binded names" time="0.597" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngPluralize"/>
+    <testcase name="should check ng-repeat" time="0.334" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngRepeat"/>
+    <testcase name="should check ng-show / ng-hide" time="0.346" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngShow"/>
+    <testcase name="should check ng-show / ng-hide" time="0.361" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngHide"/>
+    <testcase name="should check ng-style" time="0.434" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngStyle"/>
+    <testcase name="should start in settings" time="0.317" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSwitch"/>
+    <testcase name="should change to home" time="0.347" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSwitch"/>
+    <testcase name="should select deafault" time="0.376" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngSwitch"/>
+    <testcase name="should have transcluded" time="0.617" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngTransclude"/>
+    <testcase name="should load and compile correct template" time="0.383" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:ngView"/>
+    <testcase name="should load template defined inside script tag" time="0.28" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:script"/>
+    <testcase name="should check ng-options" time="1.046" classname="E2E Chrome 21.0.angular+jqlite api/ng_directive:select"/>
+    <testcase name="should search across all fields when filtering with a string" time="0.391" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:filter"/>
+    <testcase name="should search in specific fields when filtering with a predicate object" time="0.363" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:filter"/>
+    <testcase name="should init with 1234.56" time="0.658" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:currency"/>
+    <testcase name="should update" time="0.605" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:currency"/>
+    <testcase name="should format numbers" time="0.755" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:number"/>
+    <testcase name="should update" time="0.764" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:number"/>
+    <testcase name="should format date" time="0.851" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:date"/>
+    <testcase name="should jsonify filtered objects" time="0.411" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:json"/>
+    <testcase name="should limit the numer array to first three items" time="0.468" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:limitTo"/>
+    <testcase name="should update the output when -3 is entered" time="0.468" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:limitTo"/>
+    <testcase name="should not exceed the maximum size of input array" time="0.499" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:limitTo"/>
+    <testcase name="should be reverse ordered by aged" time="0.505" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:orderBy"/>
+    <testcase name="should reorder the table when user selects different predicate" time="0.502" classname="E2E Chrome 21.0.angular+jqlite api/ng_filter:orderBy"/>
+    <testcase name="should make an xhr GET request" time="1.041" classname="E2E Chrome 21.0.angular+jqlite api/ng_$http"/>
+    <testcase name="should make a JSONP request to angularjs.org" time="1.158" classname="E2E Chrome 21.0.angular+jqlite api/ng_$http"/>
+    <testcase name="should make JSONP request to invalid URL and invoke the error handler" time="1.156" classname="E2E Chrome 21.0.angular+jqlite api/ng_$http"/>
+    <testcase name="should load and compile correct template" time="2.521" classname="E2E Chrome 21.0.angular+jqlite api/ng_$route"/>
+    <testcase name="should linkify the snippet with urls" time="0.371" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_filter:linky"/>
+    <testcase name="should not linkify snippet without the linky filter" time="0.288" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_filter:linky"/>
+    <testcase name="should update" time="0.341" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_filter:linky"/>
+    <testcase name="should sanitize the html snippet " time="0.253" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_$sanitize"/>
+    <testcase name="should escape snippet without any filter" time="0.307" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_$sanitize"/>
+    <testcase name="should inline raw snippet if filtered as unsafe" time="0.307" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_$sanitize"/>
+    <testcase name="should update" time="0.413" classname="E2E Chrome 21.0.angular+jqlite api/ngSanitize_$sanitize"/>
+    <testcase name="should navigate to URL" time="0.391" classname="E2E Chrome 21.0.angular+jquery cookbook/deeplinking"/>
+    <testcase name="should enable save button" time="0.367" classname="E2E Chrome 21.0.angular+jquery cookbook/advancedform"/>
+    <testcase name="should enable cancel button" time="0.356" classname="E2E Chrome 21.0.angular+jquery cookbook/advancedform"/>
+    <testcase name="should show debug" time="0.389" classname="E2E Chrome 21.0.angular+jquery cookbook/form"/>
+    <testcase name="should add contact" time="0.571" classname="E2E Chrome 21.0.angular+jquery cookbook/form"/>
+    <testcase name="should remove contact" time="0.4" classname="E2E Chrome 21.0.angular+jquery cookbook/form"/>
+    <testcase name="should validate zip" time="0.298" classname="E2E Chrome 21.0.angular+jquery cookbook/form"/>
+    <testcase name="should validate state" time="0.297" classname="E2E Chrome 21.0.angular+jquery cookbook/form"/>
+    <testcase name="should change the binding when user enters text" time="0.393" classname="E2E Chrome 21.0.angular+jquery cookbook/helloworld"/>
+    <testcase name="should play a game" time="0.73" classname="E2E Chrome 21.0.angular+jquery cookbook/mvc"/>
+    <testcase name="should test service" time="0.212" classname="E2E Chrome 21.0.angular+jquery guide/dev_guide_services_injecting_controllers"/>
+    <testcase name="should reverse greeting" time="0.435" classname="E2E Chrome 21.0.angular+jquery guide/dev_guide_templates_filters_creating_filters"/>
+    <testcase name="should calculate expression in binding" time="0.379" classname="E2E Chrome 21.0.angular+jquery guide/expression"/>
+    <testcase name="should allow user expression testing" time="0.31" classname="E2E Chrome 21.0.angular+jquery guide/expression"/>
+    <testcase name="should calculate expression in binding" time="0.267" classname="E2E Chrome 21.0.angular+jquery guide/expression"/>
+    <testcase name="should show off bindings" time="0.356" classname="E2E Chrome 21.0.angular+jquery guide/directive"/>
+    <testcase name="should bind and open / close" time="0.825" classname="E2E Chrome 21.0.angular+jquery guide/directive"/>
+    <testcase name="should show of angular binding" time="1.113" classname="E2E Chrome 21.0.angular+jquery guide/overview"/>
+    <testcase name="should auto compile" time="0.359" classname="E2E Chrome 21.0.angular+jquery api/ng_$compile"/>
+    <testcase name="should execute ng-click but not reload when href without value" time="0.314" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when href empty string" time="0.315" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click and change url when ng-href specified" time="0.334" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when href empty string and name specified" time="0.318" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should execute ng-click but not reload when no href but name specified" time="0.329" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should only change url when only ng-href" time="0.395" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHref"/>
+    <testcase name="should toggle button" time="0.332" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngDisabled"/>
+    <testcase name="should check both checkBoxes" time="0.36" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngChecked"/>
+    <testcase name="should toggle multiple" time="0.351" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngMultiple"/>
+    <testcase name="should toggle readonly attr" time="0.412" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngReadonly"/>
+    <testcase name="should select Greetings!" time="0.373" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSelected"/>
+    <testcase name="should initialize to model" time="0.724" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:form"/>
+    <testcase name="should be invalid if empty" time="0.641" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:form"/>
+    <testcase name="should check ng-bind" time="0.316" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngBind"/>
+    <testcase name="should check ng-bind" time="0.44" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngBindTemplate"/>
+    <testcase name="should initialize to model" time="0.671" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_text"/>
+    <testcase name="should be invalid if empty" time="0.714" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_text"/>
+    <testcase name="should be invalid if multi word" time="0.62" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_text"/>
+    <testcase name="should not be trimmed" time="0.806" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_text"/>
+    <testcase name="should initialize to model" time="0.674" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_number"/>
+    <testcase name="should be invalid if empty" time="0.719" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_number"/>
+    <testcase name="should be invalid if over max" time="0.683" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_number"/>
+    <testcase name="should initialize to model" time="0.647" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_url"/>
+    <testcase name="should be invalid if empty" time="0.739" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_url"/>
+    <testcase name="should be invalid if not url" time="0.649" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_url"/>
+    <testcase name="should initialize to model" time="0.64" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_email"/>
+    <testcase name="should be invalid if empty" time="0.688" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_email"/>
+    <testcase name="should be invalid if not email" time="0.466" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_email"/>
+    <testcase name="should change state" time="0.668" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_radio"/>
+    <testcase name="should change state" time="1.048" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input_checkbox"/>
+    <testcase name="should initialize to model" time="1.021" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input"/>
+    <testcase name="should be invalid if empty when required" time="1.051" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input"/>
+    <testcase name="should be valid if empty when min length is set" time="1.033" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input"/>
+    <testcase name="should be invalid if less than required min length" time="1.295" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input"/>
+    <testcase name="should be invalid if longer than max length" time="1.215" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:input"/>
+    <testcase name="should data-bind and become invalid" time="0.402" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngModel_NgModelController"/>
+    <testcase name="should evaluate the expression if changing from view" time="0.788" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngChange"/>
+    <testcase name="should not evaluate the expression if changing from model" time="0.622" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngChange"/>
+    <testcase name="should initialize to model" time="0.677" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngList"/>
+    <testcase name="should be invalid if empty" time="0.673" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngList"/>
+    <testcase name="should check ng-class" time="0.461" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngClass"/>
+    <testcase name="should check ng-class-odd and ng-class-even" time="0.395" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngClassOdd"/>
+    <testcase name="should check ng-class-odd and ng-class-even" time="0.379" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngClassEven"/>
+    <testcase name="should remove the template directive and css class" time="0.356" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngCloak"/>
+    <testcase name="should check controller" time="0.529" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngController"/>
+    <testcase name="should check ng-click" time="0.735" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngClick"/>
+    <testcase name="should check ng-submit" time="0.678" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSubmit"/>
+    <testcase name="should ignore empty strings" time="0.663" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSubmit"/>
+    <testcase name="should load template1.html" time="0.304" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngInclude"/>
+    <testcase name="should load template2.html" time="0.334" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngInclude"/>
+    <testcase name="should change to blank" time="0.356" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngInclude"/>
+    <testcase name="should check greeting" time="0.603" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngInit"/>
+    <testcase name="should check ng-non-bindable" time="0.314" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngNonBindable"/>
+    <testcase name="should show correct pluralized string" time="0.679" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngPluralize"/>
+    <testcase name="should show data-binded names" time="0.517" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngPluralize"/>
+    <testcase name="should check ng-repeat" time="0.382" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngRepeat"/>
+    <testcase name="should check ng-show / ng-hide" time="0.416" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngShow"/>
+    <testcase name="should check ng-show / ng-hide" time="0.415" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngHide"/>
+    <testcase name="should check ng-style" time="0.396" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngStyle"/>
+    <testcase name="should start in settings" time="0.346" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSwitch"/>
+    <testcase name="should change to home" time="0.381" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSwitch"/>
+    <testcase name="should select deafault" time="0.368" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngSwitch"/>
+    <testcase name="should have transcluded" time="0.917" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngTransclude"/>
+    <testcase name="should load and compile correct template" time="0.468" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:ngView"/>
+    <testcase name="should load template defined inside script tag" time="0.314" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:script"/>
+    <testcase name="should check ng-options" time="1.08" classname="E2E Chrome 21.0.angular+jquery api/ng_directive:select"/>
+    <testcase name="should search across all fields when filtering with a string" time="0.392" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:filter"/>
+    <testcase name="should search in specific fields when filtering with a predicate object" time="0.323" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:filter"/>
+    <testcase name="should init with 1234.56" time="0.574" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:currency"/>
+    <testcase name="should update" time="0.591" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:currency"/>
+    <testcase name="should format numbers" time="0.775" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:number"/>
+    <testcase name="should update" time="0.831" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:number"/>
+    <testcase name="should format date" time="0.857" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:date"/>
+    <testcase name="should jsonify filtered objects" time="0.432" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:json"/>
+    <testcase name="should limit the numer array to first three items" time="0.523" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:limitTo"/>
+    <testcase name="should update the output when -3 is entered" time="0.496" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:limitTo"/>
+    <testcase name="should not exceed the maximum size of input array" time="0.486" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:limitTo"/>
+    <testcase name="should be reverse ordered by aged" time="0.603" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:orderBy"/>
+    <testcase name="should reorder the table when user selects different predicate" time="0.509" classname="E2E Chrome 21.0.angular+jquery api/ng_filter:orderBy"/>
+    <testcase name="should make an xhr GET request" time="1.04" classname="E2E Chrome 21.0.angular+jquery api/ng_$http"/>
+    <testcase name="should make a JSONP request to angularjs.org" time="1.209" classname="E2E Chrome 21.0.angular+jquery api/ng_$http"/>
+    <testcase name="should make JSONP request to invalid URL and invoke the error handler" time="1.105" classname="E2E Chrome 21.0.angular+jquery api/ng_$http"/>
+    <testcase name="should load and compile correct template" time="2.522" classname="E2E Chrome 21.0.angular+jquery api/ng_$route"/>
+    <testcase name="should linkify the snippet with urls" time="0.322" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_filter:linky"/>
+    <testcase name="should not linkify snippet without the linky filter" time="0.299" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_filter:linky"/>
+    <testcase name="should update" time="0.374" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_filter:linky"/>
+    <testcase name="should sanitize the html snippet " time="0.319" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_$sanitize"/>
+    <testcase name="should escape snippet without any filter" time="0.301" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_$sanitize"/>
+    <testcase name="should inline raw snippet if filtered as unsafe" time="0.298" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_$sanitize"/>
+    <testcase name="should update" time="0.403" classname="E2E Chrome 21.0.angular+jquery api/ngSanitize_$sanitize"/>
     <system-out/>
     <system-err/>
   </testsuite>
