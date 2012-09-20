@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 23.0" package="E2E" timestamp="2012-09-20T03:17:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="210.179">
+  <testsuite name="Chrome 23.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="210.179">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.0 Safari/537.11"/>
     </properties>
@@ -225,7 +225,7 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite name="Firefox 15.0" package="E2E" timestamp="2012-09-20T03:17:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="292.232">
+  <testsuite name="Firefox 15.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="292.232">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:15.0) Gecko/20100101 Firefox/15.0.1"/>
     </properties>
@@ -450,7 +450,7 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite name="Chrome 21.0" package="E2E" timestamp="2012-09-20T03:17:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="201.493">
+  <testsuite name="Chrome 21.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="201.493">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"/>
     </properties>
@@ -675,7 +675,7 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite name="Safari 6.0" package="E2E" timestamp="2012-09-20T03:17:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="205.436">
+  <testsuite name="Safari 6.0" package="E2E" timestamp="2012-09-20T03:20:19" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="0" errors="0" failures="0" time="205.436">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"/>
     </properties>
