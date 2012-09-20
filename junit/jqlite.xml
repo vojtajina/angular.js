@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 21.0" package="jqlite" timestamp="2012-09-20T02:54:55" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="1574" errors="0" failures="0" time="6.368">
+  <testsuite name="Chrome 21.0" package="jqlite" timestamp="2012-09-20T02:54:55" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="1574" errors="0" failures="0" skipped="20" time="6.368">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"/>
     </properties>
