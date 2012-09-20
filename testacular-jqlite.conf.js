@@ -9,6 +9,6 @@ logColors = true;
 browsers = ['Chrome'];
 
 junitReporter = {
-  outputFile: 'junit/jqlite.xml',
-  suite: 'jqlite'
+  outputFile: 'test_out/jqlite.xml',
+  suite: 'jqLite'
 };
