@@ -4,7 +4,9 @@
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"/>
     </properties>
-    <testcase name="should return new $window and $document after navigate" time="0.088" classname="jqlite Chrome 21.0.angular_scenario_Application"/>
+    <testcase name="should return new $window and $document after navigate" time="0.088" classname="jqlite Chrome 21.0.angular_scenario_Application">
+        <skipped/>
+    </testcase>
     <testcase name="should execute callback with correct arguments" time="0.002" classname="jqlite Chrome 21.0.angular_scenario_Application"/>
     <testcase name="should use a new iframe each time" time="0.003" classname="jqlite Chrome 21.0.angular_scenario_Application"/>
     <testcase name="should call error handler if document not accessible" time="0.002" classname="jqlite Chrome 21.0.angular_scenario_Application"/>
