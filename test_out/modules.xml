@@ -1,0 +1,695 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 23.0" package="modules" timestamp="2012-09-20T03:17:01" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="166" errors="0" failures="0" time="0.432">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.0 Safari/537.11"/>
+    </properties>
+    <testcase name="should look like a Date" time="0.007" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should take millis as constructor argument" time="0.001" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should take dateString as constructor argument" time="0.002" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should fake getLocalDateString method" time="0.004" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should fake toISOString method" time="0.001" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should fake getHours method" time="0.001" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should fake getMinutes method" time="0.002" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should fake getSeconds method" time="0" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should create a date representing new year in Bratislava" time="0.001" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should delegate all the UTC methods to the original UTC Date object" time="0.002" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should throw error when no third param but toString called" time="0.001" classname="modules Chrome 23.0.ngMock TzDate"/>
+    <testcase name="should provide log method" time="0.018" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should provide info method" time="0.002" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should provide warn method" time="0.002" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should provide error method" time="0.001" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should store log messages" time="0.005" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should store info messages" time="0.002" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should store warn messages" time="0.001" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should store error messages" time="0.002" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should assertEmpty" time="0.006" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should reset state" time="0.002" classname="modules Chrome 23.0.ngMock $log"/>
+    <testcase name="should flush" time="0.002" classname="modules Chrome 23.0.ngMock defer"/>
+    <testcase name="should flush delayed" time="0.004" classname="modules Chrome 23.0.ngMock defer"/>
+    <testcase name="should defer and flush over time" time="0.002" classname="modules Chrome 23.0.ngMock defer"/>
+    <testcase name="should throw an exception if there is nothing to be flushed" time="0.001" classname="modules Chrome 23.0.ngMock defer"/>
+    <testcase name="should rethrow exceptions" time="0.002" classname="modules Chrome 23.0.ngMock $exceptionHandler"/>
+    <testcase name="should log exceptions" time="0" classname="modules Chrome 23.0.ngMock $exceptionHandler"/>
+    <testcase name="should throw on wrong argument" time="0.001" classname="modules Chrome 23.0.ngMock $exceptionHandler"/>
+    <testcase name="should expose flush method that will flush the pending queue of tasks" time="0.005" classname="modules Chrome 23.0.ngMock $timeout"/>
+    <testcase name="should serialize primitive types" time="0.001" classname="modules Chrome 23.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize element" time="0.002" classname="modules Chrome 23.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize scope" time="0.003" classname="modules Chrome 23.0.ngMock angular_mock_dump"/>
+    <testcase name="should be published on window" time="0" classname="modules Chrome 23.0.ngMock angular_mock_dump"/>
+    <testcase name="should remove data" time="0.001" classname="modules Chrome 23.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should deregister event handlers" time="0.002" classname="modules Chrome 23.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should load module" time="0.001" classname="modules Chrome 23.0.ngMock jasmine module and inject module in DSL"/>
+    <testcase name="should load module" time="0.002" classname="modules Chrome 23.0.ngMock jasmine module and inject module inline in test"/>
+    <testcase name="should load module" time="0.001" classname="modules Chrome 23.0.ngMock jasmine module and inject inject in DSL"/>
+    <testcase name="should load module" time="0.002" classname="modules Chrome 23.0.ngMock jasmine module and inject inject inline in test"/>
+    <testcase name="should inject" time="0.001" classname="modules Chrome 23.0.ngMock jasmine module and inject inject module with inject"/>
+    <testcase name="should respond with first matched definition" time="0.004" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should throw error when unexpected request" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should match headers if specified" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should match data if specified" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should match only method" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should preserve the order of requests" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should take values" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend respond()"/>
+    <testcase name="should take function" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default status code to 200" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default response headers to &quot;&quot;" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend respond()"/>
+    <testcase name="should require specified order" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect()"/>
+    <testcase name="should have precedence over when()" time="0.008" classname="modules Chrome 23.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only headers differs from expectation" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only data differs from expectation" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect()"/>
+    <testcase name="should use when&apos;s respond() when no expect() respond is defined" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect()"/>
+    <testcase name="flush() should flush requests fired during callbacks" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend flush()"/>
+    <testcase name="should flush given number of pending requests" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when flushing more requests than pending" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when no request to flush" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception if not all expectations satisfied" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw an exception if no response defined" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should throw an exception if no response for exception and no definition" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should respond undefined when JSONP method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should not have passThrough method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend"/>
+    <testcase name="should throw exception if not all expectations were satisfied" time="0.003" classname="modules Chrome 23.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when no expectation" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when all expectations satisfied" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should throw exception if not all requests were flushed" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend verifyRequests"/>
+    <testcase name="should remove all expectations" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should remove all pending responses" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should not remove definitions" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should provide expectGET shortcut method" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPOST shortcut method" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPUT shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPATCH shortcut method" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectDELETE shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectJSONP shortcut method" time="0.019" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenGET shortcut method" time="0.003" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPOST shortcut method" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPUT shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPATCH shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenDELETE shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenJSONP shortcut method" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should accept url as regexp" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept data as regexp" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should ignore data only if undefined (not null or false)" time="0.001" classname="modules Chrome 23.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept headers as function" time="0.002" classname="modules Chrome 23.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should create mock application root" time="0.001" classname="modules Chrome 23.0.ngMock $rootElement"/>
+    <testcase name="should delegate requests to the real backend when passThrough is invoked" time="0.002" classname="modules Chrome 23.0.ngMockE2E $httpBackend passThrough()"/>
+    <testcase name="should flush responses via $browser.defer" time="0.002" classname="modules Chrome 23.0.ngMockE2E $httpBackend autoflush"/>
+    <testcase name="should provide access to existing cookies via object properties and keep them in sync" time="0.004" classname="modules Chrome 23.0.$cookies"/>
+    <testcase name="should create or update a cookie when a value is assigned to a property" time="0.003" classname="modules Chrome 23.0.$cookies"/>
+    <testcase name="should drop or reset any cookie that was set to a non-string value" time="0.002" classname="modules Chrome 23.0.$cookies"/>
+    <testcase name="should remove a cookie when a $cookies property is deleted" time="0.002" classname="modules Chrome 23.0.$cookies"/>
+    <testcase name="should drop or reset cookies that browser refused to store" time="0.002" classname="modules Chrome 23.0.$cookies"/>
+    <testcase name="should serialize objects to json" time="0.002" classname="modules Chrome 23.0.$cookieStore"/>
+    <testcase name="should deserialize json to object" time="0.002" classname="modules Chrome 23.0.$cookieStore"/>
+    <testcase name="should delete objects from the store when remove is called" time="0.002" classname="modules Chrome 23.0.$cookieStore"/>
+    <testcase name="should build resource" time="0.005" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should default to empty parameters" time="0.004" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should ignore slashes of undefinend parameters" time="0.009" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should support escaping colons in url template" time="0.009" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should correctly encode url params" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should not encode @ in url params" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should encode &amp; in url params" time="0.005" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should build resource with default param" time="0.008" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should build resource with action default param overriding default param" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should build resource with action default param reading the value from instance" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should handle multiple params with same name" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should create resource" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should read resource" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should send correct headers" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should read partial resource" time="0.004" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should update resource" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should query resource" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should have all arguments optional" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should delete resource and call callback" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should post charge verb" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should post charge verb on instance" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should patch a resource" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should create on save" time="0.004" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should not mutate the resource object if response contains no body" time="0.019" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should bind default parameters" time="0.003" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should exercise full stack" time="0.002" classname="modules Chrome 23.0.resource"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.002" classname="modules Chrome 23.0.resource failure mode"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.003" classname="modules Chrome 23.0.resource failure mode"/>
+    <testcase name="should parse basic format" time="0.004" classname="modules Chrome 23.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in tags" time="0.002" classname="modules Chrome 23.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in attributes" time="0.002" classname="modules Chrome 23.0.HTML htmlParser"/>
+    <testcase name="should parse namespace" time="0.002" classname="modules Chrome 23.0.HTML htmlParser"/>
+    <testcase name="should parse empty value attribute of node" time="0.001" classname="modules Chrome 23.0.HTML htmlParser"/>
+    <testcase name="should echo html" time="0.004" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove script" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove nested script" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove attrs" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove style" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove script and style" time="0.001" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove double nested script" time="0.001" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove unknown  names" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should remove unsafe value" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should handle self closed elements" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should handle namespace" time="0.001" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should handle entities" time="0.001" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should handle improper html" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should handle improper html2" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should ignore back slash as escape" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should ignore object attributes" time="0.002" classname="modules Chrome 23.0.HTML"/>
+    <testcase name="should write basic HTML" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape text nodes" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape IE script" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape attributes" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore missformed elements" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore unknown attributes" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should not allow attributes" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should not allow tags" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should be URI" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should not be UIR" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should ignore javascript:" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore dec encoded javascript:" time="0.003" classname="modules Chrome 23.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore decimal with leading 0 encodede javascript:" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded javascript:" time="0.002" classname="modules Chrome 23.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded whitespace javascript:" time="0.001" classname="modules Chrome 23.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should set html" time="0.015" classname="modules Chrome 23.0.ngBindHtml"/>
+    <testcase name="should reset html when value is null or undefined" time="0.003" classname="modules Chrome 23.0.ngBindHtml"/>
+    <testcase name="should do basic filter" time="0.003" classname="modules Chrome 23.0.linky"/>
+    <testcase name="should handle mailto:" time="0.002" classname="modules Chrome 23.0.linky"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+  <testsuite name="Firefox 15.0" package="modules" timestamp="2012-09-20T03:17:01" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="166" errors="0" failures="0" time="0.669">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:15.0) Gecko/20100101 Firefox/15.0.1"/>
+    </properties>
+    <testcase name="should look like a Date" time="0.012" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should take millis as constructor argument" time="0.002" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should take dateString as constructor argument" time="0.001" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should fake getLocalDateString method" time="0.002" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should fake toISOString method" time="0.002" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should fake getHours method" time="0.001" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should fake getMinutes method" time="0.002" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should fake getSeconds method" time="0.001" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should create a date representing new year in Bratislava" time="0.001" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should delegate all the UTC methods to the original UTC Date object" time="0.002" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should throw error when no third param but toString called" time="0" classname="modules Firefox 15.0.ngMock TzDate"/>
+    <testcase name="should provide log method" time="0.018" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should provide info method" time="0.008" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should provide warn method" time="0.004" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should provide error method" time="0.003" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should store log messages" time="0.005" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should store info messages" time="0.004" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should store warn messages" time="0.004" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should store error messages" time="0.003" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should assertEmpty" time="0.004" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should reset state" time="0.004" classname="modules Firefox 15.0.ngMock $log"/>
+    <testcase name="should flush" time="0.003" classname="modules Firefox 15.0.ngMock defer"/>
+    <testcase name="should flush delayed" time="0.003" classname="modules Firefox 15.0.ngMock defer"/>
+    <testcase name="should defer and flush over time" time="0.003" classname="modules Firefox 15.0.ngMock defer"/>
+    <testcase name="should throw an exception if there is nothing to be flushed" time="0.004" classname="modules Firefox 15.0.ngMock defer"/>
+    <testcase name="should rethrow exceptions" time="0.004" classname="modules Firefox 15.0.ngMock $exceptionHandler"/>
+    <testcase name="should log exceptions" time="0.001" classname="modules Firefox 15.0.ngMock $exceptionHandler"/>
+    <testcase name="should throw on wrong argument" time="0" classname="modules Firefox 15.0.ngMock $exceptionHandler"/>
+    <testcase name="should expose flush method that will flush the pending queue of tasks" time="0.008" classname="modules Firefox 15.0.ngMock $timeout"/>
+    <testcase name="should serialize primitive types" time="0.001" classname="modules Firefox 15.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize element" time="0.002" classname="modules Firefox 15.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize scope" time="0.006" classname="modules Firefox 15.0.ngMock angular_mock_dump"/>
+    <testcase name="should be published on window" time="0" classname="modules Firefox 15.0.ngMock angular_mock_dump"/>
+    <testcase name="should remove data" time="0.002" classname="modules Firefox 15.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should deregister event handlers" time="0.005" classname="modules Firefox 15.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should load module" time="0.003" classname="modules Firefox 15.0.ngMock jasmine module and inject module in DSL"/>
+    <testcase name="should load module" time="0.004" classname="modules Firefox 15.0.ngMock jasmine module and inject module inline in test"/>
+    <testcase name="should load module" time="0.003" classname="modules Firefox 15.0.ngMock jasmine module and inject inject in DSL"/>
+    <testcase name="should load module" time="0.004" classname="modules Firefox 15.0.ngMock jasmine module and inject inject inline in test"/>
+    <testcase name="should inject" time="0.003" classname="modules Firefox 15.0.ngMock jasmine module and inject inject module with inject"/>
+    <testcase name="should respond with first matched definition" time="0.007" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should throw error when unexpected request" time="0.005" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should match headers if specified" time="0.006" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should match data if specified" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should match only method" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should preserve the order of requests" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should take values" time="0.005" classname="modules Firefox 15.0.ngMock $httpBackend respond()"/>
+    <testcase name="should take function" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default status code to 200" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default response headers to &quot;&quot;" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend respond()"/>
+    <testcase name="should require specified order" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend expect()"/>
+    <testcase name="should have precedence over when()" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only headers differs from expectation" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only data differs from expectation" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend expect()"/>
+    <testcase name="should use when&apos;s respond() when no expect() respond is defined" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend expect()"/>
+    <testcase name="flush() should flush requests fired during callbacks" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend flush()"/>
+    <testcase name="should flush given number of pending requests" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when flushing more requests than pending" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when no request to flush" time="0.007" classname="modules Firefox 15.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception if not all expectations satisfied" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw an exception if no response defined" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should throw an exception if no response for exception and no definition" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should respond undefined when JSONP method" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should not have passThrough method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend"/>
+    <testcase name="should throw exception if not all expectations were satisfied" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when no expectation" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when all expectations satisfied" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should throw exception if not all requests were flushed" time="0.039" classname="modules Firefox 15.0.ngMock $httpBackend verifyRequests"/>
+    <testcase name="should remove all expectations" time="0.008" classname="modules Firefox 15.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should remove all pending responses" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should not remove definitions" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should provide expectGET shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPOST shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPUT shortcut method" time="0.004" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPATCH shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectDELETE shortcut method" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectJSONP shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenGET shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPOST shortcut method" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPUT shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPATCH shortcut method" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenDELETE shortcut method" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenJSONP shortcut method" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should accept url as regexp" time="0.002" classname="modules Firefox 15.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept data as regexp" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should ignore data only if undefined (not null or false)" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept headers as function" time="0.003" classname="modules Firefox 15.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should create mock application root" time="0.002" classname="modules Firefox 15.0.ngMock $rootElement"/>
+    <testcase name="should delegate requests to the real backend when passThrough is invoked" time="0.003" classname="modules Firefox 15.0.ngMockE2E $httpBackend passThrough()"/>
+    <testcase name="should flush responses via $browser.defer" time="0.007" classname="modules Firefox 15.0.ngMockE2E $httpBackend autoflush"/>
+    <testcase name="should provide access to existing cookies via object properties and keep them in sync" time="0.008" classname="modules Firefox 15.0.$cookies"/>
+    <testcase name="should create or update a cookie when a value is assigned to a property" time="0.008" classname="modules Firefox 15.0.$cookies"/>
+    <testcase name="should drop or reset any cookie that was set to a non-string value" time="0.004" classname="modules Firefox 15.0.$cookies"/>
+    <testcase name="should remove a cookie when a $cookies property is deleted" time="0.005" classname="modules Firefox 15.0.$cookies"/>
+    <testcase name="should drop or reset cookies that browser refused to store" time="0.008" classname="modules Firefox 15.0.$cookies"/>
+    <testcase name="should serialize objects to json" time="0.003" classname="modules Firefox 15.0.$cookieStore"/>
+    <testcase name="should deserialize json to object" time="0.005" classname="modules Firefox 15.0.$cookieStore"/>
+    <testcase name="should delete objects from the store when remove is called" time="0.004" classname="modules Firefox 15.0.$cookieStore"/>
+    <testcase name="should build resource" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should default to empty parameters" time="0.008" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should ignore slashes of undefinend parameters" time="0.012" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should support escaping colons in url template" time="0.004" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should correctly encode url params" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should not encode @ in url params" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should encode &amp; in url params" time="0.004" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should build resource with default param" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should build resource with action default param overriding default param" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should build resource with action default param reading the value from instance" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should handle multiple params with same name" time="0.004" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should create resource" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should read resource" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should send correct headers" time="0.003" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should read partial resource" time="0.008" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should update resource" time="0.013" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should query resource" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should have all arguments optional" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should delete resource and call callback" time="0.006" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should post charge verb" time="0.004" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should post charge verb on instance" time="0.004" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should patch a resource" time="0.009" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should create on save" time="0.007" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should not mutate the resource object if response contains no body" time="0.007" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should bind default parameters" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should exercise full stack" time="0.005" classname="modules Firefox 15.0.resource"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.005" classname="modules Firefox 15.0.resource failure mode"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.005" classname="modules Firefox 15.0.resource failure mode"/>
+    <testcase name="should parse basic format" time="0.004" classname="modules Firefox 15.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in tags" time="0.003" classname="modules Firefox 15.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in attributes" time="0.003" classname="modules Firefox 15.0.HTML htmlParser"/>
+    <testcase name="should parse namespace" time="0.003" classname="modules Firefox 15.0.HTML htmlParser"/>
+    <testcase name="should parse empty value attribute of node" time="0.004" classname="modules Firefox 15.0.HTML htmlParser"/>
+    <testcase name="should echo html" time="0.004" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove script" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove nested script" time="0.003" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove attrs" time="0.003" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove style" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove script and style" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove double nested script" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove unknown  names" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should remove unsafe value" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should handle self closed elements" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should handle namespace" time="0.003" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should handle entities" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should handle improper html" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should handle improper html2" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should ignore back slash as escape" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should ignore object attributes" time="0.002" classname="modules Firefox 15.0.HTML"/>
+    <testcase name="should write basic HTML" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape text nodes" time="0.001" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape IE script" time="0.001" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape attributes" time="0.003" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore missformed elements" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore unknown attributes" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should not allow attributes" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should not allow tags" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should be URI" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should not be UIR" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should ignore javascript:" time="0.002" classname="modules Firefox 15.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore dec encoded javascript:" time="0.003" classname="modules Firefox 15.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore decimal with leading 0 encodede javascript:" time="0.003" classname="modules Firefox 15.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded javascript:" time="0.003" classname="modules Firefox 15.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded whitespace javascript:" time="0.003" classname="modules Firefox 15.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should set html" time="0.008" classname="modules Firefox 15.0.ngBindHtml"/>
+    <testcase name="should reset html when value is null or undefined" time="0.01" classname="modules Firefox 15.0.ngBindHtml"/>
+    <testcase name="should do basic filter" time="0.004" classname="modules Firefox 15.0.linky"/>
+    <testcase name="should handle mailto:" time="0.003" classname="modules Firefox 15.0.linky"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+  <testsuite name="Chrome 21.0" package="modules" timestamp="2012-09-20T03:17:01" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="166" errors="0" failures="0" time="0.438">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"/>
+    </properties>
+    <testcase name="should look like a Date" time="0.01" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should take millis as constructor argument" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should take dateString as constructor argument" time="0.003" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should fake getLocalDateString method" time="0.002" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should fake toISOString method" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should fake getHours method" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should fake getMinutes method" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should fake getSeconds method" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should create a date representing new year in Bratislava" time="0" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should delegate all the UTC methods to the original UTC Date object" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should throw error when no third param but toString called" time="0.001" classname="modules Chrome 21.0.ngMock TzDate"/>
+    <testcase name="should provide log method" time="0.008" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should provide info method" time="0.002" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should provide warn method" time="0.002" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should provide error method" time="0.002" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should store log messages" time="0.003" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should store info messages" time="0.002" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should store warn messages" time="0.004" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should store error messages" time="0.001" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should assertEmpty" time="0.006" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should reset state" time="0.002" classname="modules Chrome 21.0.ngMock $log"/>
+    <testcase name="should flush" time="0.003" classname="modules Chrome 21.0.ngMock defer"/>
+    <testcase name="should flush delayed" time="0.003" classname="modules Chrome 21.0.ngMock defer"/>
+    <testcase name="should defer and flush over time" time="0.001" classname="modules Chrome 21.0.ngMock defer"/>
+    <testcase name="should throw an exception if there is nothing to be flushed" time="0.002" classname="modules Chrome 21.0.ngMock defer"/>
+    <testcase name="should rethrow exceptions" time="0.002" classname="modules Chrome 21.0.ngMock $exceptionHandler"/>
+    <testcase name="should log exceptions" time="0" classname="modules Chrome 21.0.ngMock $exceptionHandler"/>
+    <testcase name="should throw on wrong argument" time="0.001" classname="modules Chrome 21.0.ngMock $exceptionHandler"/>
+    <testcase name="should expose flush method that will flush the pending queue of tasks" time="0.002" classname="modules Chrome 21.0.ngMock $timeout"/>
+    <testcase name="should serialize primitive types" time="0.001" classname="modules Chrome 21.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize element" time="0.001" classname="modules Chrome 21.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize scope" time="0.003" classname="modules Chrome 21.0.ngMock angular_mock_dump"/>
+    <testcase name="should be published on window" time="0" classname="modules Chrome 21.0.ngMock angular_mock_dump"/>
+    <testcase name="should remove data" time="0" classname="modules Chrome 21.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should deregister event handlers" time="0.002" classname="modules Chrome 21.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should load module" time="0.002" classname="modules Chrome 21.0.ngMock jasmine module and inject module in DSL"/>
+    <testcase name="should load module" time="0.003" classname="modules Chrome 21.0.ngMock jasmine module and inject module inline in test"/>
+    <testcase name="should load module" time="0.002" classname="modules Chrome 21.0.ngMock jasmine module and inject inject in DSL"/>
+    <testcase name="should load module" time="0.003" classname="modules Chrome 21.0.ngMock jasmine module and inject inject inline in test"/>
+    <testcase name="should inject" time="0.002" classname="modules Chrome 21.0.ngMock jasmine module and inject inject module with inject"/>
+    <testcase name="should respond with first matched definition" time="0.004" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should throw error when unexpected request" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should match headers if specified" time="0.003" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should match data if specified" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should match only method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should preserve the order of requests" time="0.003" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should take values" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend respond()"/>
+    <testcase name="should take function" time="0.009" classname="modules Chrome 21.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default status code to 200" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default response headers to &quot;&quot;" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend respond()"/>
+    <testcase name="should require specified order" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect()"/>
+    <testcase name="should have precedence over when()" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only headers differs from expectation" time="0.003" classname="modules Chrome 21.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only data differs from expectation" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend expect()"/>
+    <testcase name="should use when&apos;s respond() when no expect() respond is defined" time="0.005" classname="modules Chrome 21.0.ngMock $httpBackend expect()"/>
+    <testcase name="flush() should flush requests fired during callbacks" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend flush()"/>
+    <testcase name="should flush given number of pending requests" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when flushing more requests than pending" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when no request to flush" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception if not all expectations satisfied" time="0.003" classname="modules Chrome 21.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw an exception if no response defined" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should throw an exception if no response for exception and no definition" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should respond undefined when JSONP method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should not have passThrough method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend"/>
+    <testcase name="should throw exception if not all expectations were satisfied" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when no expectation" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when all expectations satisfied" time="0.003" classname="modules Chrome 21.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should throw exception if not all requests were flushed" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend verifyRequests"/>
+    <testcase name="should remove all expectations" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should remove all pending responses" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should not remove definitions" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should provide expectGET shortcut method" time="0.02" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPOST shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPUT shortcut method" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPATCH shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectDELETE shortcut method" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectJSONP shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenGET shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPOST shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPUT shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPATCH shortcut method" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenDELETE shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenJSONP shortcut method" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should accept url as regexp" time="0.001" classname="modules Chrome 21.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept data as regexp" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should ignore data only if undefined (not null or false)" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept headers as function" time="0.002" classname="modules Chrome 21.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should create mock application root" time="0.001" classname="modules Chrome 21.0.ngMock $rootElement"/>
+    <testcase name="should delegate requests to the real backend when passThrough is invoked" time="0.002" classname="modules Chrome 21.0.ngMockE2E $httpBackend passThrough()"/>
+    <testcase name="should flush responses via $browser.defer" time="0.002" classname="modules Chrome 21.0.ngMockE2E $httpBackend autoflush"/>
+    <testcase name="should provide access to existing cookies via object properties and keep them in sync" time="0.004" classname="modules Chrome 21.0.$cookies"/>
+    <testcase name="should create or update a cookie when a value is assigned to a property" time="0.002" classname="modules Chrome 21.0.$cookies"/>
+    <testcase name="should drop or reset any cookie that was set to a non-string value" time="0.003" classname="modules Chrome 21.0.$cookies"/>
+    <testcase name="should remove a cookie when a $cookies property is deleted" time="0.002" classname="modules Chrome 21.0.$cookies"/>
+    <testcase name="should drop or reset cookies that browser refused to store" time="0.002" classname="modules Chrome 21.0.$cookies"/>
+    <testcase name="should serialize objects to json" time="0.003" classname="modules Chrome 21.0.$cookieStore"/>
+    <testcase name="should deserialize json to object" time="0.002" classname="modules Chrome 21.0.$cookieStore"/>
+    <testcase name="should delete objects from the store when remove is called" time="0.002" classname="modules Chrome 21.0.$cookieStore"/>
+    <testcase name="should build resource" time="0.009" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should default to empty parameters" time="0.016" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should ignore slashes of undefinend parameters" time="0.005" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should support escaping colons in url template" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should correctly encode url params" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should not encode @ in url params" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should encode &amp; in url params" time="0.001" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should build resource with default param" time="0.007" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should build resource with action default param overriding default param" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should build resource with action default param reading the value from instance" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should handle multiple params with same name" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should create resource" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should read resource" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should send correct headers" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should read partial resource" time="0.008" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should update resource" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should query resource" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should have all arguments optional" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should delete resource and call callback" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should post charge verb" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should post charge verb on instance" time="0.001" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should patch a resource" time="0.002" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should create on save" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should not mutate the resource object if response contains no body" time="0.004" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should bind default parameters" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should exercise full stack" time="0.003" classname="modules Chrome 21.0.resource"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.003" classname="modules Chrome 21.0.resource failure mode"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.003" classname="modules Chrome 21.0.resource failure mode"/>
+    <testcase name="should parse basic format" time="0.004" classname="modules Chrome 21.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in tags" time="0.004" classname="modules Chrome 21.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in attributes" time="0.003" classname="modules Chrome 21.0.HTML htmlParser"/>
+    <testcase name="should parse namespace" time="0.001" classname="modules Chrome 21.0.HTML htmlParser"/>
+    <testcase name="should parse empty value attribute of node" time="0.002" classname="modules Chrome 21.0.HTML htmlParser"/>
+    <testcase name="should echo html" time="0.01" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove script" time="0.003" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove nested script" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove attrs" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove style" time="0.003" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove script and style" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove double nested script" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove unknown  names" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should remove unsafe value" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should handle self closed elements" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should handle namespace" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should handle entities" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should handle improper html" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should handle improper html2" time="0.002" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should ignore back slash as escape" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should ignore object attributes" time="0.001" classname="modules Chrome 21.0.HTML"/>
+    <testcase name="should write basic HTML" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape text nodes" time="0.001" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape IE script" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape attributes" time="0.017" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore missformed elements" time="0.003" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore unknown attributes" time="0.001" classname="modules Chrome 21.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should not allow attributes" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should not allow tags" time="0.001" classname="modules Chrome 21.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should be URI" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should not be UIR" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should ignore javascript:" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore dec encoded javascript:" time="0.001" classname="modules Chrome 21.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore decimal with leading 0 encodede javascript:" time="0.002" classname="modules Chrome 21.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded javascript:" time="0.001" classname="modules Chrome 21.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded whitespace javascript:" time="0.003" classname="modules Chrome 21.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should set html" time="0.005" classname="modules Chrome 21.0.ngBindHtml"/>
+    <testcase name="should reset html when value is null or undefined" time="0.003" classname="modules Chrome 21.0.ngBindHtml"/>
+    <testcase name="should do basic filter" time="0.003" classname="modules Chrome 21.0.linky"/>
+    <testcase name="should handle mailto:" time="0.002" classname="modules Chrome 21.0.linky"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+  <testsuite name="Safari 6.0" package="modules" timestamp="2012-09-20T03:17:01" id="0" hostname="dhcp-172-22-111-178.mtv.corp.google.com" tests="166" errors="0" failures="0" time="0.646">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"/>
+    </properties>
+    <testcase name="should look like a Date" time="0.004" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should take millis as constructor argument" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should take dateString as constructor argument" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should fake getLocalDateString method" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should fake toISOString method" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should fake getHours method" time="0" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should fake getMinutes method" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should fake getSeconds method" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should create a date representing new year in Bratislava" time="0.003" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should delegate all the UTC methods to the original UTC Date object" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should throw error when no third param but toString called" time="0.001" classname="modules Safari 6.0.ngMock TzDate"/>
+    <testcase name="should provide log method" time="0.007" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should provide info method" time="0.003" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should provide warn method" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should provide error method" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should store log messages" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should store info messages" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should store warn messages" time="0.003" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should store error messages" time="0.001" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should assertEmpty" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should reset state" time="0.002" classname="modules Safari 6.0.ngMock $log"/>
+    <testcase name="should flush" time="0.002" classname="modules Safari 6.0.ngMock defer"/>
+    <testcase name="should flush delayed" time="0.001" classname="modules Safari 6.0.ngMock defer"/>
+    <testcase name="should defer and flush over time" time="0.001" classname="modules Safari 6.0.ngMock defer"/>
+    <testcase name="should throw an exception if there is nothing to be flushed" time="0.001" classname="modules Safari 6.0.ngMock defer"/>
+    <testcase name="should rethrow exceptions" time="0.001" classname="modules Safari 6.0.ngMock $exceptionHandler"/>
+    <testcase name="should log exceptions" time="0" classname="modules Safari 6.0.ngMock $exceptionHandler"/>
+    <testcase name="should throw on wrong argument" time="0" classname="modules Safari 6.0.ngMock $exceptionHandler"/>
+    <testcase name="should expose flush method that will flush the pending queue of tasks" time="0.005" classname="modules Safari 6.0.ngMock $timeout"/>
+    <testcase name="should serialize primitive types" time="0" classname="modules Safari 6.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize element" time="0.003" classname="modules Safari 6.0.ngMock angular_mock_dump"/>
+    <testcase name="should serialize scope" time="0.002" classname="modules Safari 6.0.ngMock angular_mock_dump"/>
+    <testcase name="should be published on window" time="0" classname="modules Safari 6.0.ngMock angular_mock_dump"/>
+    <testcase name="should remove data" time="0.001" classname="modules Safari 6.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should deregister event handlers" time="0.001" classname="modules Safari 6.0.ngMock angular_mock_clearDataCache"/>
+    <testcase name="should load module" time="0.002" classname="modules Safari 6.0.ngMock jasmine module and inject module in DSL"/>
+    <testcase name="should load module" time="0.001" classname="modules Safari 6.0.ngMock jasmine module and inject module inline in test"/>
+    <testcase name="should load module" time="0.001" classname="modules Safari 6.0.ngMock jasmine module and inject inject in DSL"/>
+    <testcase name="should load module" time="0.001" classname="modules Safari 6.0.ngMock jasmine module and inject inject inline in test"/>
+    <testcase name="should inject" time="0.002" classname="modules Safari 6.0.ngMock jasmine module and inject inject module with inject"/>
+    <testcase name="should respond with first matched definition" time="0.003" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should throw error when unexpected request" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should match headers if specified" time="0.004" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should match data if specified" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should match only method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should preserve the order of requests" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should take values" time="0.003" classname="modules Safari 6.0.ngMock $httpBackend respond()"/>
+    <testcase name="should take function" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default status code to 200" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend respond()"/>
+    <testcase name="should default response headers to &quot;&quot;" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend respond()"/>
+    <testcase name="should require specified order" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect()"/>
+    <testcase name="should have precedence over when()" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only headers differs from expectation" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect()"/>
+    <testcase name="should throw exception when only data differs from expectation" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect()"/>
+    <testcase name="should use when&apos;s respond() when no expect() respond is defined" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect()"/>
+    <testcase name="flush() should flush requests fired during callbacks" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend flush()"/>
+    <testcase name="should flush given number of pending requests" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when flushing more requests than pending" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception when no request to flush" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw exception if not all expectations satisfied" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend flush()"/>
+    <testcase name="should throw an exception if no response defined" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should throw an exception if no response for exception and no definition" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should respond undefined when JSONP method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should not have passThrough method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend"/>
+    <testcase name="should throw exception if not all expectations were satisfied" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when no expectation" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should do nothing when all expectations satisfied" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend verifyExpectations"/>
+    <testcase name="should throw exception if not all requests were flushed" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend verifyRequests"/>
+    <testcase name="should remove all expectations" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should remove all pending responses" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should not remove definitions" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend resetExpectations"/>
+    <testcase name="should provide expectGET shortcut method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPOST shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPUT shortcut method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectPATCH shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectDELETE shortcut method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide expectJSONP shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenGET shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPOST shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPUT shortcut method" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenPATCH shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenDELETE shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should provide whenJSONP shortcut method" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend expect/when shortcuts"/>
+    <testcase name="should accept url as regexp" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept data as regexp" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should ignore data only if undefined (not null or false)" time="0.001" classname="modules Safari 6.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should accept headers as function" time="0.002" classname="modules Safari 6.0.ngMock $httpBackend MockHttpExpectation"/>
+    <testcase name="should create mock application root" time="0.001" classname="modules Safari 6.0.ngMock $rootElement"/>
+    <testcase name="should delegate requests to the real backend when passThrough is invoked" time="0.002" classname="modules Safari 6.0.ngMockE2E $httpBackend passThrough()"/>
+    <testcase name="should flush responses via $browser.defer" time="0.002" classname="modules Safari 6.0.ngMockE2E $httpBackend autoflush"/>
+    <testcase name="should provide access to existing cookies via object properties and keep them in sync" time="0.004" classname="modules Safari 6.0.$cookies"/>
+    <testcase name="should create or update a cookie when a value is assigned to a property" time="0.003" classname="modules Safari 6.0.$cookies"/>
+    <testcase name="should drop or reset any cookie that was set to a non-string value" time="0.003" classname="modules Safari 6.0.$cookies"/>
+    <testcase name="should remove a cookie when a $cookies property is deleted" time="0.002" classname="modules Safari 6.0.$cookies"/>
+    <testcase name="should drop or reset cookies that browser refused to store" time="0.003" classname="modules Safari 6.0.$cookies"/>
+    <testcase name="should serialize objects to json" time="0.002" classname="modules Safari 6.0.$cookieStore"/>
+    <testcase name="should deserialize json to object" time="0.002" classname="modules Safari 6.0.$cookieStore"/>
+    <testcase name="should delete objects from the store when remove is called" time="0.002" classname="modules Safari 6.0.$cookieStore"/>
+    <testcase name="should build resource" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should default to empty parameters" time="0.004" classname="modules Safari 6.0.resource"/>
+    <testcase name="should ignore slashes of undefinend parameters" time="0.005" classname="modules Safari 6.0.resource"/>
+    <testcase name="should support escaping colons in url template" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should correctly encode url params" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should not encode @ in url params" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should encode &amp; in url params" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should build resource with default param" time="0.005" classname="modules Safari 6.0.resource"/>
+    <testcase name="should build resource with action default param overriding default param" time="0.004" classname="modules Safari 6.0.resource"/>
+    <testcase name="should build resource with action default param reading the value from instance" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should handle multiple params with same name" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should create resource" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should read resource" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should send correct headers" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should read partial resource" time="0.011" classname="modules Safari 6.0.resource"/>
+    <testcase name="should update resource" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should query resource" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should have all arguments optional" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should delete resource and call callback" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should post charge verb" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should post charge verb on instance" time="0.351" classname="modules Safari 6.0.resource"/>
+    <testcase name="should patch a resource" time="0.004" classname="modules Safari 6.0.resource"/>
+    <testcase name="should create on save" time="0.003" classname="modules Safari 6.0.resource"/>
+    <testcase name="should not mutate the resource object if response contains no body" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should bind default parameters" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should exercise full stack" time="0.002" classname="modules Safari 6.0.resource"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.002" classname="modules Safari 6.0.resource failure mode"/>
+    <testcase name="should call the error callback if provided on non 2xx response" time="0.001" classname="modules Safari 6.0.resource failure mode"/>
+    <testcase name="should parse basic format" time="0.002" classname="modules Safari 6.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in tags" time="0.001" classname="modules Safari 6.0.HTML htmlParser"/>
+    <testcase name="should parse newlines in attributes" time="0.001" classname="modules Safari 6.0.HTML htmlParser"/>
+    <testcase name="should parse namespace" time="0.001" classname="modules Safari 6.0.HTML htmlParser"/>
+    <testcase name="should parse empty value attribute of node" time="0.001" classname="modules Safari 6.0.HTML htmlParser"/>
+    <testcase name="should echo html" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove script" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove nested script" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove attrs" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove style" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove script and style" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove double nested script" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove unknown  names" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should remove unsafe value" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should handle self closed elements" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should handle namespace" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should handle entities" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should handle improper html" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should handle improper html2" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should ignore back slash as escape" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should ignore object attributes" time="0.001" classname="modules Safari 6.0.HTML"/>
+    <testcase name="should write basic HTML" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape text nodes" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape IE script" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should escape attributes" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore missformed elements" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should ignore unknown attributes" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter"/>
+    <testcase name="should not allow attributes" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should not allow tags" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter explicitly dissallow"/>
+    <testcase name="should be URI" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should not be UIR" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter isUri"/>
+    <testcase name="should ignore javascript:" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore dec encoded javascript:" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore decimal with leading 0 encodede javascript:" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded javascript:" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should ignore hex encoded whitespace javascript:" time="0.001" classname="modules Safari 6.0.HTML htmlSanitizerWriter javascript URL attribute"/>
+    <testcase name="should set html" time="0.005" classname="modules Safari 6.0.ngBindHtml"/>
+    <testcase name="should reset html when value is null or undefined" time="0.003" classname="modules Safari 6.0.ngBindHtml"/>
+    <testcase name="should do basic filter" time="0.001" classname="modules Safari 6.0.linky"/>
+    <testcase name="should handle mailto:" time="0.001" classname="modules Safari 6.0.linky"/>
+    <system-out/>
+    <system-err/>
+  </testsuite>
+</testsuites>
