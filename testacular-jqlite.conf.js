@@ -6,4 +6,9 @@ exclude = ['**/*jasmine*/**', '**/*jstd*/**'].concat(angularFiles.files.jstdExcl
 autoWatch = true;
 logLevel = LOG_INFO;
 logColors = true;
-browsers = ['Chrome']
+browsers = ['Chrome'];
+
+junitReporter = {
+  outputFile: 'junit/jqlite.xml',
+  suite: 'jqlite'
+};
