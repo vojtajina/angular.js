@@ -148,7 +148,9 @@ angular.module = function(name, dependencies, config) {
 angular.Module.modules = {};
 
 // TODO(misko): temporary hack
-angular.Module.prototype.controller = noop;
+angular.Module.prototype.controller = function(name, Controller) {
+  this.service('controller:' + name, Controller, true);
+};
 angular.Module.prototype.directive = function(name, Directive) {
   this.value('directive:' + name, Directive);
 };

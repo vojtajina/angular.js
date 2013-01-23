@@ -92,7 +92,32 @@ angular.core.module.value({
     }
   }]
 }).
-value('directive:[ngController]', function() {}).
+factory('directive:[controller]', ['$injector', function($injector) {
+  WrapperController.$inject = ['$value', '$anchor'];
+  WrapperController.$transclude = '.';
+
+  function WrapperController(value, anchor) {
+    this.attach = function(scope) {
+      var childScope = scope.$new();
+
+      // create new instance (block) and attach it
+      var block = anchor.newBlock();
+      block.attach(childScope);
+      block.insertAfter(anchor);
+
+      // TODO(vojta): use locals() once it's fixed
+      var localInjector = $injector.load([['$provide', function($provide) {
+        $provide.value('$scope', childScope);
+      }]]);
+
+      // instantiate the controller
+      localInjector.get('controller:' + value);
+    };
+  }
+
+  return WrapperController;
+}]).
+
 value('directive:input[type=text]', ['ngModel', '$on_keydown_change', '$prop_value', function(model, onChange, value){
   this.attach = function(scope) {
     onChange(function() {
