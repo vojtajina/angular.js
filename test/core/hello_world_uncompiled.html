@@ -1,6 +1,14 @@
 <html>
 <head>
-  <script src="../../build/c-angular.js"></script>
+  <script>var CLOSURE_BASE_PATH = '../../';</script>
+  <script src="../../lib/closure-compiler/base.js"></script>
+  <script>
+    goog.require('angular.module');
+    goog.require('angular.injector');
+    goog.require('angular.core.directives');
+    goog.require('angular.core.$rootScope');
+    goog.require('angular.core.$compile');
+  </script>
 
   <script>
     var helloModule = angular.module('hello', ['core']);
