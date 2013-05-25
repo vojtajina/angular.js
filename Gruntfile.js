@@ -52,6 +52,11 @@ module.exports = function(grunt) {
       end2end: 'karma-e2e.conf.js'
     },
 
+    nodetest: {
+      errorCompressor: 'lib/error-compressor'
+      // TODO(i): uncomment when tests are passing
+      //docs: 'docs'
+    },
 
     autotest: {
       jqlite: 'karma-jqlite.conf.js',
@@ -131,7 +136,7 @@ module.exports = function(grunt) {
 
 
     min: {
-      angular: 'build/angular.js',
+      angular: {src: 'build/angular.js', errorCompress: true},
       cookies: 'build/angular-cookies.js',
       loader: 'build/angular-loader.js',
       mobile: 'build/angular-mobile.js',
@@ -173,9 +178,9 @@ module.exports = function(grunt) {
 
   //alias tasks
   grunt.registerTask('test:unit', ['test:jqlite', 'test:jquery', 'test:modules']);
-  grunt.registerTask('minify', ['clean', 'build', 'minall']);
+  grunt.registerTask('minify', ['clean', 'buildall', 'minall']);
   grunt.registerTask('test:e2e', ['connect:testserver', 'test:end2end']);
   grunt.registerTask('webserver', ['connect:devserver']);
-  grunt.registerTask('package', ['clean', 'buildall', 'minall', 'docs', 'copy', 'write', 'compress']);
+  grunt.registerTask('package', ['clean', 'nodetest', 'buildall', 'minall', 'docs', 'copy', 'write', 'compress']);
   grunt.registerTask('default', ['package']);
 };
