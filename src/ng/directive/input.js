@@ -384,11 +384,6 @@ var inputType = {
 };
 
 
-function isEmpty(value) {
-  return isUndefined(value) || value === '' || value === null || value !== value;
-}
-
-
 function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
   var listener = function() {
@@ -658,9 +653,8 @@ function checkboxInputType(scope, element, attr, ctrl) {
   };
 
   // Override the standard `$isEmpty` because a value of `false` means empty in a checkbox.
-  var _$isEmpty = ctrl.$isEmpty;
   ctrl.$isEmpty = function(value) {
-    return _$isEmpty(value) || value === false;
+    return value !== trueValue;
   };
 
   ctrl.$formatters.push(function(value) {
@@ -1012,8 +1006,10 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * You can override this for input directives whose concept of being empty is different to the
    * default. The `checkboxInputType` directive does this because in its case a value of `false`
    * implies empty.
-   */   
-  this.$isEmpty = isEmpty;
+   */
+  this.$isEmpty = function(value) {
+    return isUndefined(value) || value === '' || value === null || value !== value;
+  };
 
   var parentForm = $element.inheritedData('$formController') || nullFormCtrl,
       invalidCount = 0, // used to easily determine if we are valid
@@ -1365,7 +1361,7 @@ var ngListDirective = function() {
 
       var parse = function(viewValue) {
         // If the viewValue is invalid (say required but empty) it will be `undefined`
-        if ( isUndefined(viewValue) ) return;
+        if (isUndefined(viewValue)) return;
 
         var list = [];
 
@@ -1387,10 +1383,9 @@ var ngListDirective = function() {
         return undefined;
       });
 
-      // Override the standard $isEmpty because an empty array means the input is empty
-      var _$isEmpty = ctrl.$isEmpty;
+      // Override the standard $isEmpty because an empty array means the input is empty.
       ctrl.$isEmpty = function(value) {
-        return _$isEmpty(value) || value.length === 0;
+        return !value || !value.length;
       };
     }
   };
