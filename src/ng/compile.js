@@ -767,42 +767,42 @@ function $CompileProvider($provide) {
           directiveName,
           $template,
           transcludeDirective,
+          transcludeContentDirective,
+          transcludeElementDirective,
           replaceDirective = originalReplaceDirective,
           childTranscludeFn = transcludeFn,
           controllerDirectives,
           linkFn,
           directiveValue;
 
+      // check all directives for duplicate transclusions, isolate scopes, etc.
       for(var i = 0, ii = directives.length; i < ii; i++) {
         directive = directives[i];
-        if (terminalPriority > directive.priority) {
-          break; // prevent further processing of directives
-        }
-
-        directiveName = directive.name;
 
         if (directiveValue = directive.scope) {
           assertNoDuplicate('new/isolated scope', newIsolateScopeDirective, directive, $compileNode);
 
-          // skip the check for directives with async templates, we'll check the derived sync directive when
-          // the template arrives
-          if (!directive.templateUrl && isObject(directiveValue)) {
+          if (isObject(directiveValue)) {
             newIsolateScopeDirective = directive;
           }
         }
 
-        if (!directive.templateUrl && directive.controller) {
-          directiveValue = directive.controller;
+        if (directiveValue = directive.controller) {
+          directiveName = directive.name;
           controllerDirectives = controllerDirectives || {};
           assertNoDuplicate("'" + directiveName + "' controller",
               controllerDirectives[directiveName], directive, $compileNode);
           controllerDirectives[directiveName] = directive;
         }
 
-        if (directiveValue = directive.transclude) {
-          terminalPriority = directive.priority;
-          assertNoDuplicate('transclusion', transcludeDirective, directive, $compileNode);
-          transcludeDirective = directive;
+        if (directive.transclude === 'content') {
+          assertNoDuplicate('content transclusion', transcludeContentDirective, directive, $compileNode);
+          transcludeContentDirective = directive;
+        }
+
+        if (directive.transclude === 'element') {
+          assertNoDuplicate('element transclusion', transcludeElementDirective, directive, $compileNode);
+          transcludeElementDirective = directive;
         }
 
         if (directive.template) {
@@ -814,13 +814,7 @@ function $CompileProvider($provide) {
           assertNoDuplicate('template', templateDirective, directive, $compileNode);
           templateDirective = directive;
         }
-
-        if (directive.terminal) {
-          terminalPriority = Math.max(terminalPriority, directive.priority);
-        }
       }
-
-      terminalPriority = -Number.MAX_VALUE;
 
       // executes all directives on the current element
       for(var i = 0, ii = directives.length; i < ii; i++) {
@@ -852,6 +846,7 @@ function $CompileProvider($provide) {
         directiveName = directive.name;
 
         if (directiveValue = directive.transclude) {
+          transcludeDirective = directive;
 
           if (directiveValue == 'element') {
             terminalPriority = directive.priority;

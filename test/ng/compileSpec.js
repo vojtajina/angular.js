@@ -1520,7 +1520,7 @@ describe('$compile', function() {
         );
 
 
-        it('should allow more one new scope directives per element, but directives should share' +
+        it('should allow more one new scope directives per element, but directives should share ' +
             'the scope', inject(
           function($rootScope, $compile, log) {
             element = $compile('<div class="scope-a; scope-b"></div>')($rootScope);
@@ -2760,8 +2760,8 @@ describe('$compile', function() {
       inject(function($compile) {
         expect(function() {
           $compile('<div class="first second"></div>');
-        }).toThrowMinErr('$compile', 'multidir', 'Multiple directives [first, second] asking for transclusion on: ' +
-            '<div class="first second">');
+        }).toThrowMinErr('$compile', 'multidir', 'Multiple directives [first, second] asking for ' +
+            'content transclusion on: <div class="first second">');
       });
     });
 
@@ -2781,8 +2781,8 @@ describe('$compile', function() {
       inject(function($compile) {
         expect(function() {
           $compile('<div class="first second"></div>');
-        }).toThrowMinErr('$compile', 'multidir', 'Multiple directives [first, second] asking for transclusion on: ' +
-            '<div class="first second">');
+        }).toThrowMinErr('$compile', 'multidir', 'Multiple directives [first, second] asking for ' +
+            'element transclusion on: <div class="first second">');
       });
     });
 
@@ -2824,6 +2824,26 @@ describe('$compile', function() {
         $rootScope.$apply();
         expect(element.text()).toEqual('Hello: Misko!');
         expect(widgetScope.$$nextSibling).toEqual(null);
+      });
+    });
+
+
+    it('should only allow one transclude per element', function() {
+      module(function() {
+        directive('first', valueFn({
+          restrict: 'CA',
+          transclude: 'content'
+        }));
+        directive('second', valueFn({
+          restrict: 'CA',
+          transclude: 'content'
+        }));
+      });
+      inject(function($compile) {
+        expect(function() {
+          $compile('<div class="first second"></div>');
+        }).toThrowMinErr('$compile', 'multidir', 'Multiple directives [first, second] asking for ' +
+            'content transclusion on: <div class="first second">');
       });
     });
 
