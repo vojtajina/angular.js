@@ -956,12 +956,14 @@ function $CompileProvider($provide) {
 
     function createBoundTranscludeFn(scope, transcludeFn) {
       return function boundTranscludeFn(transcludedScope, cloneFn, controllers) {
-        var scopeCreated;
+        var scopeCreated = false;
+
         if (!transcludedScope) {
           transcludedScope = scope.$new();
           transcludedScope.$$transcluded = true;
           scopeCreated = true;
         }
+
         var clone = transcludeFn(transcludedScope, cloneFn, controllers);
         if (scopeCreated) {
           clone.on('$destroy', bind(transcludedScope, transcludedScope.$destroy));
@@ -1381,7 +1383,7 @@ function $CompileProvider($provide) {
 
 
       function nodeLinkFn(childLinkFn, scope, linkNode, $rootElement, boundTranscludeFn) {
-        var attrs, $element, i, ii, linkFn, controller, isolateScope, elementControllers = {}, $transclude;
+        var attrs, $element, i, ii, linkFn, controller, isolateScope, elementControllers = {}, transcludeFn;
 
         if (compileNode === linkNode) {
           attrs = templateAttrs;
@@ -1475,14 +1477,14 @@ function $CompileProvider($provide) {
             }
           });
         }
-        $transclude = boundTranscludeFn && controllerBoundTransclude;
+        transcludeFn = boundTranscludeFn && controllersBoundTransclude;
         if (controllerDirectives) {
           forEach(controllerDirectives, function(directive) {
             var locals = {
               $scope: directive === newIsolateScopeDirective || directive.$$isolateScope ? isolateScope : scope,
               $element: $element,
               $attrs: attrs,
-              $transclude: $transclude
+              $transclude: transcludeFn
             }, controllerInstance;
 
             controller = directive.controller;
@@ -1492,9 +1494,10 @@ function $CompileProvider($provide) {
 
             controllerInstance = $controller(controller, locals);
             // For directives with element transclusion the element is a comment,
-            // but jQuery .data doesn't support
-            // attaching data to comment nodes as it's hard to clean up (http://bugs.jquery.com/ticket/8335)
-            // so instead we save the direct controllers for the element in a local hash.
+            // but jQuery .data doesn't support attaching data to comment nodes as it's hard to
+            // clean up (http://bugs.jquery.com/ticket/8335).
+            // Instead, we save the controllers for the element in a local hash and attach to .data
+            // later, once we have the actual element.
             elementControllers[directive.name] = controllerInstance;
             if (!hasElementTranscludeDirective) {
               $element.data('$' + directive.name + 'Controller', controllerInstance);
@@ -1511,7 +1514,7 @@ function $CompileProvider($provide) {
           try {
             linkFn = preLinkFns[i];
             linkFn(linkFn.isolateScope ? isolateScope : scope, $element, attrs,
-                linkFn.require && getControllers(linkFn.require, $element, elementControllers), $transclude);
+                linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
           } catch (e) {
             $exceptionHandler(e, startingTag($element));
           }
@@ -1531,28 +1534,26 @@ function $CompileProvider($provide) {
           try {
             linkFn = postLinkFns[i];
             linkFn(linkFn.isolateScope ? isolateScope : scope, $element, attrs,
-                linkFn.require && getControllers(linkFn.require, $element, elementControllers), $transclude);
+                linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
           } catch (e) {
             $exceptionHandler(e, startingTag($element));
           }
         }
 
-        function controllerBoundTransclude() {
-          var scope, cloneAttachFn, transcludeControllers;
-          if (!boundTranscludeFn) {
-            return;
-          }
+        // This is the function that is injected as `$transclude`.
+        function controllersBoundTransclude(scope, cloneAttachFn) {
+          var transcludeControllers;
+
+          // no scope passed
           if (arguments.length < 2) {
-            // no scope but cloneAttachFn
-            cloneAttachFn = arguments[0];
-          } else {
-            // scope and cloneAttachFn (e.g. for ngIf)
-            scope = arguments[0];
-            cloneAttachFn = arguments[1];
+            cloneAttachFn = scope;
+            scope = undefined;
           }
+
           if (hasElementTranscludeDirective) {
             transcludeControllers = elementControllers;
           }
+
           return boundTranscludeFn(scope, cloneAttachFn, transcludeControllers);
         }
       }
