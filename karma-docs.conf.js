@@ -31,7 +31,7 @@ module.exports = function(config) {
     ],
 
     junitReporter: {
-      outputFile: 'test_out/docs.xml',
+      outputDir: 'test_out/docs/',
       suite: 'Docs'
     }
   });

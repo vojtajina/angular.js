@@ -9,7 +9,7 @@ module.exports = function(config) {
     exclude: angularFiles.mergeFilesFor('karmaExclude'),
 
     junitReporter: {
-      outputFile: 'test_out/jqlite.xml',
+      outputDir: 'test_out/jqlite/',
       suite: 'jqLite'
     }
   });

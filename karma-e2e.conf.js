@@ -18,7 +18,7 @@ module.exports = function(config) {
     },
 
     junitReporter: {
-      outputFile: 'test_out/e2e.xml',
+      outputDir: 'test_out/e2e/',
       suite: 'E2E'
     }
   });

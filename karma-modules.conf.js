@@ -8,7 +8,7 @@ module.exports = function(config) {
     files: angularFiles.mergeFilesFor('karmaModules', 'angularSrcModules'),
 
     junitReporter: {
-      outputFile: 'test_out/modules.xml',
+      outputDir: 'test_out/modules/',
       suite: 'modules'
     }
   });

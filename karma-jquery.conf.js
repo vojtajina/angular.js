@@ -9,7 +9,7 @@ module.exports = function(config) {
     exclude: angularFiles.mergeFilesFor('karmaJqueryExclude'),
 
     junitReporter: {
-      outputFile: 'test_out/jquery.xml',
+      outputDir: 'test_out/jquery/',
       suite: 'jQuery'
     }
   });
