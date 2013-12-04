@@ -29,6 +29,8 @@ grunt ci-checks package --no-color
 # UNIT TESTS #
 grunt test:unit --browsers $BROWSERS --reporters=dots,junit --no-colors --no-color
 
+# COVERAGE
+grunt test:jqlite --browsers Chrome --reporters coverage --no-colors --no-color
 
 # END TO END TESTS #
 grunt test:e2e --browsers $BROWSERS_E2E --reporters=dots,junit --no-colors --no-color
