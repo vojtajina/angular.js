@@ -224,8 +224,8 @@ function jqLiteOff(element, type, fn, unsupported) {
       if (isUndefined(fn)) {
         removeEventListenerFn(element, type, events[type]);
         delete events[type];
-      } else {
-        arrayRemove(events[type] || [], fn);
+      } else if (events[type]) {
+        events[type][indexOf(events[type], fn)] = null;
       }
     });
   }
@@ -645,11 +645,8 @@ function createEventHandler(element, events) {
       return event.defaultPrevented || event.returnValue === false;
     };
 
-    // Copy event handlers in case event handlers array is modified during execution.
-    var eventHandlersCopy = shallowCopy(events[type || event.type] || []);
-
-    forEach(eventHandlersCopy, function(fn) {
-      fn.call(element, event);
+    forEach(events[type || event.type], function(fn) {
+      fn && fn.call(element, event);
     });
 
     // Remove monkey-patched methods (IE),
