@@ -1122,14 +1122,12 @@ describe('jqLite', function() {
 
     it('should deregister specific listener within the listener and call subsequent listeners', function() {
       var aElem = jqLite(a),
-          clickOnceSpy = jasmine.createSpy('clickOnce'),
           clickSpy = jasmine.createSpy('click'),
-          clickOnceListener = function () {
-            aElem.off('click', clickOnceListener);
-            return clickOnceSpy();
-          };
+          clickOnceSpy = jasmine.createSpy('clickOnce').andCallFake(function() {
+            aElem.off('click', clickOnceSpy);
+          });
 
-      aElem.on('click', clickOnceListener);
+      aElem.on('click', clickOnceSpy);
       aElem.on('click', clickSpy);
 
       browserTrigger(a, 'click');
