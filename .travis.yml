@@ -15,8 +15,9 @@ env:
     - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
 
 before_script:
+  - export BROWSER_PROVIDER=$(./scripts/travis/decide_browser_provider.sh)
   - mkdir -p $LOGS_DIR
-  - ./lib/sauce/sauce_connect_setup.sh
+  - ./scripts/travis/start_browser_provider_tunnel.sh
   - npm install -g grunt-cli
   - grunt bower
   - grunt bower

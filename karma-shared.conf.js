@@ -22,7 +22,7 @@ module.exports = function(config, specificOptions) {
     // BrowserStack config for local development.
     browserStack: {
       project: 'AngularJS',
-      name: specificOptions.testName,
+      name: specificOptions.testName || 'AngularJS',
       startTunnel: true,
       timeout: 600 // 10min
     },
@@ -128,6 +128,7 @@ module.exports = function(config, specificOptions) {
 
     config.browserStack.build = buildLabel;
     config.browserStack.startTunnel = false;
+    config.browserStack.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
 
     config.sauceLabs.build = buildLabel;
     config.sauceLabs.startConnect = false;
@@ -135,7 +136,9 @@ module.exports = function(config, specificOptions) {
 
     // TODO(vojta): remove once SauceLabs supports websockets.
     // This speeds up the capturing a bit, as browsers don't even try to use websocket.
-    config.transports = ['xhr-polling'];
+    if (process.env.BROWSER_PROVIDER === 'saucelabs') {
+      config.transports = ['xhr-polling'];
+    }
 
     // Debug logging into a file, that we print out at the end of the build.
     config.loggers.push({
