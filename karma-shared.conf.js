@@ -177,9 +177,9 @@ module.exports = function(config, specificOptions) {
       }
 
       // on Travis, ignore DEBUG statements
-      if (process.env.TRAVIS && log.level.levelStr === config.LOG_DEBUG) {
-        return;
-      }
+      // if (process.env.TRAVIS && log.level.levelStr === config.LOG_DEBUG) {
+      //   return;
+      // }
 
       console.log(layout(log));
     });
