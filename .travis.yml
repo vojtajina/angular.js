@@ -20,7 +20,7 @@ env:
 
 install:
   - npm config set registry http://23.251.144.68
-  - npm install
+  - time npm install
 
 before_script:
   - mkdir -p $LOGS_DIR
