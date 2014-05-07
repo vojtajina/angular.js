@@ -1443,27 +1443,159 @@ describe('$compile', function() {
           }
         ));
 
-        iit('should pass the transcluded content through to ng-transclude', function() {
+        // it('should pass the transcluded content through to ng-transclude', function() {
+
+        //   module(function($compileProvider) {
+        //     // This directive transcludes its contents and hopes to use the
+        //     // transcluded content in its template
+        //     $compileProvider.directive('transTest', valueFn({
+        //       templateUrl: 'transTestTemplate',
+        //       transclude: true
+        //     }));
+        //   });
+
+        //   inject(function($compile, $rootScope, $templateCache) {
+        //     // This is the template for the trans-test directive, it contains an
+        //     // ng-if, which also uses transclusion, which basically blocks the inner
+        //     // trans-test directive from receiving any transcluded content
+        //     $templateCache.put('transTestTemplate',
+        //       '  <div ng-if="true">'+
+        //       '    <div ng-transclude></div>'+
+        //       '</div>');
+
+        //     element = $compile('<div trans-test>transcluded content</div>')($rootScope);
+
+        //     // The ngTransclude:orphan error gets thrown when the digest occurs since this
+        //     // is when the ngTransclude directive tries to use the transcluded function.
+        //     $rootScope.$digest();
+
+        //     expect(element.text().trim()).toEqual('transcluded content');
+        //   });
+        // });
+
+
+        // it('nested ngIfs should transclude correctly', function() {
+
+        //   module(function($compileProvider) {
+        //     // This directive does nothing except to put a directive in the compile
+        //     // element ancestors list between the root $compile node and the trans-test
+        //     // directives' element
+        //     $compileProvider.directive('noop', valueFn({}));
+        //   });
+
+        //   inject(function($compile, $rootScope) {
+        //     element = $compile('<div noop><div ng-if="true">outer<div ng-if="true">inner</div></div></div>')($rootScope);
+
+        //     // The ngTransclude:orphan error gets thrown when the digest occurs since this
+        //     // is when the ngTransclude directive tries to use the transcluded function.
+        //     $rootScope.$digest();
+
+        //     expect(element.text().trim()).toEqual('outerinner');
+        //   });
+        // });
+
+
+        // it('should pass the transcluded content through to ng-transclude, ' +
+        //     'when not the highest directive' +
+        //     'and with external template', function() {
+
+        //   module(function($compileProvider) {
+        //     // This directive transcludes its contents and hopes to use the
+        //     // transcluded content in its template
+        //     $compileProvider.directive('transTest', valueFn({
+        //       templateUrl: 'transTestTemplate',
+        //       transclude: true
+        //     }));
+
+        //     // This directive does nothing except to put a directive in the compile
+        //     // element ancestors list between the root $compile node and the trans-test
+        //     // directives' element
+        //     $compileProvider.directive('noop', valueFn({}));
+        //   });
+
+        //   inject(function($compile, $rootScope, $templateCache) {
+        //     // This is the template for the trans-test directive, it contains an
+        //     // ng-if, which also uses transclusion, which basically blocks the inner
+        //     // trans-test directive from receiving any transcluded content
+        //     $templateCache.put('transTestTemplate',
+        //       '<div noop>'+
+        //       '  <div ng-if="true">'+
+        //       '    <div ng-transclude></div>'+
+        //       '  </div>'+
+        //       '</div>');
+
+        //     element = $compile('<div trans-test>transcluded content</div>')($rootScope);
+
+        //     // The ngTransclude:orphan error gets thrown when the digest occurs since this
+        //     // is when the ngTransclude directive tries to use the transcluded function.
+        //     $rootScope.$digest();
+
+        //     expect(element.text().trim()).toEqual('transcluded content');
+        //   });
+        // });
+
+        // it('should pass the transcluded content through to ng-transclude, ' +
+        //     'when not the highest directive' +
+        //     'and with inline template', function() {
+
+        //   module(function($compileProvider) {
+        //     // This directive transcludes its contents and hopes to use the
+        //     // transcluded content in its template
+        //     $compileProvider.directive('transTest', valueFn({
+        //       template:
+        //         // This is the template for the trans-test directive, it contains an
+        //         // ng-if, which also uses transclusion, which basically blocks the inner
+        //         // trans-test directive from receiving any transcluded content
+        //         '<div noop>'+
+        //         '  <div ng-if="true">'+
+        //         '    <div ng-transclude></div>'+
+        //         '  </div>'+
+        //         '</div>',
+        //       transclude: true
+        //     }));
+
+        //     // This directive does nothing except to put a directive in the compile
+        //     // element ancestors list between the root $compile node and the trans-test
+        //     // directives' element
+        //     $compileProvider.directive('noop', valueFn({}));
+        //   });
+
+        //   inject(function($compile, $rootScope, $templateCache) {
+
+        //     element = $compile('<div trans-test>transcluded content</div>')($rootScope);
+
+        //     // The ngTransclude:orphan error gets thrown when the digest occurs since this
+        //     // is when the ngTransclude directive tries to use the transcluded function.
+        //     $rootScope.$digest();
+
+        //     expect(element.text().trim()).toEqual('transcluded content');
+        //   });
+        // });
+
+
+
+
+        iit('should allow nested transclude directives', function() {
 
           module(function($compileProvider) {
-            // This directive transcludes its contents and hopes to use the
-            // transcluded content in its template
-            $compileProvider.directive('transTest', valueFn({
-              templateUrl: 'transTestTemplate',
+
+            $compileProvider.directive('noop', valueFn({}));
+
+            $compileProvider.directive('transclude1', valueFn({
+              template: '<div noop><div transclude2><div ng-transclude></div></div></div>',
               transclude: true
             }));
+
+            $compileProvider.directive('transclude2', valueFn({
+              template: '<div ng-transclude></div>',
+              transclude: true
+            }));
+
           });
 
           inject(function($compile, $rootScope, $templateCache) {
-            // This is the template for the trans-test directive, it contains an
-            // ng-if, which also uses transclusion, which basically blocks the inner
-            // trans-test directive from receiving any transcluded content
-            $templateCache.put('transTestTemplate',
-              '  <div ng-if="true">'+
-              '    <div ng-transclude></div>'+
-              '</div>');
 
-            element = $compile('<div trans-test>transcluded content</div>')($rootScope);
+            element = $compile('<div transclude1>transcluded content</div>')($rootScope);
 
             // The ngTransclude:orphan error gets thrown when the digest occurs since this
             // is when the ngTransclude directive tries to use the transcluded function.
@@ -1473,103 +1605,6 @@ describe('$compile', function() {
           });
         });
 
-
-        iit('nested ngIfs should transclude correctly', function() {
-
-          module(function($compileProvider) {
-            // This directive does nothing except to put a directive in the compile
-            // element ancestors list between the root $compile node and the trans-test
-            // directives' element
-            $compileProvider.directive('noop', valueFn({}));
-          });
-
-          inject(function($compile, $rootScope) {
-            element = $compile('<div noop><div ng-if="true">outer<div ng-if="true">inner</div></div></div>')($rootScope);
-
-            // The ngTransclude:orphan error gets thrown when the digest occurs since this
-            // is when the ngTransclude directive tries to use the transcluded function.
-            $rootScope.$digest();
-
-            expect(element.text().trim()).toEqual('outerinner');
-          });
-        });
-
-        iit('should pass the transcluded content through to ng-transclude, ' +
-            'when not the highest directive' +
-            'and with external template', function() {
-
-          module(function($compileProvider) {
-            // This directive transcludes its contents and hopes to use the
-            // transcluded content in its template
-            $compileProvider.directive('transTest', valueFn({
-              templateUrl: 'transTestTemplate',
-              transclude: true
-            }));
-
-            // This directive does nothing except to put a directive in the compile
-            // element ancestors list between the root $compile node and the trans-test
-            // directives' element
-            $compileProvider.directive('noop', valueFn({}));
-          });
-
-          inject(function($compile, $rootScope, $templateCache) {
-            // This is the template for the trans-test directive, it contains an
-            // ng-if, which also uses transclusion, which basically blocks the inner
-            // trans-test directive from receiving any transcluded content
-            $templateCache.put('transTestTemplate',
-              '<div noop>'+
-              '  <div ng-if="true">'+
-              '    <div ng-transclude></div>'+
-              '  </div>'+
-              '</div>');
-
-            element = $compile('<div trans-test>transcluded content</div>')($rootScope);
-
-            // The ngTransclude:orphan error gets thrown when the digest occurs since this
-            // is when the ngTransclude directive tries to use the transcluded function.
-            $rootScope.$digest();
-
-            expect(element.text().trim()).toEqual('transcluded content');
-          });
-        });
-
-        iit('should pass the transcluded content through to ng-transclude, ' +
-            'when not the highest directive' +
-            'and with inline template', function() {
-
-          module(function($compileProvider) {
-            // This directive transcludes its contents and hopes to use the
-            // transcluded content in its template
-            $compileProvider.directive('transTest', valueFn({
-              template:
-                // This is the template for the trans-test directive, it contains an
-                // ng-if, which also uses transclusion, which basically blocks the inner
-                // trans-test directive from receiving any transcluded content
-                '<div noop>'+
-                '  <div ng-if="true">'+
-                '    <div ng-transclude></div>'+
-                '  </div>'+
-                '</div>',
-              transclude: true
-            }));
-
-            // This directive does nothing except to put a directive in the compile
-            // element ancestors list between the root $compile node and the trans-test
-            // directives' element
-            $compileProvider.directive('noop', valueFn({}));
-          });
-
-          inject(function($compile, $rootScope, $templateCache) {
-
-            element = $compile('<div trans-test>transcluded content</div>')($rootScope);
-
-            // The ngTransclude:orphan error gets thrown when the digest occurs since this
-            // is when the ngTransclude directive tries to use the transcluded function.
-            $rootScope.$digest();
-
-            expect(element.text().trim()).toEqual('transcluded content');
-          });
-        });
 
 
         it("should fail if replacing and template doesn't have a single root element", function() {
