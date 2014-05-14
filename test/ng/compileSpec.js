@@ -1575,7 +1575,7 @@ describe('$compile', function() {
 
 
 
-        iit('should allow nested transclude directives', function() {
+        it('should allow nested transclude directives', function() {
 
           module(function($compileProvider) {
 

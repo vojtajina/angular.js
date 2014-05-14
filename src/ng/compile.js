@@ -950,7 +950,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               childScope = scope;
             }
             childTranscludeFn = nodeLinkFn.transclude;
-            if (childTranscludeFn || (!boundTranscludeFn && transcludeFn)) {
+            if ((nodeLinkFn.transcludeOnThisElement) || (!boundTranscludeFn && transcludeFn)) {
               nodeLinkFn(childLinkFn, childScope, node, $rootElement,
                 createBoundTranscludeFn(scope, childTranscludeFn || transcludeFn)
               );
@@ -1332,7 +1332,14 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       }
 
       nodeLinkFn.scope = newScopeDirective && newScopeDirective.scope === true;
-      nodeLinkFn.transclude = hasTranscludeDirective && childTranscludeFn;
+      if (hasTranscludeDirective) {
+        nodeLinkFn.transclude = childTranscludeFn;
+        nodeLinkFn.transcludeOnThisElement = true;
+      } else if (!templateDirective) {
+        nodeLinkFn.transclude = childTranscludeFn;
+        nodeLinkFn.transcludeOnThisElement = false;
+      }
+
       previousCompileContext.hasElementTranscludeDirective = hasElementTranscludeDirective;
 
       // might be normal or delayed nodeLinkFn depending on if templateUrl is present
