@@ -7,7 +7,7 @@ module.exports = function(config, specificOptions) {
     browsers: ['Chrome'],
     browserDisconnectTimeout: 10000,
     browserDisconnectTolerance: 2,
-    browserNoActivityTimeout: 20000,
+    browserNoActivityTimeout: 60000,
 
 
     // SauceLabs config for local development.
@@ -112,19 +112,25 @@ module.exports = function(config, specificOptions) {
     var buildLabel = 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
 
     config.logLevel = config.LOG_DEBUG;
-    config.transports = ['websocket', 'xhr-polling'];
-    config.captureTimeout = 0; // rely on SL timeout
+    config.captureTimeout = 0; // rely on SL/BS timeout
 
-    config.browserStack.build = buildLabel;
-    config.browserStack.startTunnel = false;
+    // BrowserStack on Travis
+    if (process.env.BROWSER_PROVIDER === 'bs') {
+      config.browserStack.build = buildLabel;
+      config.browserStack.startTunnel = false;
+      config.browserStack.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
+    }
 
-    config.sauceLabs.build = buildLabel;
-    config.sauceLabs.startConnect = false;
-    config.sauceLabs.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
+    // SauceLabs on Travis
+    if (process.env.BROWSER_PROVIDER === 'sl') {
+      config.sauceLabs.build = buildLabel;
+      config.sauceLabs.startConnect = false;
+      config.sauceLabs.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
 
-    // TODO(vojta): remove once SauceLabs supports websockets.
-    // This speeds up the capturing a bit, as browsers don't even try to use websocket.
-    config.transports = ['xhr-polling'];
+      // TODO(vojta): remove once SauceLabs supports websockets.
+      // This speeds up the capturing a bit, as browsers don't even try to use websocket.
+      config.transports = ['xhr-polling'];
+    }
 
     // Debug logging into a file, that we print out at the end of the build.
     config.loggers.push({
