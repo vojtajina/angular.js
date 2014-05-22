@@ -1585,6 +1585,26 @@ describe('$compile', function() {
 
             }));
 
+
+            $compileProvider.directive('transFoo', valueFn({
+              template: '<div>' +
+                '<div no-trans-bar></div>' +
+                '<div ng-transclude>this one should get replaced with content</div>' +
+                '<div class="foo" ng-transclude></div>' +
+              '</div>',
+              transclude: true
+
+            }));
+
+            $compileProvider.directive('noTransBar', valueFn({
+              template: '<div>' +
+                // This ng-transclude is invalid. It should throw an error.
+                '<div ng-transclude></div>' +
+              '</div>',
+              transclude: false
+
+            }));
+
           }));
 
           it("should not pick up too many children when transcluding", inject(function($compile, $rootScope) {
@@ -1599,6 +1619,25 @@ describe('$compile', function() {
             $rootScope.$digest();
             expect(element.text()).toEqual('myExample 1!has children');
             dealoc(element);
+          }));
+
+
+          iit('should not pass transclusion into a template directive', inject(function($compile, $rootScope) {
+            var elm;
+
+            expect(function() {
+              elm = $compile('<div trans-foo>content</div>')($rootScope);
+            }).toThrowMinErr('ngTransclude', 'orphan', 'Illegal use of ngTransclude directive in the template! No parent directive that requires a transclusion found. Element: <div ng-transclude="">');
+
+            // This is just to demonstrate that ng-transclusion gets propagated.
+            if (elm) {
+              $rootScope.$digest();
+
+              var ngTransludeInsideNoTransBarDirective = angular.element(elm[0].querySelector('[no-trans-bar] [ng-transclude]'));
+              expect(ngTransludeInsideNoTransBarDirective.text()).toBe('');
+
+              dealoc(elm);
+            }
           }));
 
         });
