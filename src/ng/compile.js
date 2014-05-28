@@ -1329,7 +1329,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           }
 
           nodeLinkFn = compileTemplateUrl(directives.splice(i, directives.length - i), $compileNode,
-              templateAttrs, jqCollection, null, preLinkFns, postLinkFns, {
+              templateAttrs, jqCollection, preLinkFns, postLinkFns, {
                 controllerDirectives: controllerDirectives,
                 newIsolateScopeDirective: newIsolateScopeDirective,
                 templateDirective: templateDirective,
@@ -1691,9 +1691,8 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       });
     }
 
-    // TODO(vojta): remove childTranscludeFn argument, it's not used anymore.
     function compileTemplateUrl(directives, $compileNode, tAttrs,
-        $rootElement, childTranscludeFn, preLinkFns, postLinkFns, previousCompileContext) {
+        $rootElement, preLinkFns, postLinkFns, previousCompileContext) {
       var linkQueue = [],
           afterTemplateNodeLinkFn,
           afterTemplateChildLinkFn,
