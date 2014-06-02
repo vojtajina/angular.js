@@ -460,7 +460,9 @@
       }
     },
     "browserstacktunnel-wrapper": {
-      "version": "1.2.1"
+      "version": "1.2.1",
+      "from": "node-BrowserStackTunnel@git://github.com/vojtajina/node-BrowserStackTunnel.git#use-relative-path-to-binary",
+      "resolved": "git://github.com/vojtajina/node-BrowserStackTunnel.git#b07ca97873a49958c1d774db8c229af67716c90f"
     },
     "canonical-path": {
       "version": "0.0.2"
