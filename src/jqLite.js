@@ -723,18 +723,13 @@ forEach({
       handle = expandoStore.handle = createEventHandler(element, events);
     }
 
-    // http://jsperf.com/string-indexof-vs-split
-    var types = type.indexOf(' ') ? type.split(' ') : [type];
-    var i = types.length;
-
-    while (i--) {
-      type = types[i];
+    forEach( type.indexOf(' ') ? type.split(' ') : [type], function(type){
       var eventFns = events[type];
 
       if (!eventFns) {
         events[type] = [];
 
-        if (type === 'mouseenter' || type === 'mouseleave') {
+        if (type == 'mouseenter' || type == 'mouseleave') {
           // Refer to jQuery's implementation of mouseenter & mouseleave
           // Read about mouseenter and mouseleave:
           // http://www.quirksmode.org/js/events_mouse.html#link8
@@ -756,7 +751,7 @@ forEach({
         eventFns = events[type];
       }
       eventFns.push(fn);
-    }
+    });
   },
 
   off: jqLiteOff,
