@@ -342,7 +342,7 @@ function qFactory(nextTick, exceptionHandler) {
 
        return (state.status === 1 ? 'resolving' : 'rejecting') + ' promise\n' +
          'callbacks (' + callbacks.length + '):\n' + callbacks.join('\n\n') + '\n\n' +
-         'value: ' + toJson(state.value, true);
+         'value: ' + WTF_toJson(state.value, true);
       };
     }
 

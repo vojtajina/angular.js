@@ -778,8 +778,8 @@ function $RootScopeProvider(){
 
                         WTF.trace.appendScopeData('get', (watch.get.name || watch.get.toString()));
                         WTF.trace.appendScopeData('fn', (watch.fn.name || watch.fn.toString()));
-                        WTF.trace.appendScopeData('previous', toJson(last));
-                        WTF.trace.appendScopeData('current', toJson(value));
+                        WTF.trace.appendScopeData('previous', WTF_toJson(last));
+                        WTF.trace.appendScopeData('current', WTF_toJson(value));
                       }
 
                       watch.fn(value, ((last === initWatchVal) ? value : last), current);
